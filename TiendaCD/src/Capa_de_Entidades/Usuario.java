@@ -1,5 +1,7 @@
 package Capa_de_Entidades;
 
+import java.util.Date;
+
 public class Usuario {
 	private String usuario;
 	private String contraseña;
