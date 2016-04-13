@@ -1,13 +1,15 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>TiendaCD</title>
-<link href="css/bootstrap.min.css" rel="stylesheet">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<title>TiendaCD</title>
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-  <nav class="navbar navbar-inverse navbar-fixed-top">
+   <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
       <div class="navbar-header">
         <a class="navbar-brand" href="#">TiendaCD</a>
@@ -17,15 +19,22 @@
           <li class="active"><a href="#">Inicio</a></li>
           <li><a href="#">Discos</a></li> 
           <li><a href="#">Autores</a></li>
-          <li><a href="#">Opción 4</a></li> 
-          <li><a href="#">Opción 5</a></li> 
+          <li><a href="#">Carrito de compras</a></li> 
+          <li><a href="#">Administrador</a></li> 
         </ul>
       </div>
     </div>
   </nav>
-  <div class="row">
-   <div class="container col-xs-6" style="background-color:#ffffff" >
-   	<h3>Iniciar sesión</h3>
+
+  <!-- Acá termina la barra de navegación superior. -->
+  
+  <div class="container" style="background-color:#aaa">
+  <br><br><br>
+  <div class="row">	
+   	<div class="col-sm-4 col-sm-offset-1" style="background-color:#ffffff">
+   		<div class="container">
+   			<h3>Iniciar sesión</h3>
+   		</div>
     	<form role="form" action="Index" method="post" id="formInicio" name="formInicio">
       		<div class="form-group"> 
         		<label for="userregister">Usuario:</label>
@@ -40,8 +49,11 @@
 			</div>
     	</form>
    </div>
-   <div class="container col-xs-6" style="background-color:#ffffff" >
-   	<h3>Registrarse</h3>
+   
+   <div class="col-sm-4 col-sm-offset-2" style="background-color:#ffffff">
+   		<div class="container">
+   			<h3>Registrarse</h3>
+   		</div>
     	<form role="form" action="Index" method="post" id="formReg" name="formReg">
       		<div class="form-group"> 
         		<label for="user">Usuario:</label>
@@ -72,6 +84,8 @@
 			</div>
     	</form>
    </div>
+  </div>
+  <br><br><br>
   </div>
 
 </body>
