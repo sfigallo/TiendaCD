@@ -8,7 +8,7 @@ public class FactoriaConexion {
 	private String host="localhost";
 	//private String port="3306";
 	private String user="Ramiro";
-	private String pass="";
+	private String pass="ramiro";
 	private String db="ajedrezdb";
 	private int cantCon;
 	private static FactoriaConexion instancia;	
