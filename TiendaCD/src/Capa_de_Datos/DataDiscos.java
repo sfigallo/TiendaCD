@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import Capa_de_Entidades.Autor;
 import Capa_de_Entidades.Disco;
 import Capa_de_Entidades.GeneroMusical;
-import sun.nio.cs.FastCharsetProvider;
 
 public class DataDiscos {
 	

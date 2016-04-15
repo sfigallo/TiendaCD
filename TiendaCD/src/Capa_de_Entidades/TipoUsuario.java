@@ -1,6 +1,8 @@
 package Capa_de_Entidades;
 
 public class TipoUsuario {
+	public static final int COD_ADMIN = 0;
+	public static final int COD_USER = 1;
 	private int codTipoUsuario;
 	private String nombre;
 	private String descPermisos;
