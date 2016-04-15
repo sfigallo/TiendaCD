@@ -29,24 +29,64 @@
 
 <div class="container" style="background-color:#aaa">
   <br><br><br>
+  <div class="container">  
   <div class="col-sm-10 col-sm-offset-1">
-  	<form role="form" class="form-inline" action="ListaDiscos" method="post" id="formBuscarD" name="formBuscarD">
+  	<form role="form" action="ListaDiscos" method="post" id="formBuscarD" name="formBuscarD">
+      <div class="form-inline">
     	<big><b>Título:</b></big>
         <input type="text" class="form-control" id="searchterm" placeholder="¿Qué disco está buscando?" size="60" maxlength="45" style="height:100">
   		<input class="btn btn-primary" type="submit" value="Buscar" id="eventoBuscarD" name="eventoBuscarD"/>
-  		
-  		
+  	  </div>
     </form>
+  	<br>
+  	<div class="col-sm-7 col-sm-offset-1" style="background-color:#ffffff">
+  	  <br>
+  	  <form role="form" action="ListaDiscos" method="post" id="formBuscarD" name="formBuscarD">
+  	  <table>
+		<tr>
+			<td><b>Título:</b></td>
+			<td><input type="text" class="form-control" id="tituloDisco"></td>
+		</tr>
+		<tr>
+			<td><b>Código:</b></td>
+			<td><input type="text" class="form-control" id="codigoDisco"></td>
+		</tr>
+		<tr>
+			<td><b>Autor:</b></td>
+			<td><input type="text" class="form-control" id="autorDisco"></td>
+		</tr>
+		<tr>
+			<td><b>Género:</b></td>
+			<td><input type="text" class="form-control" id="generoDisco"></td>
+		</tr>
+		<tr>
+			<td><b>Año Lanzamiento:</b></td>
+			<td><input type="text" class="form-control" id="añoDisco"></td>
+		</tr>
+		<tr>
+			<td><b>Precio:</b></td>
+			<td><input type="text" class="form-control" id="precioDisco"></td>
+		</tr>
+		<tr>
+			<td><b>Stock:</b></td>
+			<td><input type="text" class="form-control" id="stockDisco"></td>
+		</tr>
+	</table>
+	<br>
+	<input class="btn btn-success" type="submit" value="Agregar Nuevo" id="nuevoDisco" name="nuevoDisco"/>
+  	<input class="btn btn-primary" type="submit" value="Modificar" id="modificarDisco" name="modificarDisco"/>
+  	<input class="btn btn-danger" type="submit" value="Eliminar" id="eliminarDisco" name="eliminarDisco"/>
+    </form>
+	<br>
+    </div>
   </div>
-  
-  <br><br><br>
-
+  </div>
+  <br>
   <div class="col-sm-11.5 col-sm-offset-0.5" style="background-color:#ccc">
  	<div class="container">
   	<h3>Discos</h3>
    	</div>
   </div>
-
   <div class="col-sm-11.5 col-sm-offset-0.5">
      <table class="table table-hover" style="background-color:#ffffff">
        <thead> 
@@ -73,7 +113,6 @@
        </tbody>
      </table>
   </div>
-
 </div>
 </body>
 </html>
