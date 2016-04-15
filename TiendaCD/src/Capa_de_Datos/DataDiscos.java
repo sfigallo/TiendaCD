@@ -300,4 +300,61 @@ public class DataDiscos {
 			return d;
 	}
 	
+	//NO TIENE STORED PROCEDURE
+	public static void addDisco (Disco disco){
+		Connection con = FactoriaConexion.getInstancia().getConexion();
+		String sql = "insert into disco (titulo, anioLanzamiento,"
+				+ " cantCopiasDisp, precio, codGenero, codAutor) values (?, ?, ?, ?, ?, ?)";
+		try {
+			PreparedStatement comando = con.prepareStatement(sql);
+			//el codDisco es auto-incremental
+			comando.setString(1, disco.getTitulo());						//titulo
+			comando.setInt(2, disco.getAñoLanzamiento());					//anioLanzamiento
+			comando.setInt(3, disco.getCantCopiasDisp());					//cantCopiasDisp
+			comando.setFloat(4, disco.getPrecio());							//precio
+			comando.setInt(5, disco.getGenero().getCodGenero());			//codGenero
+			comando.setInt(6, disco.getAutor().getCodAutor());				//codAutor
+			comando.execute();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		FactoriaConexion.getInstancia().releaseConexion();
+	}
+
+	//NO TIENE STORED PROCEDURE
+	public static void updateDisco (Disco disco){
+		Connection con = FactoriaConexion.getInstancia().getConexion();
+		String sql = "update disco set titulo = ?, anioLanzamiento = ?, "
+				+ "cantCopiasDisp = ?, precio = ?, codGenero = ?, codAutor = ?"
+				+ "where codDisco = ?;";
+		try {
+			PreparedStatement comando = con.prepareStatement(sql);
+			comando.setString(1, disco.getTitulo());
+			comando.setInt(2, disco.getAñoLanzamiento());
+			comando.setInt(3, disco.getCantCopiasDisp());
+			comando.setFloat(4, disco.getPrecio());
+			comando.setInt(5, disco.getGenero().getCodGenero());
+			comando.setInt(6, disco.getAutor().getCodAutor());
+			comando.setInt(7, disco.getCodDisco());
+			comando.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		FactoriaConexion.getInstancia().releaseConexion();
+	}
+
+	public static void removeDisco (int codDisco){
+		Connection con = FactoriaConexion.getInstancia().getConexion();
+		String sql = "call removeDisco(?);";
+		try {
+			PreparedStatement comando = con.prepareStatement(sql);
+			comando.setInt(1, codDisco);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		FactoriaConexion.getInstancia().releaseConexion();
+	}
 }
