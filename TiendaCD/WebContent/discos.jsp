@@ -19,8 +19,7 @@
           <li><a href="#">Inicio</a></li>
           <li class="active"><a href="#">Discos</a></li> 
           <li><a href="#">Autores</a></li>
-          <li><a href="#">Carrito de compras</a></li> 
-          <li><a href="#">Administrador</a></li> 
+          <li><a href="#">Carrito de compras</a></li>  
         </ul>
       </div>
     </div>
@@ -30,7 +29,7 @@
   <br><br><br>
   <div class="col-sm-10 col-sm-offset-1">
   	<form role="form" class="form-inline" action="ListaDiscos" method="post" id="formBuscarD" name="formBuscarD">
-    	<input class="form-control" type="text" id="searchterm" placeholder="¿Qué estás buscando?" size="70" maxlength="45" style="height:100"/>
+    	<input class="form-control" type="text" id="searchterm" placeholder="Ingrese el título del disco" size="70" maxlength="45" style="height:100"/>
   		<input class="btn btn-primary" type="submit" value="Buscar" id="eventoBuscarD" name="eventoBuscarD"/>
     </form>
   </div>
@@ -65,7 +64,7 @@
          		<b>Promedio:</b> 5 puntos
          		<br>
          		<form role="form" class="form-inline" action="discos" method="post" id="valorarDisco" name="valorarDisco">
-					<select name="pais">
+					<select name="valor">
 						<option value="1">1</option>
 						<option value="2">2</option>
 						<option value="3">3</option>
