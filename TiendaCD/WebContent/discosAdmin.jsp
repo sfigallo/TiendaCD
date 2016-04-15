@@ -19,7 +19,9 @@
           <li><a href="#">Inicio</a></li>
           <li class="active"><a href="#">Discos</a></li> 
           <li><a href="#">Autores</a></li>
-          <li><a href="#">Carrito de compras</a></li>  
+          <li><a href="#">Géneros</a></li>          
+          <li><a href="#">Usuarios</a></li> 
+          <li><a href="#">Carrito de compras</a></li>
         </ul>
       </div>
     </div>
@@ -29,8 +31,11 @@
   <br><br><br>
   <div class="col-sm-10 col-sm-offset-1">
   	<form role="form" class="form-inline" action="ListaDiscos" method="post" id="formBuscarD" name="formBuscarD">
-    	<input class="form-control" type="text" id="searchterm" placeholder="Ingrese el título del disco" size="70" maxlength="45" style="height:100"/>
+    	<big><b>Título:</b></big>
+        <input type="text" class="form-control" id="searchterm" placeholder="¿Qué disco está buscando?" size="60" maxlength="45" style="height:100">
   		<input class="btn btn-primary" type="submit" value="Buscar" id="eventoBuscarD" name="eventoBuscarD"/>
+  		
+  		
     </form>
   </div>
   
@@ -44,43 +49,31 @@
 
   <div class="col-sm-11.5 col-sm-offset-0.5">
      <table class="table table-hover" style="background-color:#ffffff">
-       
-       <thead>
-       	<tr>
-       		<th>Datos del disco</th>
- 			<th>Valoración</th>
- 			<th>Añadir al carro</th>
-       	</tr>
+       <thead> 
+         <tr> 
+           <th>Título</th>
+           <th>Código</th> 
+           <th>Autor</th>
+           <th>Año Lanzamiento</th>
+           <th>Género</th>
+           <th>Precio</th>
+           <th>Stock</th>
+         </tr> 
        </thead>
        <tbody>
          <tr>
-         	<td><big><b>Título:</b> Amor Amarillo<br></big>
-         		<b>Autor:</b> Gustavo Cerati<br>
-         		<b>Año Lanzamiento:</b> 2000<br>
-         		<b>Género:</b> Rock<br>
-         		<b>Precio:</b> $100<br>
-         	</td>
-         	<td>
-         		<b>Promedio:</b> 5 puntos
-         		<br>
-         		<form role="form" class="form-inline" action="discos" method="post" id="valorarDisco" name="valorarDisco">
-					<select name="valor">
-						<option value="1">1</option>
-						<option value="2">2</option>
-						<option value="3">3</option>
-						<option value="4">4</option>
-						<option value="5">5</option>
-					</select>
-					<input class="btn btn-primary btn-xs" type="submit" value="Valorar" id="eventoValorar" name="eventoValorar"/>
-				</form>
-         	</td>
-         	<td style="vertical-align:middle">
-         		<input class="btn btn-success" type="submit" value="Comprar" id="eventoComprar" name="eventoComprar" />
-         	</td>
+           <td>Amor Amarillo</td>
+           <td>000001</td>
+           <td>Gustavo Cerati</td> 
+           <td>2000</td>
+           <td>Rock&Roll</td>
+           <td>$100</td>
+           <td>10</td>
          </tr>
-        </tbody>
+       </tbody>
      </table>
-  </div> 
+  </div>
+
 </div>
 </body>
 </html>

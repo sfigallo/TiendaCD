@@ -20,7 +20,6 @@
           <li><a href="#">Discos</a></li> 
           <li class="active"><a href="#">Autores</a></li>
           <li><a href="#">Carrito de compras</a></li> 
-          <li><a href="#">Administrador</a></li> 
         </ul>
       </div>
     </div>
@@ -30,7 +29,7 @@
   <br><br><br>
   <div class="col-sm-10 col-sm-offset-1">
   	<form role="form" class="form-inline" action="ListaAutores" method="post" id="formBuscar" name="formBuscar">
-    	<input class="form-control" type="text" id="searchterm" placeholder="¿Qué estás buscando?" size="70" maxlength="45" style="height:100"/>
+    	<input class="form-control" type="text" id="searchterm" placeholder="Ingrese el nombre del autor" size="70" maxlength="45" style="height:100"/>
   		<input class="btn btn-primary" type="submit" value="Buscar" id="eventoBuscar" name="eventoBuscar"/>
     </form>
   </div>
@@ -40,8 +39,6 @@
    		<h3>Autores</h3>
    	</div>
  	 <a href="#" class="list-group-item">Autor 1</a>
- 	 <a href="#" class="list-group-item">Autor 2</a>
- 	 <a href="#" class="list-group-item">Autor 3</a>
   </div>
 </div>
 </body>
