@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class Index
  */
-@WebServlet("/inicio.jsp")
+@WebServlet("/inicio")
 public class Index extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
