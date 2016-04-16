@@ -30,7 +30,7 @@
 <div class="container" style="background-color:#aaa">
   <br><br><br>
   <div class="container">  
-  <div class="col-sm-10 col-sm-offset-1">
+	<div align="center">
   	<form role="form" action="ListaDiscos" method="post" id="formBuscarD" name="formBuscarD">
       <div class="form-inline">
     	<big><b>Título:</b></big>
@@ -38,26 +38,35 @@
   		<input class="btn btn-primary" type="submit" value="Buscar" id="eventoBuscarD" name="eventoBuscarD"/>
   	  </div>
     </form>
+    </div>
   	<br>
-  	<div class="col-sm-7 col-sm-offset-1" style="background-color:#ffffff">
+	  <div class="col-sm-8 col-sm-offset-2" style="background-color:#ffffff">
   	  <br>
   	  <form role="form" action="ListaDiscos" method="post" id="formBuscarD" name="formBuscarD">
-  	  <table>
+  	  <table align="center" style="background-color:#ffffff" >
 		<tr>
 			<td><b>Título:</b></td>
-			<td><input type="text" class="form-control" id="tituloDisco"></td>
+			<td><input type="text" class="form-control" id="tituloDisco" size="45"></td>
 		</tr>
 		<tr>
 			<td><b>Código:</b></td>
-			<td><input type="text" class="form-control" id="codigoDisco"></td>
+			<td><input type="text" class="form-control" id="codigoDisco" placeholder="Dejar campo vacío para agregar nuevo disco"></td>
 		</tr>
 		<tr>
 			<td><b>Autor:</b></td>
-			<td><input type="text" class="form-control" id="autorDisco"></td>
+			<td>
+ 				<select class="form-control" id="selectAutor">
+ 		   		<option>Gustavo Cerati</option>
+  				</select>
+			</td>
 		</tr>
 		<tr>
 			<td><b>Género:</b></td>
-			<td><input type="text" class="form-control" id="generoDisco"></td>
+			<td>
+ 				<select class="form-control" id="selectGenero">
+ 		   		<option>Rock and Roll</option>
+  				</select>
+			</td>
 		</tr>
 		<tr>
 			<td><b>Año Lanzamiento:</b></td>
@@ -73,12 +82,13 @@
 		</tr>
 	</table>
 	<br>
+	<div align="center">
 	<input class="btn btn-success" type="submit" value="Agregar Nuevo" id="nuevoDisco" name="nuevoDisco"/>
   	<input class="btn btn-primary" type="submit" value="Modificar" id="modificarDisco" name="modificarDisco"/>
   	<input class="btn btn-danger" type="submit" value="Eliminar" id="eliminarDisco" name="eliminarDisco"/>
+    </div>
     </form>
 	<br>
-    </div>
   </div>
   </div>
   <br>
