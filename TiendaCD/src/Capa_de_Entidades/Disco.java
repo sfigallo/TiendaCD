@@ -51,6 +51,5 @@ public class Disco {
 	public void setAutor(Autor autor) {
 		this.autor = autor;
 	}
-	
 
 }
