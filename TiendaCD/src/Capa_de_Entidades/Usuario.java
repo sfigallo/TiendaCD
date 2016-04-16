@@ -9,6 +9,7 @@ public class Usuario {
 	private String apellido;
 	private Date fechaNac;
 	private int dni;
+	private TipoUsuario tipo;
 	
 	public String getUsuario() {
 		return usuario;
@@ -45,6 +46,12 @@ public class Usuario {
 	}
 	public void setDni(int dni) {
 		this.dni = dni;
+	}
+	public TipoUsuario getTipo() {
+		return tipo;
+	}
+	public void setTipo(TipoUsuario tipo) {
+		this.tipo = tipo;
 	}
 	
 

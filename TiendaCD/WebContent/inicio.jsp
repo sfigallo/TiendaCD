@@ -20,7 +20,6 @@
           <li><a href="#">Discos</a></li> 
           <li><a href="#">Autores</a></li>
           <li><a href="#">Carrito de compras</a></li> 
-          <li><a href="#">Administrador</a></li> 
         </ul>
       </div>
     </div>

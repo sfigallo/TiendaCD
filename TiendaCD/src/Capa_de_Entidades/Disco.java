@@ -6,6 +6,8 @@ public class Disco {
 	private int añoLanzamiento;
 	private int cantCopiasDisp;
 	private float precio;
+	private GeneroMusical genero;
+	private Autor autor;
 	
 	public int getCodDisco() {
 		return codDisco;
@@ -37,6 +39,17 @@ public class Disco {
 	public void setPrecio(float precio) {
 		this.precio = precio;
 	}
-	
+	public GeneroMusical getGenero() {
+		return genero;
+	}
+	public void setGenero(GeneroMusical genero) {
+		this.genero = genero;
+	}
+	public Autor getAutor() {
+		return autor;
+	}
+	public void setAutor(Autor autor) {
+		this.autor = autor;
+	}
 
 }
