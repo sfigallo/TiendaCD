@@ -7,17 +7,18 @@ import Capa_de_Entidades.Disco;
 
 public class Controlador {
 	
-	public ArrayList<Disco> buscarDiscos(String cadena, int clase){
-		switch(clase){
-			case '1':
-				return DataDiscos.getDiscosxTitulo(cadena);
-			case '2':
-				return DataDiscos.getDiscosxAutor(cadena);
-			case '3':
-				return DataDiscos.getDiscosxGenero(cadena);
-		}
-		return null;
-		
+	public ArrayList<Disco> buscarDiscos(String cadena){
+		ArrayList<Disco> discos = new ArrayList<Disco>();
+		ArrayList<Disco> porAutor = DataDiscos.getDiscosxAutor(cadena);
+		ArrayList<Disco> porTitulo = DataDiscos.getDiscosxTitulo(cadena);
+		ArrayList<Disco> porGenero = DataDiscos.getDiscosxGenero(cadena);
+		for (Disco disco : porAutor) discos.add(disco);
+		for (Disco disco : porTitulo) discos.add(disco);
+		for (Disco disco : porGenero) discos.add(disco);
+		return discos;		
+	}
+	public ArrayList<Disco> getDiscos(){
+		return DataDiscos.getDiscos();
 	}
 	
 
