@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Capa_de_Control.Controlador;
-import Capa_de_Entidades.ContenedorArrayList;
 import Capa_de_Entidades.Disco;
 
 /**
@@ -45,9 +44,7 @@ public class DiscosAdmin extends HttpServlet {
 			String cadena = request.getParameter("titBuscar");
 			if (!cadena.isEmpty()) {
 				ArrayList<Disco> discos = con.buscarDiscos(cadena);
-				ContenedorArrayList cont = new ContenedorArrayList();
-				cont.setDiscos(discos);
-				request.setAttribute("contenedorDiscos", cont);
+				request.setAttribute("discos", discos);
 			}
 			request.getRequestDispatcher("discosAdmin.jsp").forward(request, response);
 		}
