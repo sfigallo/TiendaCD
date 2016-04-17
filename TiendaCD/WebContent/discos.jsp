@@ -29,7 +29,7 @@
   <br><br><br>
   <div align="center">
   	<form role="form" class="form-inline" action="ListaDiscos" method="post" id="formBuscarD" name="formBuscarD">
-    	<input class="form-control" type="text" id="searchterm" placeholder="Ingrese el título del disco" size="70" maxlength="45" style="height:100"/>
+    	<input class="form-control" type="text" id="searchterm" placeholder="¿Qué está buscando?" size="70" maxlength="45" style="height:100"/>
   		<input class="btn btn-primary" type="submit" value="Buscar" id="eventoBuscarD" name="eventoBuscarD"/>
     </form>
   </div>
