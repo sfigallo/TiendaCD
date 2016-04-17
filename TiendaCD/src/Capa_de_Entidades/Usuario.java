@@ -11,6 +11,10 @@ public class Usuario {
 	private int dni;
 	private TipoUsuario tipo;
 	
+	public Usuario(){
+		tipo = new TipoUsuario();
+	}
+	
 	public String getUsuario() {
 		return usuario;
 	}

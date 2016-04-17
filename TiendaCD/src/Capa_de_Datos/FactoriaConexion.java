@@ -4,14 +4,14 @@ import java.sql.*;
 
 public class FactoriaConexion {
 	private String dbDriver="com.mysql.jdbc.Driver";
-	private Connection conexion;
-	private String host="localhost";
-	//private String port="3306";
-	private String user="Ramiro";
-	private String pass="ramiro";
-	private String db="ajedrezdb";
 	private int cantCon;
-	private static FactoriaConexion instancia;	
+	private Connection conexion;
+	private static String host="localhost";
+	//private String port="3306";
+	private static String user="Ramiro";
+	private static String pass="ramiro";
+	private static String db="tiendacd";
+	private static FactoriaConexion instancia;
 	
 	private FactoriaConexion(){
 		try {

@@ -3,6 +3,7 @@ package Capa_de_Entidades;
 public class Autor {
 	private int codAutor;
 	private String nombreAutor;
+	
 	public int getCodAutor() {
 		return codAutor;
 	}
