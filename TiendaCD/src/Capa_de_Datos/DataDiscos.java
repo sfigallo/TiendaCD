@@ -24,11 +24,12 @@ public class DataDiscos {
 				d.setAñoLanzamiento(rs.getInt("anioLanzamiento"));
 				d.setCantCopiasDisp(rs.getInt("cantCopiasDisp"));
 				d.setPrecio(rs.getFloat("precio"));
-				GeneroMusical gm = getGenero(rs.getInt("codGenero"));
-				d.setGenero(gm);  //codGenero
-				Autor au = getAutor(rs.getInt("codAutor"));
+				int codgm = rs.getInt("codGenero");
+				int codau = rs.getInt("codAutor");
+				GeneroMusical gm = getGenero(codgm);
+				d.setGenero(gm);
+				Autor au = getAutor(codau);
 				d.setAutor(au);
-				//d.setEstado(toBoolean(rs.getInt("estado")));
 				discos.add(d);
 			}
 		} catch (SQLException e) {
@@ -54,11 +55,12 @@ public class DataDiscos {
 				d.setAñoLanzamiento(rs.getInt("anioLanzamiento"));
 				d.setCantCopiasDisp(rs.getInt("cantCopiasDisp"));
 				d.setPrecio(rs.getFloat("precio"));
-				GeneroMusical gm = getGenero(rs.getInt("codGenero"));
-				d.setGenero(gm);  //codGenero
-				Autor au = getAutor(rs.getInt("codAutor"));
+				int codgm = rs.getInt("codGenero");
+				int codau = rs.getInt("codAutor");
+				GeneroMusical gm = getGenero(codgm);
+				d.setGenero(gm);
+				Autor au = getAutor(codau);
 				d.setAutor(au);
-				//d.setEstado(toBoolean(rs.getInt("estado")));
 				discos.add(d);		
 			}
 		} catch (SQLException e) {
@@ -84,9 +86,11 @@ public class DataDiscos {
 				d.setAñoLanzamiento(rs.getInt("anioLanzamiento"));
 				d.setCantCopiasDisp(rs.getInt("cantCopiasDisp"));
 				d.setPrecio(rs.getFloat("precio"));
-				GeneroMusical gm = getGenero(rs.getInt("codGenero"));
-				d.setGenero(gm);  //codGenero
-				Autor au = getAutor(rs.getInt("codAutor"));
+				int codgm = rs.getInt("codGenero");
+				int codau = rs.getInt("codAutor");
+				GeneroMusical gm = getGenero(codgm);
+				d.setGenero(gm);
+				Autor au = getAutor(codau);
 				d.setAutor(au);
 				discos.add(d);		
 			}
@@ -113,9 +117,11 @@ public class DataDiscos {
 				d.setAñoLanzamiento(rs.getInt("anioLanzamiento"));
 				d.setCantCopiasDisp(rs.getInt("cantCopiasDisp"));
 				d.setPrecio(rs.getFloat("precio"));
-				GeneroMusical gm = getGenero(rs.getInt("codGenero"));
-				d.setGenero(gm);  //codGenero
-				Autor au = getAutor(rs.getInt("codAutor"));
+				int codgm = rs.getInt("codGenero");
+				int codau = rs.getInt("codAutor");
+				GeneroMusical gm = getGenero(codgm);
+				d.setGenero(gm);
+				Autor au = getAutor(codau);
 				d.setAutor(au);
 				discos.add(d);		
 			}
@@ -142,9 +148,11 @@ public class DataDiscos {
 				d.setAñoLanzamiento(rs.getInt("anioLanzamiento"));
 				d.setCantCopiasDisp(rs.getInt("cantCopiasDisp"));
 				d.setPrecio(rs.getFloat("precio"));
-				GeneroMusical gm = getGenero(rs.getInt("codGenero"));
-				d.setGenero(gm);  //codGenero
-				Autor au = getAutor(rs.getInt("codAutor"));
+				int codgm = rs.getInt("codGenero");
+				int codau = rs.getInt("codAutor");
+				GeneroMusical gm = getGenero(codgm);
+				d.setGenero(gm);
+				Autor au = getAutor(codau);
 				d.setAutor(au);
 				discos.add(d);		
 			}
@@ -244,7 +252,7 @@ public class DataDiscos {
 			return gm;
 	}
 
-	//NO TIENE STORED PROCEDURE
+
 	public static ArrayList<Disco> getDiscos(){
 		ArrayList<Disco> discos = new ArrayList<Disco>();;
 		String sql = "call getDiscos();";
@@ -259,9 +267,11 @@ public class DataDiscos {
 				d.setAñoLanzamiento(rs.getInt("anioLanzamiento"));
 				d.setCantCopiasDisp(rs.getInt("cantCopiasDisp"));
 				d.setPrecio(rs.getFloat("precio"));
-				GeneroMusical gm = getGenero(rs.getInt("codGenero"));
-				d.setGenero(gm);  //codGenero
-				Autor au = getAutor(rs.getInt("codAutor"));
+				int codgm = rs.getInt("codGenero");
+				int codau = rs.getInt("codAutor");
+				GeneroMusical gm = getGenero(codgm);
+				d.setGenero(gm);
+				Autor au = getAutor(codau);
 				d.setAutor(au);
 				discos.add(d);
 			}
@@ -289,10 +299,12 @@ public class DataDiscos {
 					d.setAñoLanzamiento(rs.getInt("anioLanzamiento"));
 					d.setCantCopiasDisp(rs.getInt("cantCopiasDisp"));
 					d.setPrecio(rs.getFloat("precio"));
-					GeneroMusical gm = getGenero(rs.getInt("codGenero"));
-					d.setGenero(gm);  //codGenero
-					Autor au = getAutor(rs.getInt("codAutor"));
-					d.setAutor(au);		
+					int codgm = rs.getInt("codGenero");
+					int codau = rs.getInt("codAutor");
+					GeneroMusical gm = getGenero(codgm);
+					d.setGenero(gm);
+					Autor au = getAutor(codau);
+					d.setAutor(au);
 				}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
@@ -359,14 +371,4 @@ public class DataDiscos {
 		}
 		FactoriaConexion.getInstancia().releaseConexion();
 	}
-	
-	/*
-	private static boolean toBoolean (int var){
-		return (var == INT_TRUE);
-	}
-	private static int toInt (boolean var){
-		if(var) return INT_TRUE;
-		else return INT_FALSE;
-	}
-	*/
 }
