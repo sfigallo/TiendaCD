@@ -24,19 +24,19 @@ public class DataDiscos {
 				d.setAñoLanzamiento(rs.getInt("anioLanzamiento"));
 				d.setCantCopiasDisp(rs.getInt("cantCopiasDisp"));
 				d.setPrecio(rs.getFloat("precio"));
-				int codgm = rs.getInt("codGenero");
-				int codau = rs.getInt("codAutor");
-				GeneroMusical gm = getGenero(codgm);
-				d.setGenero(gm);
-				Autor au = getAutor(codau);
-				d.setAutor(au);
+				d.getGenero().setCodGenero(rs.getInt("codGenero"));
+				d.getAutor().setCodAutor(rs.getInt("codAutor"));
 				discos.add(d);
+			}
+			for (Disco disco : discos) {
+				disco.getGenero().setDescGenero(getGenero(disco.getGenero().getCodGenero()).getDescGenero());
+				disco.getAutor().setNombreAutor(getAutor(disco.getAutor().getCodAutor()).getNombreAutor());
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}	
-		FactoriaConexion.getInstancia().releaseConexion();
+		FactoriaConexion.getInstancia().releaseConexion();;
 		return discos;
 	}
 	
@@ -55,13 +55,13 @@ public class DataDiscos {
 				d.setAñoLanzamiento(rs.getInt("anioLanzamiento"));
 				d.setCantCopiasDisp(rs.getInt("cantCopiasDisp"));
 				d.setPrecio(rs.getFloat("precio"));
-				int codgm = rs.getInt("codGenero");
-				int codau = rs.getInt("codAutor");
-				GeneroMusical gm = getGenero(codgm);
-				d.setGenero(gm);
-				Autor au = getAutor(codau);
-				d.setAutor(au);
-				discos.add(d);		
+				d.getGenero().setCodGenero(rs.getInt("codGenero"));
+				d.getAutor().setCodAutor(rs.getInt("codAutor"));
+				discos.add(d);
+			}
+			for (Disco disco : discos) {
+				disco.getGenero().setDescGenero(getGenero(disco.getGenero().getCodGenero()).getDescGenero());
+				disco.getAutor().setNombreAutor(getAutor(disco.getAutor().getCodAutor()).getNombreAutor());
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -86,13 +86,13 @@ public class DataDiscos {
 				d.setAñoLanzamiento(rs.getInt("anioLanzamiento"));
 				d.setCantCopiasDisp(rs.getInt("cantCopiasDisp"));
 				d.setPrecio(rs.getFloat("precio"));
-				int codgm = rs.getInt("codGenero");
-				int codau = rs.getInt("codAutor");
-				GeneroMusical gm = getGenero(codgm);
-				d.setGenero(gm);
-				Autor au = getAutor(codau);
-				d.setAutor(au);
-				discos.add(d);		
+				d.getGenero().setCodGenero(rs.getInt("codGenero"));
+				d.getAutor().setCodAutor(rs.getInt("codAutor"));
+				discos.add(d);
+			}
+			for (Disco disco : discos) {
+				disco.getGenero().setDescGenero(getGenero(disco.getGenero().getCodGenero()).getDescGenero());
+				disco.getAutor().setNombreAutor(getAutor(disco.getAutor().getCodAutor()).getNombreAutor());
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -117,13 +117,13 @@ public class DataDiscos {
 				d.setAñoLanzamiento(rs.getInt("anioLanzamiento"));
 				d.setCantCopiasDisp(rs.getInt("cantCopiasDisp"));
 				d.setPrecio(rs.getFloat("precio"));
-				int codgm = rs.getInt("codGenero");
-				int codau = rs.getInt("codAutor");
-				GeneroMusical gm = getGenero(codgm);
-				d.setGenero(gm);
-				Autor au = getAutor(codau);
-				d.setAutor(au);
-				discos.add(d);		
+				d.getGenero().setCodGenero(rs.getInt("codGenero"));
+				d.getAutor().setCodAutor(rs.getInt("codAutor"));
+				discos.add(d);
+			}
+			for (Disco disco : discos) {
+				disco.getGenero().setDescGenero(getGenero(disco.getGenero().getCodGenero()).getDescGenero());
+				disco.getAutor().setNombreAutor(getAutor(disco.getAutor().getCodAutor()).getNombreAutor());
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -148,13 +148,13 @@ public class DataDiscos {
 				d.setAñoLanzamiento(rs.getInt("anioLanzamiento"));
 				d.setCantCopiasDisp(rs.getInt("cantCopiasDisp"));
 				d.setPrecio(rs.getFloat("precio"));
-				int codgm = rs.getInt("codGenero");
-				int codau = rs.getInt("codAutor");
-				GeneroMusical gm = getGenero(codgm);
-				d.setGenero(gm);
-				Autor au = getAutor(codau);
-				d.setAutor(au);
-				discos.add(d);		
+				d.getGenero().setCodGenero(rs.getInt("codGenero"));
+				d.getAutor().setCodAutor(rs.getInt("codAutor"));
+				discos.add(d);
+			}
+			for (Disco disco : discos) {
+				disco.getGenero().setDescGenero(getGenero(disco.getGenero().getCodGenero()).getDescGenero());
+				disco.getAutor().setNombreAutor(getAutor(disco.getAutor().getCodAutor()).getNombreAutor());
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -267,19 +267,19 @@ public class DataDiscos {
 				d.setAñoLanzamiento(rs.getInt("anioLanzamiento"));
 				d.setCantCopiasDisp(rs.getInt("cantCopiasDisp"));
 				d.setPrecio(rs.getFloat("precio"));
-				int codgm = rs.getInt("codGenero");
-				int codau = rs.getInt("codAutor");
-				GeneroMusical gm = getGenero(codgm);
-				d.setGenero(gm);
-				Autor au = getAutor(codau);
-				d.setAutor(au);
+				d.getGenero().setCodGenero(rs.getInt("codGenero"));
+				d.getAutor().setCodAutor(rs.getInt("codAutor"));
 				discos.add(d);
+			}
+			for (Disco disco : discos) {
+				disco.getGenero().setDescGenero(getGenero(disco.getGenero().getCodGenero()).getDescGenero());
+				disco.getAutor().setNombreAutor(getAutor(disco.getAutor().getCodAutor()).getNombreAutor());
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}	
-		FactoriaConexion.getInstancia().releaseConexion();
+		FactoriaConexion.getInstancia().releaseConexion();;
 		return discos;
 	}
 	
@@ -299,12 +299,10 @@ public class DataDiscos {
 					d.setAñoLanzamiento(rs.getInt("anioLanzamiento"));
 					d.setCantCopiasDisp(rs.getInt("cantCopiasDisp"));
 					d.setPrecio(rs.getFloat("precio"));
-					int codgm = rs.getInt("codGenero");
-					int codau = rs.getInt("codAutor");
-					GeneroMusical gm = getGenero(codgm);
-					d.setGenero(gm);
-					Autor au = getAutor(codau);
-					d.setAutor(au);
+					d.getGenero().setCodGenero(rs.getInt("codGenero"));
+					d.getAutor().setCodAutor(rs.getInt("codAutor"));
+					d.getGenero().setDescGenero(getGenero(d.getGenero().getCodGenero()).getDescGenero());
+					d.getAutor().setNombreAutor(getAutor(d.getAutor().getCodAutor()).getNombreAutor());
 				}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
