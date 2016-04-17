@@ -9,6 +9,11 @@ public class Disco {
 	private GeneroMusical genero;
 	private Autor autor;
 	
+	public Disco(){
+		genero = new GeneroMusical();
+		autor = new Autor();
+	}
+	
 	public int getCodDisco() {
 		return codDisco;
 	}
