@@ -9,7 +9,7 @@ public class FactoriaConexion {
 	//private String port="3306";
 	private String user="Ramiro";
 	private String pass="ramiro";
-	private String db="ajedrezdb";
+	private String db="tiendacd";
 	private int cantCon;
 	private static FactoriaConexion instancia;	
 	
