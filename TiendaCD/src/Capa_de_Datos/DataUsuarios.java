@@ -23,9 +23,12 @@ public class DataUsuarios {
 				u.setApellido(rs.getString(4));
 				u.setFechaNac(rs.getDate(5));
 				u.setDni(rs.getInt(6));
-				TipoUsuario tu = getTipoUsuario(rs.getInt(7));
-				u.setTipo(tu);
+				u.getTipo().setCodTipoUsuario(rs.getInt(7));
 				usuarios.add(u);
+			}
+			for (Usuario usuario : usuarios) {
+				TipoUsuario tu = getTipoUsuario(usuario.getTipo().getCodTipoUsuario());
+				usuario.setTipo(tu);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -51,7 +54,8 @@ public class DataUsuarios {
 				u.setApellido(rs.getString(4));
 				u.setFechaNac(rs.getDate(5));
 				u.setDni(rs.getInt(6));
-				TipoUsuario tu = getTipoUsuario(rs.getInt(7));
+				u.getTipo().setCodTipoUsuario(rs.getInt(7));
+				TipoUsuario tu = getTipoUsuario(u.getTipo().getCodTipoUsuario());
 				u.setTipo(tu);
 			}
 		} catch (SQLException e) {
