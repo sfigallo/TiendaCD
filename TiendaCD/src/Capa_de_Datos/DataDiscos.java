@@ -208,6 +208,28 @@ public class DataDiscos {
 			return au;
 	}
  	
+ 	public static Autor getAutor(String cadena){
+ 		Autor au = null;
+		String sql = "call getAutorxNombreAutor(?);";
+		Connection con = FactoriaConexion.getInstancia().getConexion();
+			PreparedStatement comando;
+			try {
+				comando = con.prepareStatement(sql);
+				comando.setString(1, cadena);
+				ResultSet rs = comando.executeQuery();
+				if (rs.next()) {
+					au = new Autor();
+					au.setCodAutor(rs.getInt("codAutor"));
+					au.setNombreAutor(rs.getString("nombreAutor"));
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			FactoriaConexion.getInstancia().releaseConexion();
+			return au;
+	}
+ 	
  	//NO TIENE STORED PROCEDURE
  	public static ArrayList<GeneroMusical> getGeneros(){
 		ArrayList<GeneroMusical> generos = new ArrayList<GeneroMusical>();

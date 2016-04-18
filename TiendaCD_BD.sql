@@ -242,7 +242,6 @@ DROP TABLE IF EXISTS `venta`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `venta` (
   `nroVenta` int(11) NOT NULL AUTO_INCREMENT,
-  `estado` varchar(15) DEFAULT NULL,
   `monto` float DEFAULT NULL,
   `usuario` varchar(45) NOT NULL,
   `codDescuento` int(11) NOT NULL,
@@ -279,6 +278,25 @@ DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `getAutor`(cod int)
 BEGIN
 select * from autor where codAutor = cod;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `getAutorxNombreAutor` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getAutorxNombreAutor`(cadena varchar(45))
+BEGIN
+	select * from autores where nombreAutor like cadena;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -527,4 +545,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-04-18 16:35:38
+-- Dump completed on 2016-04-18 17:24:44
