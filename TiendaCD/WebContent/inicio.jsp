@@ -18,8 +18,6 @@
         <ul class="nav navbar-nav">
           <li class="active"><a href="#">Inicio</a></li>
           <li><a href="#">Discos</a></li> 
-          <li><a href="#">Autores</a></li>
-          <li><a href="#">Carrito de compras</a></li> 
         </ul>
       </div>
     </div>

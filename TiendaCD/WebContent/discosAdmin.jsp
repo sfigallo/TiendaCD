@@ -21,7 +21,6 @@
       </div>
       <div>
         <ul class="nav navbar-nav">
-          <li><a href="#">Inicio</a></li>
           <li class="active"><a href="#">Discos</a></li> 
           <li><a href="#">Autores</a></li>
           <li><a href="#">Géneros</a></li>          
