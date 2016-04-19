@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="Capa_de_Control.Controlador" %>
+<%@ page import="Capa_de_Entidades.Usuario"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,6 +11,7 @@
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
+<%Controlador controlador = new Controlador(); %>
 <body>
 	<nav class="navbar navbar-inverse navbar-fixed-top">
      <div class="container-fluid">
@@ -43,19 +47,25 @@
        	</tr>
        </thead>
        <tbody>
+       <%
+           ArrayList<Usuario> usuarios = controlador.getUsuarios();
+           for(int i=0; i<usuarios.size(); i++){
+           Usuario usuario = usuarios.get(i);						%>
          <tr>
-         	<td><b>Usuario:</b> sfigallo<br>
-         		<b>Nombre:</b> Sofía<br>
-         		<b>Apellido:</b> Figallo<br>
-         		<b>Fecha Nacimiento:</b> 22/09/1994<br>
-         		<b>DNI:</b> 388533128<br>
+         	<td><b>Usuario:</b> <%=usuario.getUsuario()%><br>
+         		<b>Nombre:</b> <%=usuario.getNombre()%><br>
+         		<b>Apellido:</b> <%=usuario.getApellido()%><br>
+         		<b>Fecha Nacimiento:</b> <%=usuario.getFechaNac()%><br>
+         		<b>DNI:</b> <%=usuario.getDni()%><br>
          	</td>
          	<td style="vertical-align:middle">
          		<input class="btn btn-danger" type="submit" value="Eliminar" id="eliminarUsu" name="eliminarUsu" />
          	</td>
          </tr>
+         <%} %>
         </tbody>
      </table>
+  </div>
   </div>
 
 </body>
