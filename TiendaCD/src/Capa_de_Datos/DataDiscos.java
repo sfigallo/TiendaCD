@@ -412,4 +412,9 @@ public class DataDiscos {
 		}
 		FactoriaConexion.getInstancia().releaseConexion();
 	}
+
+	public static ArrayList<GeneroMusical> getGenerosxDescricion(String cadena) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
