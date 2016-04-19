@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="Capa_de_Control.Controlador" %>
+<%@ page import="Capa_de_Entidades.GeneroMusical"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -9,6 +12,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 </head>
+<%Controlador controlador = new Controlador(); %>
 <body>
 	<nav class="navbar navbar-inverse navbar-fixed-top">
      <div class="container-fluid">
@@ -31,7 +35,7 @@
   <br><br><br>
   <div class="container">  
 	<div align="center">
-	  <form role="form" action="DiscosAdmin" method="post" id="formBuscar" name="formBuscar">
+	  <form role="form" action="GenerosAdmin" method="post" id="formBuscar" name="formBuscar">
       <div class="form-inline">
         <input type="text" class="form-control" id="titBuscar" name="titBuscar" placeholder="¿Qué está buscando?" size="60" maxlength="45" style="height:100">
   		<input class="btn btn-primary" type="submit" value="Buscar" id="eventoBuscar" name="eventoBuscar"/>
@@ -82,10 +86,15 @@
          </tr> 
        </thead>
        <tbody>
+       	<%
+           ArrayList<GeneroMusical> generos = controlador.getGeneros();
+           for(int i=0; i<generos.size(); i++){
+           GeneroMusical genero = generos.get(i);						%>
          <tr>
-           <td>00019</td>
-           <td>Rock and Roll</td>
+           <td><%=genero.getCodGenero()%></td>
+           <td><%=genero.getDescGenero()%></td>
          </tr>
+         <%} %>
        </tbody>
      </table>
   </div>
