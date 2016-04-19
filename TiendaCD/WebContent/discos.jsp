@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ page import="Capa_de_Entidades.Disco"%>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="Capa_de_Control.Controlador" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,6 +11,7 @@
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
+<%Controlador controlador = new Controlador(); %>
 <body>
 	<nav class="navbar navbar-inverse navbar-fixed-top">
      <div class="container-fluid">
@@ -26,9 +30,9 @@
 <div class="container" style="background-color:#aaa">
   <br><br><br>
   <div align="center">
-  	<form role="form" class="form-inline" action="ListaDiscos" method="post" id="formBuscarD" name="formBuscarD">
-    	<input class="form-control" type="text" id="searchterm" placeholder="¿Qué está buscando?" size="70" maxlength="45" style="height:100"/>
-  		<input class="btn btn-primary" type="submit" value="Buscar" id="eventoBuscarD" name="eventoBuscarD"/>
+  	<form role="form" class="form-inline" action="ListaDiscos" method="post" id="formBuscar" name="formBuscar">
+    	<input class="form-control" type="text" id="titBuscar" placeholder="¿Qué está buscando?" size="70" maxlength="45" style="height:100"/>
+  		<input class="btn btn-primary" type="submit" value="Buscar" id="eventoBuscar" name="eventoBuscar"/>
     </form>
   </div>
   
@@ -51,12 +55,17 @@
        	</tr>
        </thead>
        <tbody>
+       <%
+       ArrayList<Disco> discos = controlador.getDiscos();
+       for(int i=0; i<discos.size(); i++){
+       Disco disco = discos.get(i);	
+       %>
          <tr>
-         	<td><big><b>Título:</b> Amor Amarillo<br></big>
-         		<b>Autor:</b> Gustavo Cerati<br>
-         		<b>Año Lanzamiento:</b> 2000<br>
-         		<b>Género:</b> Rock<br>
-         		<b>Precio:</b> $100<br>
+         	<td><big><b>Título:</b> <%= disco.getTitulo() %><br></big>
+         		<b>Autor:</b> <%= disco.getAutor().getNombreAutor() %><br>
+         		<b>Año Lanzamiento:</b> <%= disco.getAñoLanzamiento() %><br>
+         		<b>Género:</b> <%= disco.getGenero().getDescGenero() %><br>
+         		<b>Precio:</b> $<%= disco.getPrecio() %><br>
          	</td>
          	<td>
          		<b>Promedio:</b> 5 puntos
@@ -76,6 +85,7 @@
          		<input class="btn btn-success" type="submit" value="Comprar" id="eventoComprar" name="eventoComprar" />
          	</td>
          </tr>
+		<%} %>
         </tbody>
      </table>
   </div> 
