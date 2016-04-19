@@ -3,7 +3,11 @@ package Capa_de_Control;
 import java.util.ArrayList;
 
 import Capa_de_Datos.DataDiscos;
+import Capa_de_Datos.DataUsuarios;
+import Capa_de_Entidades.Autor;
 import Capa_de_Entidades.Disco;
+import Capa_de_Entidades.GeneroMusical;
+import Capa_de_Entidades.Usuario;
 
 public class Controlador {
 	
@@ -21,5 +25,25 @@ public class Controlador {
 		return DataDiscos.getDiscos();
 	}
 	
+	public ArrayList<Autor> buscarAutores(String cadena){
+		ArrayList<Autor> autores = DataDiscos.getAutoresxNombre(cadena);
+		return autores;
+	}
 
+	public ArrayList<Autor> getAutores(){
+		return DataDiscos.getAutores();
+	}
+
+	public ArrayList<Usuario> getUsuarios(){
+		return DataUsuarios.getUsuarios();
+	}
+
+	public ArrayList<GeneroMusical> getGeneros(){
+		return DataDiscos.getGeneros();
+	}
+	
+	public ArrayList<GeneroMusical> buscarGeneros(String cadena){
+		ArrayList<GeneroMusical> generos = DataDiscos.getGenerosxDescricion(cadena);
+		return generos;
+	}
 }

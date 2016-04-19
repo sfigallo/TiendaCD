@@ -1,11 +1,17 @@
 package Capa_de_Presentacion;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import Capa_de_Control.Controlador;
+import Capa_de_Entidades.Autor;
+import Capa_de_Entidades.GeneroMusical;
 
 /**
  * Servlet implementation class GenerosAdmin
@@ -34,8 +40,15 @@ public class GenerosAdmin extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		Controlador con = new Controlador();
+		if(request.getParameter("eventoBuscar")!=null){
+			String cadena = request.getParameter("titBuscar");
+			if (!cadena.isEmpty()) {
+				ArrayList<GeneroMusical> generos = con.buscarGeneros(cadena);
+				request.setAttribute("generos", generos);
+			}
+			request.getRequestDispatcher("generosAdmin.jsp").forward(request, response);
+		}
 	}
 
 }
