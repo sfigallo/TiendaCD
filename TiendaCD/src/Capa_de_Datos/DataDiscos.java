@@ -417,4 +417,24 @@ public class DataDiscos {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	public static void addGenero(GeneroMusical genero) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public static void updateGenero(GeneroMusical genero) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public static void addAutor(Autor autor) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public static void updateAutor(Autor autor) {
+		// TODO Auto-generated method stub
+		
+	}
 }

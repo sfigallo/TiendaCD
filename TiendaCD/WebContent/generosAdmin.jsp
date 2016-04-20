@@ -51,14 +51,14 @@
 			<td><b>Código:</b></td>
 			<td> 
 				 <div class = "form-inline">
-					<input type="text" class="form-control" id="codigoDisco" placeholder="Dejar campo vacío para agregar nuevo género" size="43">
-					<input class="btn btn-primary" type="submit" value="Buscar" id="eventoBuscar" name="eventoBuscar"/>
+					<input type="text" class="form-control" id="codigoGenero" placeholder="Dejar campo vacío para agregar nuevo género" size="43">
+					<input class="btn btn-primary" type="submit" value="Buscar" id="buscarGenero" name="buscarGenero"/>
 				 </div>
 			</td>
 		</tr>
 		<tr>
 			<td><b>Nombre:</b></td>
-			<td><input type="text" class="form-control" id="nombreAutor"></td>
+			<td><input type="text" class="form-control" id="descGenero"></td>
 		</tr>
 	</table>
 	<br>
@@ -87,7 +87,7 @@
        </thead>
        <tbody>
        	<%
-           ArrayList<GeneroMusical> generos = controlador.getGeneros();
+       		ArrayList<GeneroMusical> generos = controlador.getGeneros();
            for(int i=0; i<generos.size(); i++){
            GeneroMusical genero = generos.get(i);						%>
          <tr>

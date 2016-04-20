@@ -49,6 +49,30 @@ public class GenerosAdmin extends HttpServlet {
 			}
 			request.getRequestDispatcher("generosAdmin.jsp").forward(request, response);
 		}
+		if(request.getParameter("buscarGenero")!=null){
+			GeneroMusical genero = new GeneroMusical();
+			int codigo = Integer.parseInt(request.getParameter("codigoGenero"));
+			genero = con.buscarGenero(codigo);
+			if(genero!=null)
+				request.setAttribute("genero", genero);
+			request.getRequestDispatcher("generosAdmin.jsp").forward(request, response);
+		}
+		if(request.getParameter("nuevoGenero")!=null){
+			GeneroMusical genero = new GeneroMusical();
+			genero.setDescGenero(request.getParameter("descGenero"));
+			con.nuevoGenero(genero);
+			request.getRequestDispatcher("generosAdmin.jsp").forward(request, response);
+		}
+		if(request.getParameter("modificarGenero")!=null){
+			GeneroMusical genero = new GeneroMusical();
+			int codigo = Integer.parseInt(request.getParameter("codigoGenero"));
+			genero = con.buscarGenero(codigo);
+			if(genero!=null){
+				genero.setDescGenero(request.getParameter("descGenero"));
+				con.modificarGenero(genero);
+			}
+			request.getRequestDispatcher("generosAdmin.jsp").forward(request, response);
+		}
 	}
 
 }
