@@ -11,7 +11,6 @@
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-</head>
 <%Controlador controlador = new Controlador(); %>
 <body>
 	<nav class="navbar navbar-inverse navbar-fixed-top">
@@ -45,7 +44,7 @@
     <br>
     <div class="col-sm-8 col-sm-offset-2" style="background-color:#ffffff">
   	  <br>
-  	  <form role="form" action="ListaDiscos" method="post" id="formBuscarD" name="formBuscarD">
+  	  <form role="form" action="FormGenero" method="post" id="formBuscarD" name="formBuscarD">
   	  <table align="center" style="background-color:#ffffff" >
 		<tr>
 			<td><b>Código:</b></td>

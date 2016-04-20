@@ -437,4 +437,9 @@ public class DataDiscos {
 		// TODO Auto-generated method stub
 		
 	}
+
+	public static GeneroMusical getGeneroxDescripcion(String descripcion) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

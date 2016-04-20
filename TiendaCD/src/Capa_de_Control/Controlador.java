@@ -25,6 +25,22 @@ public class Controlador {
 		return DataDiscos.getDiscos();
 	}
 	
+	public Disco buscarDisco(int codigo){
+		return DataDiscos.getDisco(codigo);
+	}
+	
+	public void nuevoDisco(Disco disco){
+		DataDiscos.addDisco(disco);
+	}
+	
+	public void modificarDisco(Disco disco){
+		DataDiscos.updateDisco(disco);
+	}
+	
+	public void eliminarDisco(int codigo){
+		DataDiscos.removeDisco(codigo);
+	}
+	
 	public ArrayList<Autor> buscarAutores(String cadena){
 		ArrayList<Autor> autores = DataDiscos.getAutoresxNombre(cadena);
 		return autores;
@@ -34,6 +50,10 @@ public class Controlador {
 		return DataDiscos.getAutor(codigo);
 	}
 
+	public Autor buscarAutorxNombre(String nombre){
+		return DataDiscos.getAutor(nombre);
+	}
+	
 	public ArrayList<Autor> getAutores(){
 		return DataDiscos.getAutores();
 	}
@@ -57,6 +77,7 @@ public class Controlador {
 	public void nuevoUsuario(Usuario usuario){
 		DataUsuarios.addUsuario(usuario);
 	}
+	
 	public ArrayList<GeneroMusical> getGeneros(){
 		return DataDiscos.getGeneros();
 	}
@@ -68,6 +89,10 @@ public class Controlador {
 	
 	public GeneroMusical buscarGenero(int codigo){
 		return DataDiscos.getGenero(codigo);
+	}
+	
+	public GeneroMusical buscarGeneroxDescripcion(String descripcion){
+		return DataDiscos.getGeneroxDescripcion(descripcion);
 	}
 	
 	public void nuevoGenero(GeneroMusical genero){

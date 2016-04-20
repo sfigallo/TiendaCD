@@ -44,7 +44,7 @@
     <br>
     <div class="col-sm-8 col-sm-offset-2" style="background-color:#ffffff">
   	  <br>
-  	  <form role="form" action="ListaDiscos" method="post" id="formBuscarD" name="formBuscarD">
+  	  <form role="form" action="FormAutor" method="post" id="formBuscarD" name="formBuscarD">
   	  <table align="center" style="background-color:#ffffff" >
 		<tr>
 			<td><b>Código:</b></td>
