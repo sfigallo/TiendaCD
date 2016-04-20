@@ -50,8 +50,8 @@
 			<td><b>Código:</b></td>
 			<td> 
 				 <div class = "form-inline">
-					<input type="text" class="form-control" id="codigoDisco" placeholder="Dejar campo vacío para agregar nuevo autor" size="43">
-					<input class="btn btn-primary" type="submit" value="Buscar" id="eventoBuscar" name="eventoBuscar"/>
+					<input type="text" class="form-control" id="codigoAutor" placeholder="Dejar campo vacío para agregar nuevo autor" size="43">
+					<input class="btn btn-primary" type="submit" value="Buscar" id="buscarAutor" name="buscarAutor"/>
 				 </div>
 			</td>
 		</tr>
