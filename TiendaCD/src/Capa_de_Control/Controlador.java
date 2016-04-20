@@ -46,4 +46,12 @@ public class Controlador {
 		ArrayList<GeneroMusical> generos = DataDiscos.getGenerosxDescricion(cadena);
 		return generos;
 	}
+	
+	public Usuario buscarUsuario(String usuario){
+		return DataUsuarios.getUsuario(usuario);
+	}
+	
+	public void nuevoUsuario(Usuario usuario){
+		DataUsuarios.addUsuario(usuario);
+	}
 }
