@@ -16,7 +16,7 @@ import Capa_de_Entidades.GeneroMusical;
 /**
  * Servlet implementation class GenerosAdmin
  */
-@WebServlet("/generosAdmin")
+@WebServlet("/GenerosAdmin")
 public class GenerosAdmin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

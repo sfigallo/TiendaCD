@@ -15,7 +15,7 @@ import Capa_de_Entidades.Autor;
 /**
  * Servlet implementation class AutoresAdmin
  */
-@WebServlet("/autoresAdmin")
+@WebServlet("/AutoresAdmin")
 public class AutoresAdmin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
