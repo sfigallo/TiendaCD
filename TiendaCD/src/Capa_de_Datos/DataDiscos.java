@@ -413,33 +413,112 @@ public class DataDiscos {
 		FactoriaConexion.getInstancia().releaseConexion();
 	}
 
-	public static ArrayList<GeneroMusical> getGenerosxDescricion(String cadena) {
-		// TODO Auto-generated method stub
-		return null;
+	public static ArrayList<GeneroMusical> getGenerosxDescripcion(String cadena) {
+		ArrayList<GeneroMusical> generos = new ArrayList<GeneroMusical>();
+		Connection con = FactoriaConexion.getInstancia().getConexion();
+		String sql = "call getGenerosxDescripcion(?);";
+		try {
+			PreparedStatement comando = con.prepareStatement(sql);
+			comando.setString(1, cadena);
+			ResultSet rs = comando.executeQuery();
+			while(rs.next()){
+				GeneroMusical gm = new GeneroMusical();
+				gm.setCodGenero(rs.getInt("codGenero"));
+				gm.setDescGenero(rs.getString("descGenero"));
+				generos.add(gm);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		FactoriaConexion.getInstancia().releaseConexion();
+		return generos;
 	}
 
+	//NO TIENE STORED PROCEDURE
 	public static void addGenero(GeneroMusical genero) {
-		// TODO Auto-generated method stub
-		
+		Connection con = FactoriaConexion.getInstancia().getConexion();
+		String sql = "insert into genero_musical values (?,?);";
+		try {
+			PreparedStatement comando = con.prepareStatement(sql);
+			comando.setInt(1, genero.getCodGenero());
+			comando.setString(2, genero.getDescGenero());
+			comando.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		FactoriaConexion.getInstancia().releaseConexion();		
 	}
 
+	//NO TIENE STORED PROCEDURE
 	public static void updateGenero(GeneroMusical genero) {
-		// TODO Auto-generated method stub
-		
+		Connection con = FactoriaConexion.getInstancia().getConexion();
+		String sql = "update genero_musical set descGenero = ? where codGenero = ?;";
+		try {
+			PreparedStatement comando = con.prepareStatement(sql);
+			comando.setInt(2, genero.getCodGenero());
+			comando.setString(1, genero.getDescGenero());
+			comando.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		FactoriaConexion.getInstancia().releaseConexion();			
 	}
 
+	//NO TIENE STORED PROCEDURE
 	public static void addAutor(Autor autor) {
-		// TODO Auto-generated method stub
+		Connection con = FactoriaConexion.getInstancia().getConexion();
+		String sql = "insert into autor values (?,?);";
+		try {
+			PreparedStatement comando = con.prepareStatement(sql);
+			comando.setInt(1, autor.getCodAutor());
+			comando.setString(2, autor.getNombreAutor());
+			comando.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		FactoriaConexion.getInstancia().releaseConexion();	
 		
 	}
 
+	//NO TIENE STORED PROCEDURE
 	public static void updateAutor(Autor autor) {
-		// TODO Auto-generated method stub
-		
+		Connection con = FactoriaConexion.getInstancia().getConexion();
+		String sql = "update autor set nombreAutor = ? where codAutor = ?;";
+		try {
+			PreparedStatement comando = con.prepareStatement(sql);
+			comando.setInt(2, autor.getCodAutor());
+			comando.setString(1, autor.getNombreAutor());
+			comando.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		FactoriaConexion.getInstancia().releaseConexion();
 	}
 
+	//SOLO TRAE EL GENERO SI LA DESCRIPCIÓN ES IGUAL! SI NO NO!
 	public static GeneroMusical getGeneroxDescripcion(String descripcion) {
-		// TODO Auto-generated method stub
-		return null;
+		GeneroMusical genero=null;
+		Connection con = FactoriaConexion.getInstancia().getConexion();
+		String sql = "call getGeneroxDescripcion(?);";
+		try {
+			PreparedStatement comando = con.prepareStatement(sql);
+			comando.setString(1, descripcion);
+			ResultSet rs = comando.executeQuery();
+			if(rs.next()){
+				genero = new GeneroMusical();
+				genero.setCodGenero(rs.getInt("codGenero"));
+				genero.setDescGenero(rs.getString("descGenero"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		FactoriaConexion.getInstancia().releaseConexion();
+		return genero;
 	}
 }
