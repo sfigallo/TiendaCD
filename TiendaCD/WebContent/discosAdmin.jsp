@@ -51,7 +51,7 @@
   	<br>
 	  <div class="col-sm-8 col-sm-offset-2" style="background-color:#ffffff">
   	  <br>
-  	  <form role="form" action="ListaDiscos" method="post" id="formBuscarD" name="formBuscarD">
+  	  <form role="form" action="ListaDiscos" method="post" id="formBuscar" name="formBuscar">
   	  <table align="center" style="background-color:#ffffff" >
 		<tr>
 			<td><b>Título:</b></td>
@@ -62,7 +62,7 @@
 			<td> 
 				 <div class = "form-inline">
 					<input type="text" class="form-control" id="codigoDisco" placeholder="Dejar campo vacío para agregar nuevo disco" size="43">
-					<input class="btn btn-primary" type="submit" value="Buscar" id="eventoBuscar" name="eventoBuscar"/>
+					<input class="btn btn-primary" type="submit" value="Buscar" id="buscarDisco" name="buscarDisco"/>
 				 </div>
 			</td>
 		</tr>
@@ -124,14 +124,11 @@
            <th>Stock</th>
          </tr> 
        </thead>
-       <tbody>
-         <%//ContenedorArrayList cont = new ContenedorArrayList();
-           //cont = (ContenedorArrayList) request.getAttribute("contenedorDiscos");
-           //ArrayList<Disco> discos = cont.getDiscos();
-           
-           ArrayList<Disco> discos = controlador.getDiscos();
-           for(int i=0; i<discos.size(); i++){
-           Disco disco = discos.get(i);										%>
+       <tbody> <%  
+       	   	if(request.getAttribute("discos")==null){
+           		ArrayList<Disco> discos = controlador.getDiscos();
+           		for(int i=0; i<discos.size(); i++){
+           		Disco disco = discos.get(i);										%>
          <tr>
            <td><%= disco.getTitulo() %></td>
            <td><%= disco.getCodDisco() %></td>
@@ -141,7 +138,21 @@
            <td>$<%= disco.getPrecio() %></td>
            <td><%= disco.getCantCopiasDisp() %></td>
          </tr>
-         <%} %>
+         <% 	} 
+           	}else {
+        		ArrayList<Disco> discos = (ArrayList<Disco>)request.getAttribute("discos");
+        		for(Disco disco : discos){%>
+        <tr>
+           <td><%= disco.getTitulo() %></td>
+           <td><%= disco.getCodDisco() %></td>
+           <td><%= disco.getAutor().getNombreAutor() %></td> 
+           <td><%= disco.getAñoLanzamiento() %></td>
+           <td><%= disco.getGenero().getDescGenero() %></td>
+           <td>$<%= disco.getPrecio() %></td>
+           <td><%= disco.getCantCopiasDisp() %></td>
+         </tr>
+        		<%}
+         	}%>
        </tbody>
      </table>
   </div>
