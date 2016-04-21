@@ -15,7 +15,7 @@ import Capa_de_Entidades.Disco;
 /**
  * Servlet implementation class Discos
  */
-@WebServlet("/discos")
+@WebServlet("/Discos")
 public class Discos extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
