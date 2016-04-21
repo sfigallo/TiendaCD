@@ -16,7 +16,7 @@ import Capa_de_Entidades.Usuario;
 /**
  * Servlet implementation class Index
  */
-@WebServlet("/inicio")
+@WebServlet("/Inicio")
 public class Inicio extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
