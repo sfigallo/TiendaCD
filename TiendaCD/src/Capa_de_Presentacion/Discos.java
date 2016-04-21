@@ -10,20 +10,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Capa_de_Control.Controlador;
-import Capa_de_Entidades.Autor;
-import Capa_de_Entidades.GeneroMusical;
+import Capa_de_Entidades.Disco;
 
 /**
- * Servlet implementation class GenerosAdmin
+ * Servlet implementation class Discos
  */
-@WebServlet("/GenerosAdmin")
-public class GenerosAdmin extends HttpServlet {
+@WebServlet("/discos")
+public class Discos extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public GenerosAdmin() {
+    public Discos() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -44,10 +43,10 @@ public class GenerosAdmin extends HttpServlet {
 		if(request.getParameter("eventoBuscar")!=null){
 			String cadena = request.getParameter("titBuscar");
 			if (!cadena.isEmpty()) {
-				ArrayList<GeneroMusical> generos = con.buscarGeneros(cadena);
-				request.setAttribute("generos", generos);
+				ArrayList<Disco> discos = con.buscarDiscos(cadena);
+				request.setAttribute("discos", discos);
 			}
-			request.getRequestDispatcher("generosAdmin.jsp").forward(request, response);
+			request.getRequestDispatcher("discosAdmin.jsp").forward(request, response);
 		}
 	}
 

@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="Capa_de_Control.Controlador" %>
+<%@ page import="Capa_de_Entidades.Autor"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,6 +11,7 @@
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
+<%Controlador controlador = new Controlador(); %>
 <body>
 	<nav class="navbar navbar-inverse navbar-fixed-top">
      <div class="container-fluid">
@@ -30,7 +34,7 @@
   <br><br><br>
   <div class="container">  
 	<div align="center">
-	  <form role="form" action="DiscosAdmin" method="post" id="formBuscar" name="formBuscar">
+	  <form role="form" action="AutoresAdmin" method="post" id="formBuscar" name="formBuscar">
       <div class="form-inline">
         <input type="text" class="form-control" id="titBuscar" name="titBuscar" placeholder="¿Qué está buscando?" size="60" maxlength="45" style="height:100">
   		<input class="btn btn-primary" type="submit" value="Buscar" id="eventoBuscar" name="eventoBuscar"/>
@@ -81,10 +85,15 @@
          </tr> 
        </thead>
        <tbody>
+			<%
+           ArrayList<Autor> autores = controlador.getAutores();
+           for(int i=0; i<autores.size(); i++){
+           Autor autor = autores.get(i);						%>
          <tr>
-           <td>0000012</td>
-           <td>Gustavo</td>
+           <td><%=autor.getCodAutor()%></td>
+           <td><%=autor.getNombreAutor()%></td>
          </tr>
+         <%} %>
        </tbody>
      </table>
   </div>
