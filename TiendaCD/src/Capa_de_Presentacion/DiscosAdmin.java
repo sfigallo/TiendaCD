@@ -56,9 +56,16 @@ public class DiscosAdmin extends HttpServlet {
 			Disco disco = new Disco();
 			int codigo = Integer.parseInt(request.getParameter("codigoDisco"));
 			disco = con.buscarDisco(codigo);
-			if(disco!=null)
-				request.setAttribute("disco", disco);
-			request.getRequestDispatcher("discos.jsp").forward(request, response);
+			if(disco!=null){
+				request.setAttribute("tituloDisco", disco.getTitulo());
+				request.setAttribute("codigoDisco", disco.getCodDisco());
+				request.setAttribute("precioDisco", disco.getPrecio());
+				request.setAttribute("añoDisco", disco.getAñoLanzamiento());
+				request.setAttribute("stockDisco", disco.getCantCopiasDisp());
+				request.setAttribute("autorDisco", disco.getAutor().getNombreAutor());
+				request.setAttribute("generoDisco", disco.getGenero().getDescGenero());
+			}				
+			request.getRequestDispatcher("discosAdmin.jsp").forward(request, response);
 		}
 		if(request.getParameter("nuevoDisco")!=null){
 			Disco disco = new Disco();

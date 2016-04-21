@@ -44,20 +44,20 @@
     <br>
     <div class="col-sm-8 col-sm-offset-2" style="background-color:#ffffff">
   	  <br>
-  	  <form role="form" action="FormAutor" method="post" id="formBuscarD" name="formBuscarD">
+  	  <form role="form" action="AutoresAdmin" method="post" id="formBuscarD" name="formBuscarD">
   	  <table align="center" style="background-color:#ffffff" >
 		<tr>
 			<td><b>Código:</b></td>
 			<td> 
 				 <div class = "form-inline">
-					<input type="text" class="form-control" id="codigoAutor" placeholder="Dejar campo vacío para agregar nuevo autor" size="43">
+					<input type="text" class="form-control" id="codigoAutor" name="codigoAutor" value="<%if(request.getAttribute("codigoAutor")!=null){%><%=request.getAttribute("codigoAutor") %><% }%>" placeholder="Dejar campo vacío para agregar nuevo autor" size="43">
 					<input class="btn btn-primary" type="submit" value="Buscar" id="buscarAutor" name="buscarAutor"/>
 				 </div>
 			</td>
 		</tr>
 		<tr>
 			<td><b>Nombre:</b></td>
-			<td><input type="text" class="form-control" id="nombreAutor"></td>
+			<td><input type="text" class="form-control" id="nombreAutor" name="nombreAutor" value="<%if(request.getAttribute("nombreAutor")!=null){%><%=request.getAttribute("nombreAutor") %><% }%>"></td>
 		</tr>
 	</table>
 	<br>
