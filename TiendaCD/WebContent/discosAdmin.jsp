@@ -51,7 +51,7 @@
   	<br>
 	  <div class="col-sm-8 col-sm-offset-2" style="background-color:#ffffff">
   	  <br>
-  	  <form role="form" action="ListaDiscos" method="post" id="formBuscarD" name="formBuscarD">
+  	  <form role="form" action="ListaDiscos" method="post" id="formBuscar" name="formBuscar">
   	  <table align="center" style="background-color:#ffffff" >
 		<tr>
 			<td><b>Título:</b></td>
@@ -62,7 +62,7 @@
 			<td> 
 				 <div class = "form-inline">
 					<input type="text" class="form-control" id="codigoDisco" placeholder="Dejar campo vacío para agregar nuevo disco" size="43">
-					<input class="btn btn-primary" type="submit" value="Buscar" id="eventoBuscar" name="eventoBuscar"/>
+					<input class="btn btn-primary" type="submit" value="Buscar" id="buscarDisco" name="buscarDisco"/>
 				 </div>
 			</td>
 		</tr>

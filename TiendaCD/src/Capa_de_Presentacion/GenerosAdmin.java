@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Capa_de_Control.Controlador;
-import Capa_de_Entidades.Autor;
 import Capa_de_Entidades.GeneroMusical;
 
 /**
@@ -46,6 +45,30 @@ public class GenerosAdmin extends HttpServlet {
 			if (!cadena.isEmpty()) {
 				ArrayList<GeneroMusical> generos = con.buscarGeneros(cadena);
 				request.setAttribute("generos", generos);
+			}
+			request.getRequestDispatcher("generosAdmin.jsp").forward(request, response);
+		}
+		if(request.getParameter("buscarGenero")!=null){
+			GeneroMusical genero = new GeneroMusical();
+			int codigo = Integer.parseInt(request.getParameter("codigoGenero"));
+			genero = con.buscarGenero(codigo);
+			if(genero!=null)
+				request.setAttribute("genero", genero);
+			request.getRequestDispatcher("generosAdmin.jsp").forward(request, response);
+		}
+		if(request.getParameter("nuevoGenero")!=null){
+			GeneroMusical genero = new GeneroMusical();
+			genero.setDescGenero(request.getParameter("descGenero"));
+			con.nuevoGenero(genero);
+			request.getRequestDispatcher("generosAdmin.jsp").forward(request, response);
+		}
+		if(request.getParameter("modificarGenero")!=null){
+			GeneroMusical genero = new GeneroMusical();
+			int codigo = Integer.parseInt(request.getParameter("codigoGenero"));
+			genero = con.buscarGenero(codigo);
+			if(genero!=null){
+				genero.setDescGenero(request.getParameter("descGenero"));
+				con.modificarGenero(genero);
 			}
 			request.getRequestDispatcher("generosAdmin.jsp").forward(request, response);
 		}

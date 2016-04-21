@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Capa_de_Control.Controlador;
+import Capa_de_Entidades.Autor;
 import Capa_de_Entidades.Disco;
+import Capa_de_Entidades.GeneroMusical;
 
 /**
  * Servlet implementation class DiscosAdmin
@@ -49,6 +51,51 @@ public class DiscosAdmin extends HttpServlet {
 				request.setAttribute("discos", discos);
 			}
 			request.getRequestDispatcher("discosAdmin.jsp").forward(request, response);
+		}
+		if(request.getParameter("buscarDisco")!=null){
+			Disco disco = new Disco();
+			int codigo = Integer.parseInt(request.getParameter("codigoDisco"));
+			disco = con.buscarDisco(codigo);
+			if(disco!=null)
+				request.setAttribute("disco", disco);
+			request.getRequestDispatcher("discos.jsp").forward(request, response);
+		}
+		if(request.getParameter("nuevoDisco")!=null){
+			Disco disco = new Disco();
+			disco.setTitulo(request.getParameter("tituloDisco"));
+			disco.setAñoLanzamiento(Integer.parseInt(request.getParameter("añoDisco")));
+			disco.setPrecio(Float.parseFloat(request.getParameter("precioDisco")));
+			disco.setCantCopiasDisp(Integer.parseInt(request.getParameter("stockDisco")));
+			Autor autor = con.buscarAutorxNombre(request.getParameter("selectAutor"));
+			disco.setAutor(autor);
+			GeneroMusical genero = con.buscarGeneroxDescripcion(request.getParameter("selectGenero"));
+			disco.setGenero(genero);
+			con.nuevoDisco(disco);
+			request.getRequestDispatcher("discos.jsp").forward(request, response);
+		}
+		if(request.getParameter("modificarDisco")!=null){
+			Disco disco = new Disco();
+			int codigo = Integer.parseInt(request.getParameter("codigoDisco"));
+			disco = con.buscarDisco(codigo);
+			if(disco!=null){
+				disco.setTitulo(request.getParameter("tituloDisco"));
+				disco.setAñoLanzamiento(Integer.parseInt(request.getParameter("añoDisco")));
+				disco.setPrecio(Float.parseFloat(request.getParameter("precioDisco")));
+				disco.setCantCopiasDisp(Integer.parseInt(request.getParameter("stockDisco")));
+				Autor autor = con.buscarAutorxNombre(request.getParameter("selectAutor"));
+				disco.setAutor(autor);
+				GeneroMusical genero = con.buscarGeneroxDescripcion(request.getParameter("selectGenero"));
+				disco.setGenero(genero);
+				con.modificarDisco(disco);
+			}
+			request.getRequestDispatcher("discos.jsp").forward(request, response);
+		}
+		if(request.getParameter("eliminarDisco")!=null){
+			Disco disco = new Disco();
+			int codigo = Integer.parseInt(request.getParameter("codigoDisco"));
+			disco = con.buscarDisco(codigo);
+			if(disco!=null)
+				con.eliminarDisco(codigo);
 		}
 	}
 

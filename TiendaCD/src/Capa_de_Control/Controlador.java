@@ -25,19 +25,59 @@ public class Controlador {
 		return DataDiscos.getDiscos();
 	}
 	
+	public Disco buscarDisco(int codigo){
+		return DataDiscos.getDisco(codigo);
+	}
+	
+	public void nuevoDisco(Disco disco){
+		DataDiscos.addDisco(disco);
+	}
+	
+	public void modificarDisco(Disco disco){
+		DataDiscos.updateDisco(disco);
+	}
+	
+	public void eliminarDisco(int codigo){
+		DataDiscos.removeDisco(codigo);
+	}
+	
 	public ArrayList<Autor> buscarAutores(String cadena){
 		ArrayList<Autor> autores = DataDiscos.getAutoresxNombre(cadena);
 		return autores;
 	}
+	
+	public Autor buscarAutor(int codigo){
+		return DataDiscos.getAutor(codigo);
+	}
 
+	public Autor buscarAutorxNombre(String nombre){
+		return DataDiscos.getAutor(nombre);
+	}
+	
 	public ArrayList<Autor> getAutores(){
 		return DataDiscos.getAutores();
 	}
 
+	public void nuevoAutor(Autor autor){
+		DataDiscos.addAutor(autor);
+	}
+	
+	public void modificarAutor(Autor autor){
+		DataDiscos.updateAutor(autor);
+	}
+	
 	public ArrayList<Usuario> getUsuarios(){
 		return DataUsuarios.getUsuarios();
 	}
 
+	public Usuario buscarUsuario(String usuario){
+		return DataUsuarios.getUsuario(usuario);
+	}
+	
+	public void nuevoUsuario(Usuario usuario){
+		DataUsuarios.addUsuario(usuario);
+	}
+	
 	public ArrayList<GeneroMusical> getGeneros(){
 		return DataDiscos.getGeneros();
 	}
@@ -46,4 +86,20 @@ public class Controlador {
 		ArrayList<GeneroMusical> generos = DataDiscos.getGenerosxDescricion(cadena);
 		return generos;
 	}
+	
+	public GeneroMusical buscarGenero(int codigo){
+		return DataDiscos.getGenero(codigo);
+	}
+	
+	public GeneroMusical buscarGeneroxDescripcion(String descripcion){
+		return DataDiscos.getGeneroxDescripcion(descripcion);
+	}
+	
+	public void nuevoGenero(GeneroMusical genero){
+		DataDiscos.addGenero(genero);
+	}
+	public void modificarGenero(GeneroMusical genero) {
+		DataDiscos.updateGenero(genero);
+	}
+
 }
