@@ -1,6 +1,7 @@
 package Capa_de_Presentacion;
 
 import java.io.IOException;
+import java.sql.Date;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -17,15 +18,16 @@ import Capa_de_Entidades.GeneroMusical;
 /**
  * Servlet implementation class DiscosAdmin
  */
-@WebServlet("/discosAdmin")
+@WebServlet("/DiscosAdmin")
 public class DiscosAdmin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
+	
     /**
      * @see HttpServlet#HttpServlet()
      */
     public DiscosAdmin() {
-        super();
+    	super();
         // TODO Auto-generated constructor stub
     }
 
