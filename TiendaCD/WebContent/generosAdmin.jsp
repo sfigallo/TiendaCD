@@ -44,20 +44,20 @@
     <br>
     <div class="col-sm-8 col-sm-offset-2" style="background-color:#ffffff">
   	  <br>
-  	  <form role="form" action="FormGenero" method="post" id="formBuscarD" name="formBuscarD">
+  	  <form role="form" action="GenerosAdmin" method="post" id="formBuscarD" name="formBuscarD">
   	  <table align="center" style="background-color:#ffffff" >
 		<tr>
 			<td><b>Código:</b></td>
 			<td> 
 				 <div class = "form-inline">
-					<input type="text" class="form-control" id="codigoGenero" placeholder="Dejar campo vacío para agregar nuevo género" size="43">
+					<input type="text" class="form-control" id="codigoGenero" name="codigoGenero" value="<%if(request.getAttribute("codigoGenero")!=null){%><%=request.getAttribute("codigoGenero") %><% }%>" placeholder="Dejar campo vacío para agregar nuevo género" size="43">
 					<input class="btn btn-primary" type="submit" value="Buscar" id="buscarGenero" name="buscarGenero"/>
 				 </div>
 			</td>
 		</tr>
 		<tr>
 			<td><b>Nombre:</b></td>
-			<td><input type="text" class="form-control" id="descGenero"></td>
+			<td><input type="text" class="form-control" id="descGenero" name="descGenero" value="<%if(request.getAttribute("nombreGenero")!=null){%><%=request.getAttribute("nombreGenero") %><% }%>"></td>
 		</tr>
 	</table>
 	<br>

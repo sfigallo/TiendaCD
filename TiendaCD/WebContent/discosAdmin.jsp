@@ -4,6 +4,8 @@
 <%@ page import="Capa_de_Entidades.Disco"%>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="Capa_de_Control.Controlador" %>
+<%@ page import="Capa_de_Entidades.Autor" %>
+<%@ page import="Capa_de_Entidades.GeneroMusical" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -51,17 +53,17 @@
   	<br>
 	  <div class="col-sm-8 col-sm-offset-2" style="background-color:#ffffff">
   	  <br>
-  	  <form role="form" action="ListaDiscos" method="post" id="formBuscar" name="formBuscar">
+  	  <form role="form" action="DiscosAdmin" method="post" id="formBuscar" name="formBuscar">
   	  <table align="center" style="background-color:#ffffff" >
 		<tr>
 			<td><b>Título:</b></td>
-			<td><input type="text" class="form-control" id="tituloDisco" size="55"></td>
+			<td><input type="text" class="form-control" id="tituloDisco" name="tituloDisco" value="<%if(request.getAttribute("tituloDisco")!=null){%><%=request.getAttribute("tituloDisco") %><% }%>" size="55"></td>
 		</tr>
 		<tr>
 			<td><b>Código:</b></td>
 			<td> 
 				 <div class = "form-inline">
-					<input type="text" class="form-control" id="codigoDisco" placeholder="Dejar campo vacío para agregar nuevo disco" size="43">
+					<input type="text" class="form-control" id="codigoDisco" name="codigoDisco" value="<%if(request.getAttribute("codigoDisco")!=null){%><%=request.getAttribute("codigoDisco") %><% }%>" placeholder="Dejar campo vacío para agregar nuevo disco" size="43">
 					<input class="btn btn-primary" type="submit" value="Buscar" id="buscarDisco" name="buscarDisco"/>
 				 </div>
 			</td>
@@ -69,37 +71,49 @@
 		<tr>
 			<td><b>Autor:</b></td>
 			<td>
- 				<select class="form-control" id="selectAutor">
- 		   		<option>Gustavo Cerati</option>
+ 				<select class="form-control" id="selectAutor" name="selectAutor">
+ 				<option><%if(request.getAttribute("autorDisco")!=null){%> <%= request.getAttribute("autorDisco") %> <%}%></option>
+ 				<%
+           		ArrayList<Autor> autores = controlador.getAutores();
+          	 	for(Autor autor : autores){
+           		%>
+ 		   		<option><%=autor.getNombreAutor()%></option>
+ 		   		<%} %>
   				</select>
 			</td>
 		</tr>
 		<tr>
 			<td><b>Género:</b></td>
 			<td>
- 				<select class="form-control" id="selectGenero">
- 		   		<option>Rock and Roll</option>
+ 				<select class="form-control" id="selectGenero" name="selectGenero">
+ 		   		<option><%if(request.getAttribute("generoDisco")!=null){%> <%= request.getAttribute("generoDisco") %> <%}%></option>
+  				<%
+           		ArrayList<GeneroMusical> generos = controlador.getGeneros();
+          	 	for(GeneroMusical genero : generos){
+           		%>
+ 		   		<option><%=genero.getDescGenero()%></option>
+ 		   		<%} %>
   				</select>
 			</td>
 		</tr>
 		<tr>
 			<td><b>Año Lanzamiento: </b></td>
-			<td><input type="text" class="form-control" id="añoDisco"></td>
+			<td><input type="text" class="form-control" id="añoDisco" name="añoDisco" value="<%if(request.getAttribute("añoDisco")!=null){%><%=request.getAttribute("añoDisco") %><% }%>"></td>
 		</tr>
 		<tr>
 			<td><b>Precio:</b></td>
-			<td><input type="text" class="form-control" id="precioDisco"></td>
+			<td><input type="text" class="form-control" id="precioDisco" name="precioDisco" value="<%if(request.getAttribute("precioDisco")!=null){%><%=request.getAttribute("precioDisco") %><% }%>"></td>
 		</tr>
 		<tr>
 			<td><b>Stock:</b></td>
-			<td><input type="text" class="form-control" id="stockDisco"></td>
+			<td><input type="text" class="form-control" id="stockDisco" name="stockDisco" value="<%if(request.getAttribute("stockDisco")!=null){%><%=request.getAttribute("stockDisco") %><% }%>"></td>
 		</tr>
 	</table>
 	<br>
 	<div align="center">
 	<input class="btn btn-success" type="submit" value="Agregar Nuevo" id="nuevoDisco" name="nuevoDisco"/>
   	<input class="btn btn-primary" type="submit" value="Modificar" id="modificarDisco" name="modificarDisco"/>
-  	<input class="btn btn-danger" type="submit" value="Eliminar" id="eliminarDisco" name="eliminarDisco"/>
+  	<input class="btn btn-danger" type="submit" value="Dar de baja" id="eliminarDisco" name="eliminarDisco"/>
     </div>
     </form>
 	<br>

@@ -53,7 +53,8 @@ public class GenerosAdmin extends HttpServlet {
 			int codigo = Integer.parseInt(request.getParameter("codigoGenero"));
 			genero = con.buscarGenero(codigo);
 			if(genero!=null)
-				request.setAttribute("genero", genero);
+				request.setAttribute("codigoGenero", genero.getCodGenero());
+				request.setAttribute("nombreGenero", genero.getDescGenero());
 			request.getRequestDispatcher("generosAdmin.jsp").forward(request, response);
 		}
 		if(request.getParameter("nuevoGenero")!=null){
