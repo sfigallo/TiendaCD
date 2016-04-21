@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class Carrito
  */
-@WebServlet("/carrito")
+@WebServlet("/Carrito")
 public class Carrito extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

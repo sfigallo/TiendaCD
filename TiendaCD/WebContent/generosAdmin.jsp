@@ -11,7 +11,6 @@
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-</head>
 <%Controlador controlador = new Controlador(); %>
 <body>
 	<nav class="navbar navbar-inverse navbar-fixed-top">
@@ -45,20 +44,20 @@
     <br>
     <div class="col-sm-8 col-sm-offset-2" style="background-color:#ffffff">
   	  <br>
-  	  <form role="form" action="ListaDiscos" method="post" id="formBuscarD" name="formBuscarD">
+  	  <form role="form" action="FormGenero" method="post" id="formBuscarD" name="formBuscarD">
   	  <table align="center" style="background-color:#ffffff" >
 		<tr>
 			<td><b>Código:</b></td>
 			<td> 
 				 <div class = "form-inline">
-					<input type="text" class="form-control" id="codigoDisco" placeholder="Dejar campo vacío para agregar nuevo género" size="43">
-					<input class="btn btn-primary" type="submit" value="Buscar" id="eventoBuscar" name="eventoBuscar"/>
+					<input type="text" class="form-control" id="codigoGenero" placeholder="Dejar campo vacío para agregar nuevo género" size="43">
+					<input class="btn btn-primary" type="submit" value="Buscar" id="buscarGenero" name="buscarGenero"/>
 				 </div>
 			</td>
 		</tr>
 		<tr>
 			<td><b>Nombre:</b></td>
-			<td><input type="text" class="form-control" id="nombreAutor"></td>
+			<td><input type="text" class="form-control" id="descGenero"></td>
 		</tr>
 	</table>
 	<br>
@@ -87,7 +86,7 @@
        </thead>
        <tbody>
        	<%
-           ArrayList<GeneroMusical> generos = controlador.getGeneros();
+       		ArrayList<GeneroMusical> generos = controlador.getGeneros();
            for(int i=0; i<generos.size(); i++){
            GeneroMusical genero = generos.get(i);						%>
          <tr>
