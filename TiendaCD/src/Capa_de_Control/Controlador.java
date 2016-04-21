@@ -83,7 +83,7 @@ public class Controlador {
 	}
 	
 	public ArrayList<GeneroMusical> buscarGeneros(String cadena){
-		ArrayList<GeneroMusical> generos = DataDiscos.getGenerosxDescricion(cadena);
+		ArrayList<GeneroMusical> generos = DataDiscos.getGenerosxDescripcion(cadena);
 		return generos;
 	}
 	
