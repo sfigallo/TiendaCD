@@ -56,9 +56,14 @@
        </thead>
        <tbody>
        <%
-       ArrayList<Disco> discos = controlador.getDiscos();
-       for(int i=0; i<discos.size(); i++){
-       Disco disco = discos.get(i);
+       ArrayList<Disco> discos = new ArrayList<Disco>();
+       if( (request.getAttribute("buscados")) == null)
+    	   discos = controlador.getDiscos();
+       else
+    	   discos = (ArrayList<Disco>) request.getAttribute("buscados");
+     		
+     	for(int i=0; i<discos.size(); i++){
+           	Disco disco = discos.get(i);
        %>
          <tr>
          	<td><big><b>Título:</b> <%= disco.getTitulo() %><br></big>

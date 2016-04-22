@@ -70,7 +70,6 @@ public class Inicio extends HttpServlet {
 				usu.setContraseña(request.getParameter("password"));
 				usu.setNombre(request.getParameter("nombre"));
 				usu.setApellido(request.getParameter("apellido"));
-				usu.setFechaNac(Date.valueOf(request.getParameter("fechanac")));
 				usu.setDni(Integer.parseInt(request.getParameter("dni")));
 				con.nuevoUsuario(usu);
 				request.getSession().setAttribute("usuario", usu);
