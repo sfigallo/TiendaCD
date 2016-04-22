@@ -366,8 +366,10 @@ public class DataDiscos {
 	//NO TIENE STORED PROCEDURE
 	public static void addDisco (Disco disco){
 		Connection con = FactoriaConexion.getInstancia().getConexion();
-		String sql = "insert into disco (titulo, anioLanzamiento,"
-				+ " cantCopiasDisp, precio, codGenero, codAutor) values (?, ?, ?, ?, ?, ?)";
+		String sql = "start transaction; "
+				+ "insert into disco (titulo, anioLanzamiento,"
+				+ " cantCopiasDisp, precio, codGenero, codAutor) values (?, ?, ?, ?, ?, ?); "
+				+ "commit;";
 		try {
 			PreparedStatement comando = con.prepareStatement(sql);
 			//el codDisco es auto-incremental
@@ -388,9 +390,10 @@ public class DataDiscos {
 	//NO TIENE STORED PROCEDURE
 	public static void updateDisco (Disco disco){
 		Connection con = FactoriaConexion.getInstancia().getConexion();
-		String sql = "update disco set titulo = ?, anioLanzamiento = ?, "
+		String sql = "start transaction;"
+				+ " update disco set titulo = ?, anioLanzamiento = ?, "
 				+ "cantCopiasDisp = ?, precio = ?, codGenero = ?, codAutor = ?"
-				+ "where codDisco = ?;";
+				+ "where codDisco = ?; commit;";
 		try {
 			PreparedStatement comando = con.prepareStatement(sql);
 			comando.setString(1, disco.getTitulo());
@@ -446,7 +449,7 @@ public class DataDiscos {
 	//NO TIENE STORED PROCEDURE
 	public static void addGenero(GeneroMusical genero) {
 		Connection con = FactoriaConexion.getInstancia().getConexion();
-		String sql = "insert into genero_musical values (?,?);";
+		String sql = "start transaction; insert into genero_musical values (?,?); commit;";
 		try {
 			PreparedStatement comando = con.prepareStatement(sql);
 			comando.setInt(1, genero.getCodGenero());
@@ -462,7 +465,9 @@ public class DataDiscos {
 	//NO TIENE STORED PROCEDURE
 	public static void updateGenero(GeneroMusical genero) {
 		Connection con = FactoriaConexion.getInstancia().getConexion();
-		String sql = "update genero_musical set descGenero = ? where codGenero = ?;";
+		String sql = "start transaction; "
+				+ "update genero_musical set descGenero = ? where codGenero = ?; "
+				+ "commit;";
 		try {
 			PreparedStatement comando = con.prepareStatement(sql);
 			comando.setInt(2, genero.getCodGenero());
@@ -478,7 +483,7 @@ public class DataDiscos {
 	//NO TIENE STORED PROCEDURE
 	public static void addAutor(Autor autor) {
 		Connection con = FactoriaConexion.getInstancia().getConexion();
-		String sql = "insert into autor values (?,?);";
+		String sql = "start transaction; insert into autor values (?,?); commit;";
 		try {
 			PreparedStatement comando = con.prepareStatement(sql);
 			comando.setInt(1, autor.getCodAutor());
@@ -495,7 +500,9 @@ public class DataDiscos {
 	//NO TIENE STORED PROCEDURE
 	public static void updateAutor(Autor autor) {
 		Connection con = FactoriaConexion.getInstancia().getConexion();
-		String sql = "update autor set nombreAutor = ? where codAutor = ?;";
+		String sql = "start transaction;"
+				+ " update autor set nombreAutor = ? where codAutor = ?;"
+				+ "commit;";
 		try {
 			PreparedStatement comando = con.prepareStatement(sql);
 			comando.setInt(2, autor.getCodAutor());
