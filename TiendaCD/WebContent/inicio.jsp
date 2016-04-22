@@ -16,8 +16,8 @@
       </div>
       <div>
         <ul class="nav navbar-nav">
-          <li class="active"><a href="#">Inicio</a></li>
-          <li><a href="#">Discos</a></li> 
+          <li class="active"><a href="inicio.jsp">Inicio</a></li>
+          <li><a href="discos.jsp">Discos</a></li> 
         </ul>
       </div>
     </div>
@@ -32,15 +32,19 @@
    		<div class="container">
    			<h3>Iniciar sesión</h3>
    		</div>
-    	<form role="form" action="Index" method="post" id="formInicio" name="formInicio">
+    	<form role="form" action="Inicio" method="post" id="formInicio" name="formInicio">
       		<div class="form-group"> 
         		<label for="userregister">Usuario:</label>
-        		<input type="text" class="form-control" id="userregister">
+        		<input type="text" class="form-control" id="userregister" name="userregister">
       		</div> 
       		<div class="form-group"> 
         		<label for="password">Contraseña:</label>
-        		<input type="password" class="form-control" id="password">
+        		<input type="password" class="form-control" id="password" name="password">
       		</div> 
+      		<%if (request.getAttribute("msjError")!=null){ %>
+      		<%=request.getAttribute("msjError") %>
+      		<br>
+      		<%} %>
       		<div class="form-group">
 				<input class="btn btn-primary btn-block" type="submit" value="Ingresar" id="eventoIngresar" name="eventoIngresar"/>
 			</div>
@@ -51,7 +55,7 @@
    		<div class="container">
    			<h3>Registrarse</h3>
    		</div>
-    	<form role="form" action="Index" method="post" id="formReg" name="formReg">
+    	<form role="form" action="Inicio" method="post" id="formReg" name="formReg">
       		<div class="form-group"> 
         		<label for="user">Usuario:</label>
         		<input type="text" class="form-control" id="user">
@@ -70,7 +74,7 @@
       		</div> 
       		<div class="form-group"> 
         		<label for="fechanac">Fecha de nacimiento:</label>
-        		<input type="date" class="form-control" id="fechanac">
+        		<input type="date" class="form-control" id="fechanac" placeholder="aaaa/mm/dd">
       		</div> 
       		<div class="form-group"> 
         		<label for="dni">DNI:</label>

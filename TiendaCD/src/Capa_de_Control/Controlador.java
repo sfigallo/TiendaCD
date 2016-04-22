@@ -78,6 +78,10 @@ public class Controlador {
 		DataUsuarios.addUsuario(usuario);
 	}
 	
+	public void eliminarUsuario(String usuario){
+		DataUsuarios.removeUsuario(usuario);
+	}
+	
 	public ArrayList<GeneroMusical> getGeneros(){
 		return DataDiscos.getGeneros();
 	}
@@ -101,5 +105,11 @@ public class Controlador {
 	public void modificarGenero(GeneroMusical genero) {
 		DataDiscos.updateGenero(genero);
 	}
+	public void valorarDisco(Usuario usuario, Disco disco, int valor) {
+		DataDiscos.valorarDisco(usuario,disco,valor);	
+	}
 
+	public void nuevaVenta(float monto, Usuario usuario, int codDesc, ArrayList<Disco> discos){
+		DataDiscos.addVenta(monto, usuario, codDesc, discos);
+	}
 }

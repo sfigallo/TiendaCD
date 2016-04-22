@@ -16,8 +16,8 @@
       </div>
       <div>
         <ul class="nav navbar-nav">
-          <li><a href="#">Discos</a></li> 
-          <li class="active"><a href="#">Carrito de compras</a></li> 
+          <li><a href="discos.jsp">Discos</a></li> 
+          <li class="active"><a href="carrito.jsp">Carrito de compras</a></li> 
         </ul>
       </div>
     </div>
@@ -52,7 +52,7 @@
            <td style="vertical-align:middle">Rock&Roll</td>
            <td style="vertical-align:middle">$100</td>    
            <td style="vertical-align:middle">
-  			<input class="btn btn-danger btn-sm" type="submit" value="Eliminar" id="eventoComprar" name="eventoComprar" />
+  			<input class="btn btn-danger btn-sm" type="submit" value="Eliminar" id="eventoEliminar" name="eventoEliminar" />
            </td> 
          </tr>
        </tbody>
