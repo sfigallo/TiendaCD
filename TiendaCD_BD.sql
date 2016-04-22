@@ -26,7 +26,7 @@ CREATE TABLE `autor` (
   `codAutor` int(11) NOT NULL AUTO_INCREMENT,
   `nombreAutor` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`codAutor`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -35,7 +35,7 @@ CREATE TABLE `autor` (
 
 LOCK TABLES `autor` WRITE;
 /*!40000 ALTER TABLE `autor` DISABLE KEYS */;
-INSERT INTO `autor` VALUES (1,'Gustavo Cerati'),(2,'Ricardo Arjona');
+INSERT INTO `autor` VALUES (1,'Gustavo Cerati'),(2,'Ricardo Arjona'),(3,'Airbag');
 /*!40000 ALTER TABLE `autor` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -85,7 +85,7 @@ CREATE TABLE `disco` (
   KEY `fk_disco_autor1_idx` (`codAutor`),
   CONSTRAINT `fk_disco_autor1` FOREIGN KEY (`codAutor`) REFERENCES `autor` (`codAutor`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_disco_genero_musical` FOREIGN KEY (`codGenero`) REFERENCES `genero_musical` (`codGenero`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -94,7 +94,7 @@ CREATE TABLE `disco` (
 
 LOCK TABLES `disco` WRITE;
 /*!40000 ALTER TABLE `disco` DISABLE KEYS */;
-INSERT INTO `disco` VALUES (1,'Amor Amarillo',2000,10,150,5,1,1),(2,'Viaje',2014,15,151,9,2,1),(3,'Fuerza Natural',2010,20,200,5,1,1);
+INSERT INTO `disco` VALUES (1,'Amor Amarillo',2000,10,150,5,1,1),(2,'Viaje',2014,15,151,9,2,1),(3,'Fuerza Natural',2010,20,200,5,1,1),(4,'Voragine',2011,10,175,5,3,1);
 /*!40000 ALTER TABLE `disco` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -611,8 +611,10 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `nuevaVenta`(mont float, user varchar(45), descu int)
 BEGIN
+	start transaction;
 	insert into venta (monto, usuario, codDescuento) 
 			   values (mont, user, descu);
+               commit;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -631,7 +633,9 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `removeDisco`(cod int)
 BEGIN
-	update disco set estado = 0 where codDisco = cod;
+	start transaction;
+	update disco set estado = 0 where disco.codDisco = cod;
+    commit;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -669,7 +673,9 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `valorar`(usuario varchar(45), disco int, valor int)
 BEGIN
+	start transaction;
 	insert into valoracion values (disco, usuario, valor);
+    commit;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -686,4 +692,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-04-22 10:40:08
+-- Dump completed on 2016-04-22 11:18:28
