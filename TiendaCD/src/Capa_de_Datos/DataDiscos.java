@@ -32,6 +32,7 @@ public class DataDiscos {
 			for (Disco disco : discos) {
 				disco.getGenero().setDescGenero(getGenero(disco.getGenero().getCodGenero()).getDescGenero());
 				disco.getAutor().setNombreAutor(getAutor(disco.getAutor().getCodAutor()).getNombreAutor());
+				disco.setValoración(calcularValoracion(disco.getCodDisco()));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -63,6 +64,7 @@ public class DataDiscos {
 			for (Disco disco : discos) {
 				disco.getGenero().setDescGenero(getGenero(disco.getGenero().getCodGenero()).getDescGenero());
 				disco.getAutor().setNombreAutor(getAutor(disco.getAutor().getCodAutor()).getNombreAutor());
+				disco.setValoración(calcularValoracion(disco.getCodDisco()));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -94,6 +96,7 @@ public class DataDiscos {
 			for (Disco disco : discos) {
 				disco.getGenero().setDescGenero(getGenero(disco.getGenero().getCodGenero()).getDescGenero());
 				disco.getAutor().setNombreAutor(getAutor(disco.getAutor().getCodAutor()).getNombreAutor());
+				disco.setValoración(calcularValoracion(disco.getCodDisco()));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -125,6 +128,7 @@ public class DataDiscos {
 			for (Disco disco : discos) {
 				disco.getGenero().setDescGenero(getGenero(disco.getGenero().getCodGenero()).getDescGenero());
 				disco.getAutor().setNombreAutor(getAutor(disco.getAutor().getCodAutor()).getNombreAutor());
+				disco.setValoración(calcularValoracion(disco.getCodDisco()));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -156,6 +160,7 @@ public class DataDiscos {
 			for (Disco disco : discos) {
 				disco.getGenero().setDescGenero(getGenero(disco.getGenero().getCodGenero()).getDescGenero());
 				disco.getAutor().setNombreAutor(getAutor(disco.getAutor().getCodAutor()).getNombreAutor());
+				disco.setValoración(calcularValoracion(disco.getCodDisco()));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -318,6 +323,7 @@ public class DataDiscos {
 			for (Disco disco : discos) {
 				disco.getGenero().setDescGenero(getGenero(disco.getGenero().getCodGenero()).getDescGenero());
 				disco.getAutor().setNombreAutor(getAutor(disco.getAutor().getCodAutor()).getNombreAutor());
+				disco.setValoración(calcularValoracion(disco.getCodDisco()));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -347,6 +353,7 @@ public class DataDiscos {
 					d.getAutor().setCodAutor(rs.getInt("codAutor"));
 					d.getGenero().setDescGenero(getGenero(d.getGenero().getCodGenero()).getDescGenero());
 					d.getAutor().setNombreAutor(getAutor(d.getAutor().getCodAutor()).getNombreAutor());
+					d.setValoración(calcularValoracion(d.getCodDisco()));
 				}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
@@ -563,6 +570,23 @@ public class DataDiscos {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		FactoriaConexion.getInstancia().releaseConexion();
+	}
+	
+	private static float calcularValoracion(int codDisco){
+		float val = 0;
+		Connection con = FactoriaConexion.getInstancia().getConexion();
+		String sql = "call calcularValoración(?)";
+		try {
+			PreparedStatement comando = con.prepareStatement(sql);
+			comando.setInt(1, codDisco);
+			ResultSet rs = comando.executeQuery();
+			val = rs.getFloat("prom");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		FactoriaConexion.getInstancia().releaseConexion();
+		return val;
 	}
 }
