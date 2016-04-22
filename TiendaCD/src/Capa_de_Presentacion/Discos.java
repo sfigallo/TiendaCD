@@ -47,7 +47,7 @@ public class Discos extends HttpServlet {
 			String cadena = request.getParameter("buscar");
 			if (!cadena.isEmpty()) {
 				discos = con.buscarDiscos(cadena);
-				request.setAttribute("discos", discos);
+				request.setAttribute("buscados", discos);
 			}
 			request.getRequestDispatcher("discos.jsp").forward(request, response);
 		}

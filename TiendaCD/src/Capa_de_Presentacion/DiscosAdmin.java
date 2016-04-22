@@ -78,7 +78,7 @@ public class DiscosAdmin extends HttpServlet {
 			GeneroMusical genero = con.buscarGeneroxDescripcion(request.getParameter("selectGenero"));
 			disco.setGenero(genero);
 			con.nuevoDisco(disco);
-			request.getRequestDispatcher("discos.jsp").forward(request, response);
+			request.getRequestDispatcher("discosAdmin.jsp").forward(request, response);
 		}
 		if(request.getParameter("modificarDisco")!=null){
 			Disco disco = new Disco();
@@ -95,7 +95,7 @@ public class DiscosAdmin extends HttpServlet {
 				disco.setGenero(genero);
 				con.modificarDisco(disco);
 			}
-			request.getRequestDispatcher("discos.jsp").forward(request, response);
+			request.getRequestDispatcher("discosAdmin.jsp").forward(request, response);
 		}
 		if(request.getParameter("eliminarDisco")!=null){
 			Disco disco = new Disco();
@@ -103,6 +103,7 @@ public class DiscosAdmin extends HttpServlet {
 			disco = con.buscarDisco(codigo);
 			if(disco!=null)
 				con.eliminarDisco(codigo);
+			request.getRequestDispatcher("discosAdmin.jsp").forward(request, response);
 		}
 	}
 

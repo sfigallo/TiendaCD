@@ -8,7 +8,6 @@ public class Usuario {
 	private String contraseña;
 	private String nombre;
 	private String apellido;
-	private Date fechaNac;
 	private int dni;
 	private TipoUsuario tipo;
 	private ArrayList<Disco> discosAValorar;
@@ -41,12 +40,6 @@ public class Usuario {
 	}
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
-	}
-	public Date getFechaNac() {
-		return fechaNac;
-	}
-	public void setFechaNac(Date fechaNac) {
-		this.fechaNac = fechaNac;
 	}
 	public int getDni() {
 		return dni;
