@@ -12,7 +12,7 @@
    <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
       <div class="navbar-header">
-        <a class="navbar-brand" href="#">TiendaCD</a>
+        <a class="navbar-brand">TiendaCD</a>
       </div>
       <div>
         <ul class="nav navbar-nav">
@@ -42,7 +42,9 @@
         		<input type="password" class="form-control" id="password" name="password">
       		</div> 
       		<%if (request.getAttribute("msjError")!=null){ %>
+      		<font color="#FF0000">
       		<%=request.getAttribute("msjError") %>
+      		</font>
       		<br>
       		<%} %>
       		<div class="form-group">
@@ -71,10 +73,6 @@
       		<div class="form-group"> 
         		<label for="apellido">Apellido:</label>
         		<input type="text" class="form-control" id="apellido">
-      		</div> 
-      		<div class="form-group"> 
-        		<label for="fechanac">Fecha de nacimiento:</label>
-        		<input type="date" class="form-control" id="fechanac" placeholder="aaaa/mm/dd">
       		</div> 
       		<div class="form-group"> 
         		<label for="dni">DNI:</label>
