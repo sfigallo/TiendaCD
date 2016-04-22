@@ -1,11 +1,15 @@
 package Capa_de_Presentacion;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import Capa_de_Entidades.Disco;
 
 /**
  * Servlet implementation class Carrito
@@ -34,8 +38,13 @@ public class Carrito extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		if(request.getParameter("eventoEliminar")!=null){
+			ArrayList<Disco> carrito = (ArrayList<Disco>) request.getSession().getAttribute("carrito");
+			int n = Integer.parseInt(request.getParameter("numero"));
+			carrito.remove(n);
+			request.getSession().setAttribute("carrito", carrito);
+			request.getRequestDispatcher("carrito.jsp").forward(request, response);
+		}
 	}
 
 }
