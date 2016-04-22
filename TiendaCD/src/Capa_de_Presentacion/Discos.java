@@ -74,6 +74,8 @@ public class Discos extends HttpServlet {
 					disco = con.getDiscos().get(n);
 				else
 					disco = discos.get(n);
+				if((request.getSession().getAttribute("carrito"))!=null)
+					carrito = (ArrayList<Disco>) request.getSession().getAttribute("carrito");
 				carrito.add(disco);
 				request.getSession().setAttribute("carrito", carrito);
 			}
