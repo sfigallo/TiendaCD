@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import Capa_de_Control.Controlador;
 import Capa_de_Entidades.Disco;
+import Capa_de_Entidades.Usuario;
 
 /**
  * Servlet implementation class Discos
@@ -40,14 +41,43 @@ public class Discos extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Controlador con = new Controlador();
+		ArrayList<Disco> discos = new ArrayList<Disco>();
+		ArrayList<Disco> carrito = new ArrayList<Disco>();
 		if(request.getParameter("eventoBuscar")!=null){
-			String cadena = request.getParameter("titBuscar");
+			String cadena = request.getParameter("buscar");
 			if (!cadena.isEmpty()) {
-				ArrayList<Disco> discos = con.buscarDiscos(cadena);
+				discos = con.buscarDiscos(cadena);
 				request.setAttribute("discos", discos);
 			}
-			request.getRequestDispatcher("discosAdmin.jsp").forward(request, response);
+			request.getRequestDispatcher("discos.jsp").forward(request, response);
+		}
+		if(request.getParameter("eventoValorar")!=null){
+			Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
+			if(usuario!=null){
+				int valor = Integer.parseInt(request.getParameter("valor"));
+				int n = Integer.parseInt(request.getParameter("numero"));
+				Disco disco;
+				if(discos.isEmpty())
+					disco = con.getDiscos().get(n);
+				else
+					disco = discos.get(n);
+				con.valorarDisco(usuario,disco,valor);
+			}
+			request.getRequestDispatcher("discos.jsp").forward(request, response);
+		}
+		if(request.getParameter("eventoComprar")!=null){
+			Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
+			if(usuario!=null){
+				int n = Integer.parseInt(request.getParameter("numero"));
+				Disco disco;
+				if(discos.isEmpty())
+					disco = con.getDiscos().get(n);
+				else
+					disco = discos.get(n);
+				carrito.add(disco);
+				request.getSession().setAttribute("carrito", carrito);
+			}
+			request.getRequestDispatcher("discos.jsp").forward(request, response);
 		}
 	}
-
 }

@@ -20,11 +20,10 @@
       </div>
       <div>
         <ul class="nav navbar-nav">
-          <li><a href="#">Discos</a></li> 
-          <li><a href="#">Autores</a></li>
-          <li><a href="#">Géneros</a></li>          
-          <li class="active"><a href="#">Usuarios</a></li> 
-          <li><a href="#">Carrito de compras</a></li>
+          <li><a href="discosAdmin.jsp">Discos</a></li> 
+          <li><a href="autoresAdmin.jsp">Autores</a></li>
+          <li><a href="generosAdmin.jsp">Géneros</a></li>          
+          <li class="active"><a href="usuariosAdmin.jsp">Usuarios</a></li> 
         </ul>
       </div>
     </div>
@@ -51,7 +50,7 @@
            ArrayList<Usuario> usuarios = controlador.getUsuarios();
            for(int i=0; i<usuarios.size(); i++){
            Usuario usuario = usuarios.get(i);						%>
-         <tr>
+         <tr>     
          	<td><b>Usuario:</b> <%=usuario.getUsuario()%><br>
          		<b>Nombre:</b> <%=usuario.getNombre()%><br>
          		<b>Apellido:</b> <%=usuario.getApellido()%><br>
@@ -59,8 +58,11 @@
          		<b>DNI:</b> <%=usuario.getDni()%><br>
          	</td>
          	<td style="vertical-align:middle">
+         	<form role="form" action="UsuariosAdmin" method="post" id="eliminarUsu" name="eliminarUsu"> 
+         		<input type="hidden" name="numero" id="numero" value="<%=i%>"/>     		
          		<input class="btn btn-danger" type="submit" value="Eliminar" id="eliminarUsu" name="eliminarUsu" />
-         	</td>
+         	</form>
+         	</td> 
          </tr>
          <%} %>
         </tbody>

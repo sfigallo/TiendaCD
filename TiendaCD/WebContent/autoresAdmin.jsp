@@ -20,11 +20,10 @@
       </div>
       <div>
         <ul class="nav navbar-nav">
-          <li><a href="#">Discos</a></li> 
-          <li class="active"><a href="#">Autores</a></li>
-          <li><a href="#">Géneros</a></li>          
-          <li><a href="#">Usuarios</a></li> 
-          <li><a href="#">Carrito de compras</a></li>
+          <li><a href="discosAdmin.jsp">Discos</a></li> 
+          <li class="active"><a href="autoresAdmin.jsp">Autores</a></li>
+          <li><a href="generosAdmin.jsp">Géneros</a></li>          
+          <li><a href="usuariosAdmin.jsp">Usuarios</a></li> 
         </ul>
       </div>
     </div>

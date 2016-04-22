@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import Capa_de_Entidades.Autor;
 import Capa_de_Entidades.Disco;
 import Capa_de_Entidades.GeneroMusical;
+import Capa_de_Entidades.Usuario;
 
 public class DataDiscos {
 	
@@ -520,5 +521,15 @@ public class DataDiscos {
 		}
 		FactoriaConexion.getInstancia().releaseConexion();
 		return genero;
+	}
+
+	public static void valorarDisco(Usuario usuario, Disco disco, int valor) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public static void addVenta(float monto, Usuario usuario, int codDesc, ArrayList<Disco> discos) {
+		// TODO Auto-generated method stub
+		
 	}
 }
