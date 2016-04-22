@@ -186,7 +186,6 @@ CREATE TABLE `usuario` (
   `contrasenia` varchar(45) NOT NULL,
   `nombre` varchar(45) DEFAULT NULL,
   `apellido` varchar(45) DEFAULT NULL,
-  `fechaNac` date DEFAULT NULL,
   `dni` int(11) NOT NULL,
   `codTipoUsuario` int(11) NOT NULL,
   PRIMARY KEY (`usuario`),
@@ -202,6 +201,7 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
+INSERT INTO `usuario` VALUES ('admin','0000','Martin','Martinez',17000111,0),('rjimenez','2222','Ramiro','Jimenez',38000111,1),('sfigallo','1111','Sofía','Figallo',38533128,1);
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -692,4 +692,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-04-22 11:18:28
+-- Dump completed on 2016-04-22 12:08:26
