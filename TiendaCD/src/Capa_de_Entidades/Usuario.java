@@ -1,5 +1,6 @@
 package Capa_de_Entidades;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Usuario {
@@ -10,9 +11,11 @@ public class Usuario {
 	private Date fechaNac;
 	private int dni;
 	private TipoUsuario tipo;
+	private ArrayList<Disco> discosAValorar;
 	
 	public Usuario(){
 		tipo = new TipoUsuario();
+		setDiscosAValorar(new ArrayList<Disco>());
 	}
 	
 	public String getUsuario() {
@@ -56,6 +59,14 @@ public class Usuario {
 	}
 	public void setTipo(TipoUsuario tipo) {
 		this.tipo = tipo;
+	}
+
+	public ArrayList<Disco> getDiscosAValorar() {
+		return discosAValorar;
+	}
+
+	public void setDiscosAValorar(ArrayList<Disco> discosAValorar) {
+		this.discosAValorar = discosAValorar;
 	}
 	
 
