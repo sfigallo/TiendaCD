@@ -2,6 +2,8 @@ package Capa_de_Datos;
 
 import java.sql.*;
 import java.util.ArrayList;
+
+import Capa_de_Entidades.Disco;
 import Capa_de_Entidades.TipoUsuario;
 import Capa_de_Entidades.Usuario;
 
@@ -29,6 +31,7 @@ public class DataUsuarios {
 			for (Usuario usuario : usuarios) {
 				TipoUsuario tu = getTipoUsuario(usuario.getTipo().getCodTipoUsuario());
 				usuario.setTipo(tu);
+				usuario.setDiscosAValorar(getDiscosAValorar(usuario.getUsuario()));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -57,6 +60,7 @@ public class DataUsuarios {
 				u.getTipo().setCodTipoUsuario(rs.getInt(7));
 				TipoUsuario tu = getTipoUsuario(u.getTipo().getCodTipoUsuario());
 				u.setTipo(tu);
+				u.setDiscosAValorar(getDiscosAValorar(u.getUsuario()));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -120,6 +124,29 @@ public class DataUsuarios {
 		}
 		FactoriaConexion.getInstancia().releaseConexion();
 		return tu;
+	}
+	private static ArrayList<Disco> getDiscosAValorar(String usuario){
+		ArrayList<Disco> discos = new ArrayList<Disco>();
+		String sql = "call getDiscosAValorar(?)";
+		Connection con = FactoriaConexion.getInstancia().getConexion();
+		try {
+			PreparedStatement comando = con.prepareStatement(sql);
+			comando.setString(1, usuario);
+			ResultSet rs = comando.executeQuery();
+			while(rs.next()){
+				Disco d = new Disco();
+				d.setCodDisco(rs.getInt("codDisco"));
+				discos.add(d);
+			}
+			for (Disco disco : discos) {
+				disco = DataDiscos.getDisco(disco.getCodDisco());
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		FactoriaConexion.getInstancia().releaseConexion();
+		return discos;
 	}
 	
 	

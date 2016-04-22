@@ -556,7 +556,10 @@ public class DataDiscos {
 			comando.setString(2, usuario.getUsuario());
 			comando.setInt(3, codDesc);
 			comando.execute();
-			nroVenta = comando.getGeneratedKeys().getInt("nroVenta");
+			ResultSet rs = comando.getGeneratedKeys();
+			rs.next();
+			nroVenta = rs.getInt(1);
+			
 			//Ahora voy a agregar los discos de la venta a la BD
 			for (Disco d : discos) {
 				String sql2 = "insert into discos_por_venta values (?,?)"; //codDisco nroVenta	
