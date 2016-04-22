@@ -20,8 +20,8 @@
       </div>
       <div>
         <ul class="nav navbar-nav">
-          <li class="active"><a href="#">Discos</a></li> 
-          <li><a href="#">Carrito de compras</a></li>  
+          <li class="active"><a href="discos.jsp">Discos</a></li> 
+          <li><a href="carrito.jsp">Carrito de compras</a></li>
         </ul>
       </div>
     </div>
@@ -30,8 +30,8 @@
 <div class="container" style="background-color:#aaa">
   <br><br><br>
   <div align="center">
-  	<form role="form" class="form-inline" action="ListaDiscos" method="post" id="formBuscar" name="formBuscar">
-    	<input class="form-control" type="text" id="titBuscar" placeholder="¿Qué está buscando?" size="70" maxlength="45" style="height:100"/>
+  	<form role="form" class="form-inline" action="Discos" method="post" id="formBuscar" name="formBuscar">
+    	<input class="form-control" type="text" id="buscar" name="buscar" placeholder="¿Qué está buscando?" size="70" maxlength="45" style="height:100"/>
   		<input class="btn btn-primary" type="submit" value="Buscar" id="eventoBuscar" name="eventoBuscar"/>
     </form>
   </div>
@@ -58,7 +58,7 @@
        <%
        ArrayList<Disco> discos = controlador.getDiscos();
        for(int i=0; i<discos.size(); i++){
-       Disco disco = discos.get(i);	
+       Disco disco = discos.get(i);
        %>
          <tr>
          	<td><big><b>Título:</b> <%= disco.getTitulo() %><br></big>
@@ -70,7 +70,7 @@
          	<td>
          		<b>Promedio:</b> 5 puntos
          		<br>
-         		<form role="form" class="form-inline" action="discos" method="post" id="valorarDisco" name="valorarDisco">
+         		<form role="form" class="form-inline" action="Discos" method="post" id="valorarDisco" name="valorarDisco">
 					<select name="valor">
 						<option value="1">1</option>
 						<option value="2">2</option>
@@ -78,11 +78,15 @@
 						<option value="4">4</option>
 						<option value="5">5</option>
 					</select>
+					<input type="hidden" name="numero" id="numero" value="<%=i%>"/>
 					<input class="btn btn-primary btn-xs" type="submit" value="Valorar" id="eventoValorar" name="eventoValorar"/>
 				</form>
          	</td>
          	<td style="vertical-align:middle">
+         	<form role="form" class="form-inline" action="Discos" method="post" id="comprarDisco" name="comprarDisco">
+         		<input type="hidden" name="numero" id="numero" value="<%=i%>"/>
          		<input class="btn btn-success" type="submit" value="Comprar" id="eventoComprar" name="eventoComprar" />
+         	</form>
          	</td>
          </tr>
 		<%} %>
