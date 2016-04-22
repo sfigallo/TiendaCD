@@ -4,6 +4,7 @@ import java.sql.*;
 import java.util.ArrayList;
 
 import Capa_de_Entidades.Autor;
+import Capa_de_Entidades.Descuento;
 import Capa_de_Entidades.Disco;
 import Capa_de_Entidades.GeneroMusical;
 import Capa_de_Entidades.Usuario;
@@ -598,5 +599,10 @@ public class DataDiscos {
 		}
 		FactoriaConexion.getInstancia().releaseConexion();
 		return val;
+	}
+
+	public static ArrayList<Descuento> getDescuentos() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

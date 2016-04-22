@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import Capa_de_Datos.DataDiscos;
 import Capa_de_Datos.DataUsuarios;
 import Capa_de_Entidades.Autor;
+import Capa_de_Entidades.Descuento;
 import Capa_de_Entidades.Disco;
 import Capa_de_Entidades.GeneroMusical;
 import Capa_de_Entidades.Usuario;
@@ -111,5 +112,9 @@ public class Controlador {
 
 	public void nuevaVenta(float monto, Usuario usuario, int codDesc, ArrayList<Disco> discos){
 		DataDiscos.addVenta(monto, usuario, codDesc, discos);
+	}
+	
+	public ArrayList<Descuento> getDescuentos(){
+		return DataDiscos.getDescuentos();
 	}
 }
