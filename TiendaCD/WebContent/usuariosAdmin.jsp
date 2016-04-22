@@ -54,7 +54,6 @@
          	<td><b>Usuario:</b> <%=usuario.getUsuario()%><br>
          		<b>Nombre:</b> <%=usuario.getNombre()%><br>
          		<b>Apellido:</b> <%=usuario.getApellido()%><br>
-         		<b>Fecha Nacimiento:</b> <%=usuario.getFechaNac()%><br>
          		<b>DNI:</b> <%=usuario.getDni()%><br>
          	</td>
          	<td style="vertical-align:middle">

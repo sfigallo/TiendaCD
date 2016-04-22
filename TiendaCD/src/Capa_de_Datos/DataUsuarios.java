@@ -21,9 +21,8 @@ public class DataUsuarios {
 				u.setContraseña(rs.getString(2));
 				u.setNombre(rs.getString(3));
 				u.setApellido(rs.getString(4));
-				u.setFechaNac(rs.getDate(5));
-				u.setDni(rs.getInt(6));
-				u.getTipo().setCodTipoUsuario(rs.getInt(7));
+				u.setDni(rs.getInt(5));
+				u.getTipo().setCodTipoUsuario(rs.getInt(6));
 				usuarios.add(u);
 			}
 			for (Usuario usuario : usuarios) {
@@ -52,9 +51,8 @@ public class DataUsuarios {
 				u.setContraseña(rs.getString(2));
 				u.setNombre(rs.getString(3));
 				u.setApellido(rs.getString(4));
-				u.setFechaNac(rs.getDate(5));
-				u.setDni(rs.getInt(6));
-				u.getTipo().setCodTipoUsuario(rs.getInt(7));
+				u.setDni(rs.getInt(5));
+				u.getTipo().setCodTipoUsuario(rs.getInt(6));
 				TipoUsuario tu = getTipoUsuario(u.getTipo().getCodTipoUsuario());
 				u.setTipo(tu);
 			}
@@ -69,14 +67,13 @@ public class DataUsuarios {
 	//NO TIENE STORED PROCEDURE
 	public static void addUsuario(Usuario u){
 		Connection con = FactoriaConexion.getInstancia().getConexion();
-		String sql = "insert into usuario values (?, ?, ?, ?, ?, ?, ?)";
+		String sql = "insert into usuario values (?, ?, ?, ?, ?, ?)";
 		try {
 			PreparedStatement comando = con.prepareStatement(sql);
 			comando.setString(1, u.getUsuario());
 			comando.setString(2, u.getContraseña());
 			comando.setString(3, u.getNombre());
 			comando.setString(4, u.getApellido());
-			comando.setDate(5, (java.sql.Date)u.getFechaNac());
 			comando.setInt(6, u.getDni());
 			comando.setInt(7, u.getTipo().getCodTipoUsuario());
 			comando.execute();
