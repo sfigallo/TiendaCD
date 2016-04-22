@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import Capa_de_Entidades.Autor;
 import Capa_de_Entidades.Disco;
 import Capa_de_Entidades.GeneroMusical;
+import Capa_de_Entidades.Usuario;
 
 public class DataDiscos {
 	
@@ -520,5 +521,48 @@ public class DataDiscos {
 		}
 		FactoriaConexion.getInstancia().releaseConexion();
 		return genero;
+	}
+
+	public static void valorarDisco(Usuario usuario, Disco disco, int valor) {
+		Connection con = FactoriaConexion.getInstancia().getConexion();
+		String sql = "call valorar (?, ?, ?);"; //disco usuario valoracion
+		try {
+			PreparedStatement comando = con.prepareStatement(sql);
+			comando.setInt(1, disco.getCodDisco());
+			comando.setString(2, usuario.getUsuario());
+			comando.setInt(3, valor);
+			comando.execute();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		FactoriaConexion.getInstancia().releaseConexion();		
+	}
+
+	public static void addVenta(float monto, Usuario usuario, int codDesc, ArrayList<Disco> discos) {
+		int nroVenta;
+		Connection con = FactoriaConexion.getInstancia().getConexion();
+		String sql = "call nuevaVenta(?,?,?)"; //monto usuario codDescuento
+		try {
+			PreparedStatement comando = con.prepareStatement(sql);
+			comando.setFloat(1, monto);
+			comando.setString(2, usuario.getUsuario());
+			comando.setInt(3, codDesc);
+			comando.execute();
+			nroVenta = comando.getGeneratedKeys().getInt("nroVenta");
+			//Ahora voy a agregar los discos de la venta a la BD
+			for (Disco d : discos) {
+				String sql2 = "insert into discos_por_venta values (?,?)"; //codDisco nroVenta	
+				comando= con.prepareStatement(sql2);
+				comando.setInt(1, d.getCodDisco());
+				comando.setInt(2, nroVenta);
+				comando.execute();
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 }

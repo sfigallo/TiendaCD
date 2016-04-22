@@ -53,12 +53,14 @@ public class Inicio extends HttpServlet {
 						request.getRequestDispatcher("discos.jsp").forward(request, response);
 				}
 				else{
-					request.setAttribute("msjError", "El usuario o la contraseña son incorrectos.");
+					request.setAttribute("msjError", "La contraseña es incorrecta");
 					request.getRequestDispatcher("inicio.jsp").forward(request, response);
 				}
 			}
-			else
+			else{
+				request.setAttribute("msjError", "El usuario es incorrecto");
 				request.getRequestDispatcher("inicio.jsp").forward(request, response);
+			}	
 		}
 		if(request.getParameter("eventoRegistrar")!=null){
 			usu = con.buscarUsuario(request.getParameter("user"));
