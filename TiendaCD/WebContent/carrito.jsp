@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ page import="Capa_de_Entidades.Usuario"%>
+<%@ page import="Capa_de_Entidades.Disco"%>
+<%@ page import="java.util.ArrayList" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -12,12 +15,12 @@
    <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
       <div class="navbar-header">
-        <a class="navbar-brand" href="#">TiendaCD</a>
+        <a class="navbar-brand">TiendaCD</a>
       </div>
       <div>
         <ul class="nav navbar-nav">
           <li><a href="discos.jsp">Discos</a></li> 
-          <li class="active"><a href="carrito.jsp">Carrito de compras</a></li> 
+          <li class="active"><a href="carrito.jsp">Carrito de compras</a></li>
         </ul>
       </div>
     </div>
@@ -45,16 +48,25 @@
          </tr> 
        </thead>
        <tbody>
+       <%
+       	ArrayList<Disco> carrito = (ArrayList<Disco>)request.getSession().getAttribute("carrito");
+       	for(int i=0; i<carrito.size(); i++){
+       		Disco disco = carrito.get(i);
+       %>
          <tr>
-           <td style="vertical-align:middle">Amor Amarillo</td>
-           <td style="vertical-align:middle">Gustavo Cerati</td> 
-           <td style="vertical-align:middle">2000</td>
-           <td style="vertical-align:middle">Rock&Roll</td>
-           <td style="vertical-align:middle">$100</td>    
+           <td style="vertical-align:middle"><%=disco.getTitulo() %></td>
+           <td style="vertical-align:middle"><%=disco.getAutor().getNombreAutor() %></td> 
+           <td style="vertical-align:middle"><%=disco.getAñoLanzamiento() %></td>
+           <td style="vertical-align:middle"><%=disco.getGenero().getDescGenero() %></td>
+           <td style="vertical-align:middle">$<%=disco.getPrecio() %></td>    
            <td style="vertical-align:middle">
+           <form role="form" action="Carrito" method="post" id="eliminar" name="eliminar">
+           	<input type="hidden" name="numero" id="numero" value="<%=i%>"/>
   			<input class="btn btn-danger btn-sm" type="submit" value="Eliminar" id="eventoEliminar" name="eventoEliminar" />
+           </form>
            </td> 
          </tr>
+         <% } %>
        </tbody>
      </table>
 	</div>
