@@ -8,6 +8,7 @@ public class Disco {
 	private float precio;
 	private GeneroMusical genero;
 	private Autor autor;
+	private float valoración;
 	
 	public Disco(){
 		genero = new GeneroMusical();
@@ -55,6 +56,14 @@ public class Disco {
 	}
 	public void setAutor(Autor autor) {
 		this.autor = autor;
+	}
+
+	public float getValoración() {
+		return valoración;
+	}
+
+	public void setValoración(float valoración) {
+		this.valoración = valoración;
 	}
 
 }
