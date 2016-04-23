@@ -65,20 +65,7 @@ public class Discos extends HttpServlet {
 					discos = con.getDiscos();
 					disco = discos.get(n);
 				}
-				ArrayList<Venta> ventas = con.getVentasxUsuario(usuario);
-				boolean mismoDisco = false;
-				int i=0;
-				if(ventas.isEmpty()){
-					while(mismoDisco==false || i<ventas.size()){
-						int j=0;
-						while(j<ventas.get(i).getDiscos().size() || mismoDisco==false){
-							mismoDisco = (disco == ventas.get(i).getDiscos().get(j));
-							j++;
-						}
-						i++;
-					}
-				}
-				if(mismoDisco){
+				if(usuario.getDiscosAValorar().contains(disco)){
 					int valor = Integer.parseInt(request.getParameter("valor"));
 					con.valorarDisco(usuario,disco,valor);
 				}
