@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ page import="Capa_de_Entidades.Disco"%>
+<%@ page import="Capa_de_Entidades.Usuario"%>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="Capa_de_Control.Controlador" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -78,9 +79,14 @@
          		<b>Género:</b> <%= disco.getGenero().getDescGenero() %><br>
          		<b>Precio:</b> $<%= disco.getPrecio() %><br>
          	</td>
-         	<td>
+         	<td style="vertical-align:middle">
          		<b>Promedio:</b> <%=disco.getValoracion() %>
          		<br>
+         		<%
+         		Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
+         		if(usuario!=null){
+         		 if(usuario.getDiscosAValorar().contains(disco)){
+         		%>
          		<form role="form" class="form-inline" action="Discos" method="post" id="valorarDisco" name="valorarDisco">
 					<select name="valor">
 						<option value="1">1</option>
@@ -92,6 +98,7 @@
 					<input type="hidden" name="numero" id="numero" value="<%=i%>"/>
 					<input class="btn btn-primary btn-xs" type="submit" value="Valorar" id="eventoValorar" name="eventoValorar"/>
 				</form>
+				<%} }%>
          	</td>
          	<td style="vertical-align:middle">
          	<form role="form" class="form-inline" action="Discos" method="post" id="comprarDisco" name="comprarDisco">

@@ -551,25 +551,25 @@ public class DataDiscos {
 
 	public static void addVenta(float monto, Usuario usuario, int codDesc, ArrayList<Disco> discos) {
 		int nroVenta;
-		Connection con = FactoriaConexion.getInstancia().getConexion();
-		String sql = "call nuevaVenta(?,?,?)"; //monto usuario codDescuento
+		Connection con = FactoriaConexion.getInstancia().getConexion(); //monto usuario codDescuento
+		String sql = "insert into venta (monto, usuario, codDescuento) values (?, ?, ?);";
 		try {
 			PreparedStatement comando = con.prepareStatement(sql);
 			comando.setFloat(1, monto);
 			comando.setString(2, usuario.getUsuario());
 			comando.setInt(3, codDesc);
-			comando.execute();
+			comando.executeUpdate();
 			ResultSet rs = comando.getGeneratedKeys();
 			rs.next();
 			nroVenta = rs.getInt(1);
 			
 			//Ahora voy a agregar los discos de la venta a la BD
 			for (Disco d : discos) {
-				String sql2 = "start transaction; insert into discos_por_venta values (?,?); commit;"; //codDisco nroVenta	
-				comando= con.prepareStatement(sql2);
-				comando.setInt(1, d.getCodDisco());
-				comando.setInt(2, nroVenta);
-				comando.execute();
+				String sql2 = "INSERT INTO `tiendacd`.`discos_por_venta` (`codDisco`, `nroVenta`) VALUES (?, ?);"; //codDisco nroVenta	
+				PreparedStatement comando2 = con.prepareStatement(sql2);
+				comando2.setInt(1, d.getCodDisco());
+				comando2.setInt(2, nroVenta);
+				comando2.executeUpdate();
 			}
 
 		} catch (SQLException e) {
