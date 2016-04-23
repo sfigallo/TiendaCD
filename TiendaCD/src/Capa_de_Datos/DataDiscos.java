@@ -571,7 +571,7 @@ public class DataDiscos {
 			
 			//Ahora voy a agregar los discos de la venta a la BD
 			for (Disco d : discos) {
-				String sql2 = "insert into discos_por_venta values (?,?)"; //codDisco nroVenta	
+				String sql2 = "start transaction; insert into discos_por_venta values (?,?); commit;"; //codDisco nroVenta	
 				comando= con.prepareStatement(sql2);
 				comando.setInt(1, d.getCodDisco());
 				comando.setInt(2, nroVenta);
