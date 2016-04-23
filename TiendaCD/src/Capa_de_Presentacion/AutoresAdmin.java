@@ -53,9 +53,10 @@ public class AutoresAdmin extends HttpServlet {
 			Autor autor = new Autor();
 			int codigo = Integer.parseInt(request.getParameter("codigoAutor"));
 			autor = con.buscarAutor(codigo);
-			if(autor!=null)
+			if(autor!=null){
 				request.setAttribute("nombreAutor", autor.getNombreAutor());
 				request.setAttribute("codigoAutor", autor.getCodAutor());
+			}	
 			request.getRequestDispatcher("autoresAdmin.jsp").forward(request, response);
 		}
 		if(request.getParameter("nuevoAutor")!=null){
