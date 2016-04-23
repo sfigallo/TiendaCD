@@ -122,4 +122,20 @@ public class Controlador {
 	public ArrayList<Venta> getVentasxUsuario(Usuario usuario){
 		return DataUsuarios.getVentas(usuario);
 	}
+	
+	public Descuento getDescuento(int codigo) {
+		return DataDiscos.getDescuento(codigo);
+	}
+	
+	public void nuevoDescuento(Descuento descuento) {
+		DataDiscos.addDescuento(descuento);
+	}
+	
+	public void modificarDescuento(Descuento descuento) {
+		DataDiscos.updateDescuento(descuento);
+	}
+	public void borrarDescuento(Descuento descuento) {
+		DataDiscos.removeDescuento(descuento);
+		
+	}
 }
