@@ -79,7 +79,7 @@
          		<b>Precio:</b> $<%= disco.getPrecio() %><br>
          	</td>
          	<td>
-         		<b>Promedio:</b> <%=disco.getValoración() %>
+         		<b>Promedio:</b> <%=disco.getValoracion() %>
          		<br>
          		<form role="form" class="form-inline" action="Discos" method="post" id="valorarDisco" name="valorarDisco">
 					<select name="valor">

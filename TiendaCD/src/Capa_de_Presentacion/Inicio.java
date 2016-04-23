@@ -72,6 +72,7 @@ public class Inicio extends HttpServlet {
 				usu.setApellido(request.getParameter("apellido"));
 				usu.setDni(Integer.parseInt(request.getParameter("dni")));
 				con.nuevoUsuario(usu);
+				usu = con.buscarUsuario(usu.getUsuario()); //creo que puede no ir!
 				request.getSession().setAttribute("usuario", usu);
 				request.getRequestDispatcher("discos.jsp").forward(request, response);
 			}

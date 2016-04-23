@@ -74,7 +74,7 @@ public class DataUsuarios {
 	public static void addUsuario(Usuario u){
 		Connection con = FactoriaConexion.getInstancia().getConexion();
 		String sql = "INSERT INTO `tiendacd`.`usuario` (`usuario`, `contrasenia`, `nombre`, `apellido`, `dni`, "
-				+ "`codTipoUsuario`) VALUES ('?', '?', '?', '?', '?', '1');";
+				+ "`codTipoUsuario`) VALUES (?, ?, ?, ?, ?, '1');";
 		try {
 			PreparedStatement comando = con.prepareStatement(sql);
 			comando.setString(1, u.getUsuario());
