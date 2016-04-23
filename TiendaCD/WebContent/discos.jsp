@@ -20,8 +20,14 @@
       </div>
       <div>
         <ul class="nav navbar-nav">
+          <% if(request.getSession().getAttribute("usuario") != null){ %>
           <li class="active"><a href="discos.jsp">Discos</a></li> 
           <li><a href="carrito.jsp">Carrito de compras</a></li>
+          <%}
+        	else{%>
+        	<li><a href="inicio.jsp">Inicio</a></li>
+        	<li class="active"><a href="discos.jsp">Discos</a></li>
+        	<%} %>
         </ul>
       </div>
     </div>
@@ -57,10 +63,10 @@
        <tbody>
        <%
        ArrayList<Disco> discos = new ArrayList<Disco>();
-       if( (request.getAttribute("buscados")) == null)
+       if( (request.getSession().getAttribute("buscados")) == null)
     	   discos = controlador.getDiscos();
        else
-    	   discos = (ArrayList<Disco>) request.getAttribute("buscados");
+    	   discos = (ArrayList<Disco>) request.getSession().getAttribute("buscados");
      		
      	for(int i=0; i<discos.size(); i++){
            	Disco disco = discos.get(i);
@@ -73,7 +79,7 @@
          		<b>Precio:</b> $<%= disco.getPrecio() %><br>
          	</td>
          	<td>
-         		<b>Promedio:</b> 5 puntos
+         		<b>Promedio:</b> <%=disco.getValoración() %>
          		<br>
          		<form role="form" class="form-inline" action="Discos" method="post" id="valorarDisco" name="valorarDisco">
 					<select name="valor">
