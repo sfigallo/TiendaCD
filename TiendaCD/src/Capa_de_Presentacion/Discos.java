@@ -68,7 +68,7 @@ public class Discos extends HttpServlet {
 				ArrayList<Venta> ventas = con.getVentasxUsuario(usuario);
 				boolean mismoDisco = false;
 				int i=0;
-				if(ventas != null){
+				if(ventas.isEmpty()){
 					while(mismoDisco==false || i<ventas.size()){
 						int j=0;
 						while(j<ventas.get(i).getDiscos().size() || mismoDisco==false){
