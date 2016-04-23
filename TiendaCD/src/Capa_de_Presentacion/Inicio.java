@@ -76,7 +76,7 @@ public class Inicio extends HttpServlet {
 				request.getRequestDispatcher("discos.jsp").forward(request, response);
 			}
 			else{
-				request.setAttribute("msjError", "El usuario ya existe.");
+				request.setAttribute("msjError2", "El usuario ya existe.");
 				request.getRequestDispatcher("inicio.jsp").forward(request, response);
 			}	
 		}

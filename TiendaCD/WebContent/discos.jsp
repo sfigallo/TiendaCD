@@ -20,8 +20,14 @@
       </div>
       <div>
         <ul class="nav navbar-nav">
+          <% if(request.getSession().getAttribute("usuario") != null){ %>
           <li class="active"><a href="discos.jsp">Discos</a></li> 
           <li><a href="carrito.jsp">Carrito de compras</a></li>
+          <%}
+        	else{%>
+        	<li><a href="inicio.jsp">Inicio</a></li>
+        	<li class="active"><a href="discos.jsp">Discos</a></li>
+        	<%} %>
         </ul>
       </div>
     </div>

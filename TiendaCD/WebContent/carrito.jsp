@@ -79,7 +79,7 @@
 	
   	<div class="col-lg-8 col-lg-offset-1" style="background-color:#ccc">
  		<div class="container">
-  		<h4>Subtotal: <%=monto %></h4>
+  		<h4>Subtotal: $<%=monto %></h4>
   		<%
   			Controlador con = new Controlador();
   			float dto = 0;
@@ -94,7 +94,7 @@
   		%>
   		<h4>Descuento: <%=dto %>%</h4>
   		<%monto= (monto - monto*dto/100); %>
-  		<h3>Total: <%=monto %></h3> 
+  		<h3>Total: $<%=monto %></h3> 
    		</div>
    		<form role="form" action="Carrito" method="post" id="eliminar" name="eliminar">
    			<input type="hidden" name="monto" id="monto" value="<%=monto%>"/>
