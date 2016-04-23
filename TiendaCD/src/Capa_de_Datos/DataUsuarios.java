@@ -72,6 +72,7 @@ public class DataUsuarios {
 	
 	//NO TIENE STORED PROCEDURE
 	public static void addUsuario(Usuario u){
+		int codTipo = 1;
 		Connection con = FactoriaConexion.getInstancia().getConexion();
 		String sql = "insert into usuario values (?, ?, ?, ?, ?, ?)";
 		try {
@@ -81,7 +82,7 @@ public class DataUsuarios {
 			comando.setString(3, u.getNombre());
 			comando.setString(4, u.getApellido());
 			comando.setInt(6, u.getDni());
-			comando.setInt(7, u.getTipo().getCodTipoUsuario());
+			comando.setInt(7, codTipo);
 			comando.execute();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

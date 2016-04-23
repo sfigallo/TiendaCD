@@ -60,23 +60,28 @@
     	<form role="form" action="Inicio" method="post" id="formReg" name="formReg">
       		<div class="form-group"> 
         		<label for="user">Usuario:</label>
-        		<input type="text" class="form-control" id="user">
+        		<input type="text" class="form-control" id="user" name="user">
+        		<%if (request.getAttribute("msjError2")!=null){ %>
+      			<font color="#FF0000">
+      			<%=request.getAttribute("msjError2") %>
+      			</font>
+      			<%} %>
       		</div> 
       		<div class="form-group"> 
         		<label for="password">Contraseña:</label>
-        		<input type="password" class="form-control" id="password">
+        		<input type="password" class="form-control" id="password" name="password">
       		</div> 
       		<div class="form-group"> 
         		<label for="nombre">Nombre:</label>
-        		<input type="text" class="form-control" id="nombre">
+        		<input type="text" class="form-control" id="nombre" name="nombre">
       		</div> 
       		<div class="form-group"> 
         		<label for="apellido">Apellido:</label>
-        		<input type="text" class="form-control" id="apellido">
+        		<input type="text" class="form-control" id="apellido" name="apellido">
       		</div> 
       		<div class="form-group"> 
         		<label for="dni">DNI:</label>
-        		<input type="text" class="form-control" id="dni">
+        		<input type="text" class="form-control" id="dni" name="dni">
       		</div> 
       		<div class="form-group">
 				<input class="btn btn-primary btn-block" type="submit" value="Hecho" id="eventoRegistrar" name="eventoRegistrar"/>

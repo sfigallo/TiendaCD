@@ -42,11 +42,11 @@ public class Discos extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Controlador con = new Controlador();
+		ArrayList<Disco> discos = new ArrayList<Disco>();
 		ArrayList<Disco> carrito = new ArrayList<Disco>();
 		if(request.getParameter("eventoBuscar")!=null){
 			String cadena = request.getParameter("buscar");
 			if (!cadena.isEmpty()) {
-				ArrayList<Disco> discos = new ArrayList<Disco>();
 				discos = con.buscarDiscos(cadena);
 				request.getSession().setAttribute("buscados", discos);
 			}
@@ -57,11 +57,14 @@ public class Discos extends HttpServlet {
 			if(usuario!=null){
 				int n = Integer.parseInt(request.getParameter("numero"));
 				Disco disco;
-				ArrayList<Disco> buscados = (ArrayList<Disco>) request.getSession().getAttribute("buscados");
-				if(buscados.isEmpty())
-					disco = con.getDiscos().get(n);
-				else
-					disco = buscados.get(n);
+				if(request.getSession().getAttribute("buscados") != null){
+					discos = (ArrayList<Disco>) request.getSession().getAttribute("buscados");
+					disco = discos.get(n);
+				}
+				else{
+					discos = con.getDiscos();
+					disco = discos.get(n);
+				}
 				ArrayList<Venta> ventas = con.getVentasxUsuario(usuario);
 				boolean mismoDisco = false;
 				int i=0;
@@ -69,13 +72,13 @@ public class Discos extends HttpServlet {
 					while(mismoDisco==false || i<ventas.size()){
 						int j=0;
 						while(j<ventas.get(i).getDiscos().size() || mismoDisco==false){
-							mismoDisco = (disco==ventas.get(i).getDiscos().get(j));
+							mismoDisco = (disco == ventas.get(i).getDiscos().get(j));
 							j++;
 						}
 						i++;
 					}
 				}
-				if(mismoDisco==false){
+				if(mismoDisco){
 					int valor = Integer.parseInt(request.getParameter("valor"));
 					con.valorarDisco(usuario,disco,valor);
 				}
@@ -88,16 +91,22 @@ public class Discos extends HttpServlet {
 				int n = Integer.parseInt(request.getParameter("numero"));
 				Disco disco;
 				ArrayList<Disco> buscados = (ArrayList<Disco>) request.getSession().getAttribute("buscados");
-				if(buscados.isEmpty())
-					disco = con.getDiscos().get(n);
-				else
-					disco = buscados.get(n);
+				if(request.getSession().getAttribute("buscados") != null){
+					discos = (ArrayList<Disco>) request.getSession().getAttribute("buscados");
+					disco = discos.get(n);
+				}
+				else{
+					discos = con.getDiscos();
+					disco = discos.get(n);
+				}
 				if((request.getSession().getAttribute("carrito"))!=null)
 					carrito = (ArrayList<Disco>) request.getSession().getAttribute("carrito");
 				carrito.add(disco);
 				request.getSession().setAttribute("carrito", carrito);
+				request.getRequestDispatcher("discos.jsp").forward(request, response);
 			}
-			request.getRequestDispatcher("discos.jsp").forward(request, response);
+			else
+				request.getRequestDispatcher("inicio.jsp").forward(request, response);
 		}
 	}
 }
