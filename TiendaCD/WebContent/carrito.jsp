@@ -101,11 +101,7 @@
    			<input type="hidden" name="descuento" id="descuento" value="<%=codDto%>"/>
    			<input class="btn btn-success" type="submit" value="Confirmar Compra" id="confirmarCompra" name="confirmarCompra" />  		
 		</form>
-		<br>
-		<%if (request.getAttribute("msjVenta")!=null){ %>
-      	<%=request.getAttribute("msjVenta")%>
-      	<%} %>
-		<br>
+		<br><br>
 	</div>
   	<br>	
 </div>

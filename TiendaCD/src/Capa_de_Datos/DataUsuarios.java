@@ -72,17 +72,16 @@ public class DataUsuarios {
 	
 	//NO TIENE STORED PROCEDURE
 	public static void addUsuario(Usuario u){
-		int codTipo = 1;
 		Connection con = FactoriaConexion.getInstancia().getConexion();
-		String sql = "insert into usuario values (?, ?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO `tiendacd`.`usuario` (`usuario`, `contrasenia`, `nombre`, `apellido`, `dni`, "
+				+ "`codTipoUsuario`) VALUES ('?', '?', '?', '?', '?', '1');";
 		try {
 			PreparedStatement comando = con.prepareStatement(sql);
 			comando.setString(1, u.getUsuario());
 			comando.setString(2, u.getContraseña());
 			comando.setString(3, u.getNombre());
 			comando.setString(4, u.getApellido());
-			comando.setInt(6, u.getDni());
-			comando.setInt(7, codTipo);
+			comando.setInt(5, u.getDni());
 			comando.execute();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -93,10 +92,11 @@ public class DataUsuarios {
 
 	public static void removeUsuario(String usuario){
 		Connection con = FactoriaConexion.getInstancia().getConexion();
-		String sql = "call removeUsuario(?);";
+		String sql = "call tiendacd.removeUsuario(?);";
 		try {
 			PreparedStatement comando = con.prepareStatement(sql);
 			comando.setString(1, usuario);
+			comando.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
