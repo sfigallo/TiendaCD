@@ -12,7 +12,7 @@ import Capa_de_Entidades.Venta;
 
 public class DataDiscos {
 	
-	public static ArrayList<Disco> getDiscosxAutor(String autor){
+	public static ArrayList<Disco> getDiscosxAutor(String autor){ 
 		ArrayList<Disco> discos = new ArrayList<Disco>();;
 		String sql = "call getDiscosxNombreAutor(?);";
 		Connection con = FactoriaConexion.getInstancia().getConexion();
@@ -390,9 +390,9 @@ public class DataDiscos {
 	//NO TIENE STORED PROCEDURE
 	public static void updateDisco (Disco disco){
 		Connection con = FactoriaConexion.getInstancia().getConexion();
-		String sql = "update disco set titulo = ?, anioLanzamiento = ?, "
-				+ "cantCopiasDisp = ?, precio = ?, codGenero = ?, codAutor = ?"
-				+ "where codDisco = ?";
+		String sql = "UPDATE `tiendacd`.`disco` SET `titulo`=?, `anioLanzamiento`=?, "
+				+ "`cantCopiasDisp`=?, `precio`=?, `codGenero`=?, `codAutor`=?"
+				+ " WHERE `codDisco`=?;";
 		try {
 			PreparedStatement comando = con.prepareStatement(sql);
 			comando.setString(1, disco.getTitulo());
@@ -401,7 +401,7 @@ public class DataDiscos {
 			comando.setFloat(4, disco.getPrecio());
 			comando.setInt(5, disco.getGenero().getCodGenero());
 			comando.setInt(6, disco.getAutor().getCodAutor());
-			comando.setInt(3, disco.getCodDisco());
+			comando.setInt(7, disco.getCodDisco());
 			comando.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -416,6 +416,7 @@ public class DataDiscos {
 		try {
 			PreparedStatement comando = con.prepareStatement(sql);
 			comando.setInt(1, codDisco);
+			comando.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
