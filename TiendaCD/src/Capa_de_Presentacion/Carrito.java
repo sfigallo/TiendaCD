@@ -55,8 +55,9 @@ public class Carrito extends HttpServlet {
 			Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
 			ArrayList<Disco> carrito = (ArrayList<Disco>) request.getSession().getAttribute("carrito");
 			con.nuevaVenta(monto, usuario, descuento, carrito);
-			request.setAttribute("msjVenta", "Será dirigido a un sitio para realizar el pago.");
-			request.getRequestDispatcher("carrito.jsp").forward(request, response);
+			carrito = new ArrayList<Disco>();
+			request.getSession().setAttribute("carrito", carrito);
+			request.getRequestDispatcher("NoContemplado.html").forward(request, response);
 		}
 	}
 
