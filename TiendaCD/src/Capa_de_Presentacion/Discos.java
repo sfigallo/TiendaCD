@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import Capa_de_Control.Controlador;
 import Capa_de_Entidades.Disco;
 import Capa_de_Entidades.Usuario;
+import Capa_de_Entidades.Venta;
 
 /**
  * Servlet implementation class Discos
@@ -54,14 +55,27 @@ public class Discos extends HttpServlet {
 		if(request.getParameter("eventoValorar")!=null){
 			Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
 			if(usuario!=null){
-				int valor = Integer.parseInt(request.getParameter("valor"));
 				int n = Integer.parseInt(request.getParameter("numero"));
 				Disco disco;
 				if(discos.isEmpty())
 					disco = con.getDiscos().get(n);
 				else
 					disco = discos.get(n);
-				con.valorarDisco(usuario,disco,valor);
+				ArrayList<Venta> ventas = con.getVentasxUsuario(usuario);
+				boolean mismoDisco = false;
+				int i=0;
+				while(ventas!=null || mismoDisco==false || i<ventas.size()){
+					int j=0;
+					while(j<ventas.get(i).getDiscos().size() || mismoDisco==false){
+						mismoDisco = (disco==ventas.get(i).getDiscos().get(j));
+						j++;
+					}
+					i++;
+				}
+				if(mismoDisco==false){
+					int valor = Integer.parseInt(request.getParameter("valor"));
+					con.valorarDisco(usuario,disco,valor);
+				}
 			}
 			request.getRequestDispatcher("discos.jsp").forward(request, response);
 		}
@@ -74,6 +88,8 @@ public class Discos extends HttpServlet {
 					disco = con.getDiscos().get(n);
 				else
 					disco = discos.get(n);
+				if((request.getSession().getAttribute("carrito"))!=null)
+					carrito = (ArrayList<Disco>) request.getSession().getAttribute("carrito");
 				carrito.add(disco);
 				request.getSession().setAttribute("carrito", carrito);
 			}

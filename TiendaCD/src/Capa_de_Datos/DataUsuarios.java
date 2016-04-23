@@ -3,9 +3,11 @@ package Capa_de_Datos;
 import java.sql.*;
 import java.util.ArrayList;
 
+import Capa_de_Entidades.Descuento;
 import Capa_de_Entidades.Disco;
 import Capa_de_Entidades.TipoUsuario;
 import Capa_de_Entidades.Usuario;
+import Capa_de_Entidades.Venta;
 
 public class DataUsuarios {
    
@@ -145,6 +147,55 @@ public class DataUsuarios {
 		FactoriaConexion.getInstancia().releaseConexion();
 		return discos;
 	}
-	
+	public static ArrayList<Venta> getVentas (Usuario usuario){
+		ArrayList<Venta> ventas = new ArrayList<Venta>();
+		Connection con = FactoriaConexion.getInstancia().getConexion();
+		String sql = "call getVentasxUsuario(?);";
+		try {
+			PreparedStatement comando = con.prepareStatement(sql);
+			comando.setString(1, usuario.getUsuario());
+			ResultSet rs = comando.executeQuery(); //nroVenta monto usuario codDescuento
+			while(rs.next()){
+				Venta v = new Venta();
+				v.setNroVenta(rs.getInt("nroVenta"));
+				v.setMonto(rs.getFloat("monto"));
+				v.getUsuario().setUsuario(rs.getString("usuario"));
+				v.getDescuento().setCodDescuento(rs.getInt("codDescuento"));
+				ventas.add(v);
+			}
+			for (Venta venta : ventas) {
+				venta.setDiscos(DataDiscos.getDiscosxVenta(venta.getNroVenta()));
+				venta.setUsuario(DataUsuarios.getUsuario(venta.getUsuario().getUsuario()));
+				venta.setDescuento(DataUsuarios.getDescuento(venta.getDescuento().getCodDescuento()));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		FactoriaConexion.getInstancia().getConexion();
+		return ventas;
+	}
+
+	//NO TIENE STORED PROCEDURE
+	public static Descuento getDescuento(int codDescuento) {
+		Descuento desc = null;
+		String sql = "select * from descuento where codDescuento = ?;";
+		Connection con = FactoriaConexion.getInstancia().getConexion();
+		try {
+			PreparedStatement comando = con.prepareStatement(sql);
+			comando.setInt(1, codDescuento);
+			ResultSet rs = comando.executeQuery();
+			if(rs.next()){
+				desc = new Descuento();
+				desc.setCodDescuento(codDescuento);
+				desc.setMontoASuperar(rs.getFloat("montoASuperar"));
+				desc.setPorcentaje(rs.getFloat("porcentaje"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return desc;
+	}
 	
 }

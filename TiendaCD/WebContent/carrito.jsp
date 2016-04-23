@@ -2,7 +2,9 @@
     pageEncoding="ISO-8859-1"%>
 <%@ page import="Capa_de_Entidades.Usuario"%>
 <%@ page import="Capa_de_Entidades.Disco"%>
+<%@ page import="Capa_de_Entidades.Descuento"%>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="Capa_de_Control.Controlador" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -49,12 +51,15 @@
        </thead>
        <tbody>
        <%
-       	ArrayList<Disco> carrito = (ArrayList<Disco>)request.getSession().getAttribute("carrito");
-       	for(int i=0; i<carrito.size(); i++){
+       ArrayList<Disco> carrito = (ArrayList<Disco>) request.getSession().getAttribute("carrito");
+       float monto = 0;
+       if(carrito != null){
+       for(int i=0; i<carrito.size(); i++){
        		Disco disco = carrito.get(i);
+       		monto = monto + disco.getPrecio();
        %>
          <tr>
-           <td style="vertical-align:middle"><%=disco.getTitulo() %></td>
+           <td style="vertical-align:middle"><%=disco.getTitulo()%></td>
            <td style="vertical-align:middle"><%=disco.getAutor().getNombreAutor() %></td> 
            <td style="vertical-align:middle"><%=disco.getAñoLanzamiento() %></td>
            <td style="vertical-align:middle"><%=disco.getGenero().getDescGenero() %></td>
@@ -66,18 +71,27 @@
            </form>
            </td> 
          </tr>
-         <% } %>
+         <% } } %>
        </tbody>
      </table>
 	</div>
 	
   	<div class="col-lg-8 col-lg-offset-1" style="background-color:#ccc">
  		<div class="container">
-  		<h4>Subtotal:</h4>
-  		<h4>Descuento:</h4>
-  		<h3>Total:</h3>
+  		<h4>Subtotal: <%=monto %></h4>
+  		<%
+  			Controlador con = new Controlador();
+  			float dto = 0;
+  			for(Descuento desc : con.getDescuentos()){
+  				if(monto >= desc.getMontoASuperar())
+  					dto = desc.getPorcentaje();
+  			}
+  		%>
+  		<h4>Descuento: <%=dto %></h4>
+  		<%monto= (monto - monto*dto); %>
+  		<h3>Total: <%=monto %></h3> 
    		</div>
-   		<input class="btn btn-success" type="submit" value="Confirmar Compra" id="confirmarCompra" name="confirmarCompra" />
+   		<input class="btn btn-success" type="submit" value="Confirmar Compra" id="confirmarCompra" name="confirmarCompra" />  		
 	<br><br>
 	</div>
   	<br>	
