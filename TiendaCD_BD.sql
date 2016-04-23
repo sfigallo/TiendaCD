@@ -122,6 +122,7 @@ CREATE TABLE `discos_por_venta` (
 
 LOCK TABLES `discos_por_venta` WRITE;
 /*!40000 ALTER TABLE `discos_por_venta` DISABLE KEYS */;
+INSERT INTO `discos_por_venta` VALUES (1,1),(4,1);
 /*!40000 ALTER TABLE `discos_por_venta` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -250,7 +251,7 @@ CREATE TABLE `venta` (
   KEY `fk_venta_descuento1_idx` (`codDescuento`),
   CONSTRAINT `fk_venta_descuento1` FOREIGN KEY (`codDescuento`) REFERENCES `descuento` (`codDescuento`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_venta_usuario1` FOREIGN KEY (`usuario`) REFERENCES `usuario` (`usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -259,6 +260,7 @@ CREATE TABLE `venta` (
 
 LOCK TABLES `venta` WRITE;
 /*!40000 ALTER TABLE `venta` DISABLE KEYS */;
+INSERT INTO `venta` VALUES (1,260,'sfigallo',3),(2,75.5,'sfigallo',1),(3,157.5,'rjimenez',2);
 /*!40000 ALTER TABLE `venta` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -752,4 +754,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-04-22 23:20:15
+-- Dump completed on 2016-04-23 17:44:01

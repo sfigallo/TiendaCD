@@ -25,7 +25,8 @@
         <ul class="nav navbar-nav">
           <li class="active"><a href="discosAdmin.jsp">Discos</a></li> 
           <li><a href="autoresAdmin.jsp">Autores</a></li>
-          <li><a href="generosAdmin.jsp">Géneros</a></li>          
+          <li><a href="generosAdmin.jsp">Géneros</a></li>
+          <li><a href="descuentosAdmin.jsp">Descuentos</a></li>          
           <li><a href="usuariosAdmin.jsp">Usuarios</a></li> 
         </ul>
       </div>

@@ -649,6 +649,26 @@ public class DataDiscos {
 		FactoriaConexion.getInstancia().releaseConexion();
 		return discos;
 	}
+
+	public static Descuento getDescuento(int codigo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public static void addDescuento(Descuento descuento) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public static void updateDescuento(Descuento descuento) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public static void removeDescuento(Descuento descuento) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }
 
