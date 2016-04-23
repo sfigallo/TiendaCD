@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import Capa_de_Entidades.Disco;
 import Capa_de_Entidades.TipoUsuario;
 import Capa_de_Entidades.Usuario;
+import Capa_de_Entidades.Venta;
 
 public class DataUsuarios {
    
@@ -144,6 +145,11 @@ public class DataUsuarios {
 		}
 		FactoriaConexion.getInstancia().releaseConexion();
 		return discos;
+	}
+
+	public static ArrayList<Venta> getVentas(Usuario usuario) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	
