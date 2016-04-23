@@ -8,7 +8,22 @@ public class Venta {
 	private float monto;
 	private Usuario usuario;
 	private ArrayList<Disco> discos;
+	private Descuento descuento;
 	
+	public Venta(){
+		usuario = new Usuario();
+		discos = new ArrayList<Disco>();
+		descuento = new Descuento();
+	}
+	
+	public Descuento getDescuento() {
+		return descuento;
+	}
+
+	public void setDescuento(Descuento descuento) {
+		this.descuento = descuento;
+	}
+
 	public int getNroVenta() {
 		return nroVenta;
 	}

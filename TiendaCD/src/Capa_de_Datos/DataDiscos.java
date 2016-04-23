@@ -603,8 +603,58 @@ public class DataDiscos {
 	}
 
 	public static ArrayList<Descuento> getDescuentos() {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<Descuento> descuentos = new ArrayList<Descuento>();
+		Connection con = FactoriaConexion.getInstancia().getConexion();
+		String sql = "call getDescuentos();";
+		try {
+			PreparedStatement comando = con.prepareStatement(sql);
+			ResultSet rs = comando.executeQuery();
+			while(rs.next()){
+				Descuento d = new Descuento();
+				d.setCodDescuento(rs.getInt("codDescuento"));
+				d.setMontoASuperar(rs.getFloat("montoASuperar"));
+				d.setPorcentaje(rs.getFloat("porcentaje"));
+				descuentos.add(d);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		FactoriaConexion.getInstancia().releaseConexion();
+		return descuentos;
+	}
+	
+	public static ArrayList<Disco> getDiscosxVenta (int nroVenta){
+		ArrayList<Disco> discos = new ArrayList<Disco>();
+		String sql = "call getDiscosxVenta(?);";
+		Connection con = FactoriaConexion.getInstancia().getConexion();
+		try {
+			PreparedStatement comando = con.prepareStatement(sql);
+			comando.setInt(1, nroVenta);
+			ResultSet rs = comando.executeQuery();
+			while(rs.next()){
+				Disco d = new Disco();
+				d.setCodDisco(rs.getInt("codDisco"));
+				d.setTitulo(rs.getString("titulo"));
+				d.setAñoLanzamiento(rs.getInt("anioLanzamiento"));
+				d.setCantCopiasDisp(rs.getInt("cantCopiasDisp"));
+				d.setPrecio(rs.getFloat("precio"));
+				d.getGenero().setCodGenero(rs.getInt("codGenero"));
+				d.getAutor().setCodAutor(rs.getInt("codAutor"));
+				discos.add(d);
+			}
+			for (Disco disco : discos) {
+				disco.getGenero().setDescGenero(getGenero(disco.getGenero().getCodGenero()).getDescGenero());
+				disco.getAutor().setNombreAutor(getAutor(disco.getAutor().getCodAutor()).getNombreAutor());
+				disco.setValoración(calcularValoracion(disco.getCodDisco()));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		FactoriaConexion.getInstancia().releaseConexion();
+		return discos;
 	}
 	
 }
+
