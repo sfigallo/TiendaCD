@@ -1,3 +1,4 @@
+<%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ page import="Capa_de_Entidades.Usuario"%>
@@ -82,17 +83,29 @@
   		<%
   			Controlador con = new Controlador();
   			float dto = 0;
+  			int codDto = 0;
   			for(Descuento desc : con.getDescuentos()){
-  				if(monto >= desc.getMontoASuperar())
+  				if(monto >= desc.getMontoASuperar()){ 
+  					codDto = desc.getCodDescuento();
   					dto = desc.getPorcentaje();
+  				}
   			}
+  			dto = dto*100;
   		%>
-  		<h4>Descuento: <%=dto %></h4>
-  		<%monto= (monto - monto*dto); %>
+  		<h4>Descuento: <%=dto %>%</h4>
+  		<%monto= (monto - monto*dto/100); %>
   		<h3>Total: <%=monto %></h3> 
    		</div>
-   		<input class="btn btn-success" type="submit" value="Confirmar Compra" id="confirmarCompra" name="confirmarCompra" />  		
-	<br><br>
+   		<form role="form" action="Carrito" method="post" id="eliminar" name="eliminar">
+   			<input type="hidden" name="monto" id="monto" value="<%=monto%>"/>
+   			<input type="hidden" name="descuento" id="descuento" value="<%=codDto%>"/>
+   			<input class="btn btn-success" type="submit" value="Confirmar Compra" id="confirmarCompra" name="confirmarCompra" />  		
+		</form>
+		<br>
+		<%if (request.getAttribute("msjVenta")!=null){ %>
+      	<%=request.getAttribute("msjVenta")%>
+      	<%} %>
+		<br>
 	</div>
   	<br>	
 </div>
