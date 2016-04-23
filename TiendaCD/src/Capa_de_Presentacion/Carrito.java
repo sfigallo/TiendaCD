@@ -9,7 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Capa_de_Control.Controlador;
 import Capa_de_Entidades.Disco;
+import Capa_de_Entidades.Usuario;
 
 /**
  * Servlet implementation class Carrito
@@ -38,11 +40,22 @@ public class Carrito extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		Controlador con = new Controlador();
 		if(request.getParameter("eventoEliminar")!=null){
 			ArrayList<Disco> carrito = (ArrayList<Disco>) request.getSession().getAttribute("carrito");
 			int n = Integer.parseInt(request.getParameter("numero"));
 			carrito.remove(n);
 			request.getSession().setAttribute("carrito", carrito);
+			request.getRequestDispatcher("carrito.jsp").forward(request, response);
+		}
+		
+		if(request.getParameter("confirmarCompra")!=null){
+			float monto = Float.valueOf(request.getParameter("monto"));
+			int descuento = Integer.parseInt(request.getParameter("descuento"));
+			Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
+			ArrayList<Disco> carrito = (ArrayList<Disco>) request.getSession().getAttribute("carrito");
+			con.nuevaVenta(monto, usuario, descuento, carrito);
+			request.setAttribute("msjVenta", "Será dirigido a un sitio para realizar el pago.");
 			request.getRequestDispatcher("carrito.jsp").forward(request, response);
 		}
 	}
