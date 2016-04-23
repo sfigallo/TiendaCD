@@ -8,6 +8,7 @@ import Capa_de_Entidades.Descuento;
 import Capa_de_Entidades.Disco;
 import Capa_de_Entidades.GeneroMusical;
 import Capa_de_Entidades.Usuario;
+import Capa_de_Entidades.Venta;
 
 public class DataDiscos {
 	
@@ -654,5 +655,6 @@ public class DataDiscos {
 		FactoriaConexion.getInstancia().releaseConexion();
 		return discos;
 	}
+	
 }
 
