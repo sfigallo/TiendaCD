@@ -134,8 +134,4 @@ public class Controlador {
 	public void modificarDescuento(Descuento descuento) {
 		DataDiscos.updateDescuento(descuento);
 	}
-	public void borrarDescuento(Descuento descuento) {
-		DataDiscos.removeDescuento(descuento);
-		
-	}
 }

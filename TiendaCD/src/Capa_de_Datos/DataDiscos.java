@@ -658,17 +658,10 @@ public class DataDiscos {
 
 	public static void addDescuento(Descuento descuento) {
 		// TODO Auto-generated method stub
-		
 	}
 
 	public static void updateDescuento(Descuento descuento) {
 		// TODO Auto-generated method stub
-		
-	}
-
-	public static void removeDescuento(Descuento descuento) {
-		// TODO Auto-generated method stub
-		
 	}
 	
 }

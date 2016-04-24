@@ -31,6 +31,14 @@
         	<%} %>
         </ul>
       </div>
+      <%if(request.getSession().getAttribute("usuario") != null){ 
+        	Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");%>  	
+        	<div align="right">
+        		<font color="gray"><br>
+        		Usuario: <%=usuario.getUsuario() %>
+        		</font>
+        	</div>
+        	<%} %>
     </div>
   </nav>
 
