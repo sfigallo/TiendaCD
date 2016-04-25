@@ -94,5 +94,10 @@ public class Discos extends HttpServlet {
 			else
 				request.getRequestDispatcher("inicio.jsp").forward(request, response);
 		}
+		
+		if(request.getParameter("mostrarTodos")!=null){
+			request.getSession().setAttribute("buscados", null);
+			request.getRequestDispatcher("discos.jsp").forward(request, response);
+		}
 	}
 }

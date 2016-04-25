@@ -47,11 +47,11 @@ DROP TABLE IF EXISTS `descuento`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `descuento` (
-  `codDescuento` int(11) NOT NULL,
+  `codDescuento` int(11) NOT NULL AUTO_INCREMENT,
   `montoASuperar` float DEFAULT NULL,
   `porcentaje` float DEFAULT NULL,
   PRIMARY KEY (`codDescuento`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -60,7 +60,7 @@ CREATE TABLE `descuento` (
 
 LOCK TABLES `descuento` WRITE;
 /*!40000 ALTER TABLE `descuento` DISABLE KEYS */;
-INSERT INTO `descuento` VALUES (0,0,0),(1,175,0.5),(2,200,0.1),(3,350,0.2);
+INSERT INTO `descuento` VALUES (1,300,0.1),(2,400,0.15),(3,500,0.25),(4,600,0.25);
 /*!40000 ALTER TABLE `descuento` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -94,7 +94,7 @@ CREATE TABLE `disco` (
 
 LOCK TABLES `disco` WRITE;
 /*!40000 ALTER TABLE `disco` DISABLE KEYS */;
-INSERT INTO `disco` VALUES (1,'Amor Amarillo',2000,9,150,5,1,1),(2,'Viaje',2014,15,151,9,2,1),(3,'Fuerza Natural',2010,20,200,5,1,1),(4,'Voragine',2011,10,175,5,3,1),(5,'Ahí Vamos',2005,23,150,5,1,1),(7,'Dynamo',1990,11,120,5,4,1);
+INSERT INTO `disco` VALUES (1,'Amor Amarillo',2000,7,150,5,1,1),(2,'Viaje',2014,14,151,9,2,1),(3,'Fuerza Natural',2010,20,200,5,1,1),(4,'Voragine',2011,9,175,5,3,1),(5,'Ahí Vamos',2005,22,150,5,1,1),(7,'Dynamo',1990,11,120,5,4,1);
 /*!40000 ALTER TABLE `disco` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -122,7 +122,7 @@ CREATE TABLE `discos_por_venta` (
 
 LOCK TABLES `discos_por_venta` WRITE;
 /*!40000 ALTER TABLE `discos_por_venta` DISABLE KEYS */;
-INSERT INTO `discos_por_venta` VALUES (4,1),(2,8),(4,8),(2,9),(7,14),(7,15),(1,16),(1,17);
+INSERT INTO `discos_por_venta` VALUES (1,18),(2,19),(5,19),(1,20),(4,20);
 /*!40000 ALTER TABLE `discos_por_venta` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -231,7 +231,7 @@ CREATE TABLE `valoracion` (
 
 LOCK TABLES `valoracion` WRITE;
 /*!40000 ALTER TABLE `valoracion` DISABLE KEYS */;
-INSERT INTO `valoracion` VALUES (4,'rjimenez',5),(4,'sfigallo',1);
+INSERT INTO `valoracion` VALUES (1,'sfigallo',5),(2,'sfigallo',4),(4,'rjimenez',5),(4,'sfigallo',1);
 /*!40000 ALTER TABLE `valoracion` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -251,9 +251,8 @@ CREATE TABLE `venta` (
   UNIQUE KEY `nroVenta_UNIQUE` (`nroVenta`),
   KEY `fk_venta_usuario1_idx` (`usuario`),
   KEY `fk_venta_descuento1_idx` (`codDescuento`),
-  CONSTRAINT `fk_venta_descuento1` FOREIGN KEY (`codDescuento`) REFERENCES `descuento` (`codDescuento`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_venta_usuario1` FOREIGN KEY (`usuario`) REFERENCES `usuario` (`usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -262,7 +261,7 @@ CREATE TABLE `venta` (
 
 LOCK TABLES `venta` WRITE;
 /*!40000 ALTER TABLE `venta` DISABLE KEYS */;
-INSERT INTO `venta` VALUES (1,260,'sfigallo',3),(8,260.8,'rjimenez',3),(9,75.5,'sfigallo',1),(11,60,'sfigallo',1),(12,60,'sfigallo',1),(13,60,'sfigallo',1),(14,120,'sfigallo',0),(15,120,'sfigallo',0),(16,150,'sfigallo',0),(17,150,'sfigallo',0);
+INSERT INTO `venta` VALUES (18,150,'sfigallo',0),(19,301,'sfigallo',0),(20,292.5,'sfigallo',1);
 /*!40000 ALTER TABLE `venta` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -341,6 +340,25 @@ DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `getAutorxNombreAutor`(cadena varchar(45))
 BEGIN
 	select * from autor where nombreAutor like cadena;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `getDescuento` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getDescuento`(cod int)
+BEGIN
+select * from descuento where codDescuento = cod;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -754,4 +772,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-04-25 11:29:18
+-- Dump completed on 2016-04-25 17:50:35

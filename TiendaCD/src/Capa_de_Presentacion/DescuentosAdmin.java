@@ -53,7 +53,7 @@ public class DescuentosAdmin extends HttpServlet {
 		if(request.getParameter("nuevoDescuento")!=null){
 			Descuento descuento = new Descuento();
 			descuento.setMontoASuperar(Float.valueOf(request.getParameter("monto")));
-			float porc = Float.valueOf(request.getParameter("porcentaje")) * 100;
+			float porc = Float.valueOf(request.getParameter("porcentaje")) / 100;
 			descuento.setPorcentaje(porc);
 			con.nuevoDescuento(descuento);
 			request.getRequestDispatcher("descuentosAdmin.jsp").forward(request, response);
