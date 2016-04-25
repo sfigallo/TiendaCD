@@ -93,7 +93,7 @@
          		<%
          		Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
          		if(usuario!=null){
-         		 if(usuario.getDiscosAValorar().contains(disco)){
+         		 if(usuario.getDiscosAValorar().contains(disco.getCodDisco())){
          		%>
          		<form role="form" class="form-inline" action="Discos" method="post" id="valorarDisco" name="valorarDisco">
 					<select name="valor">
