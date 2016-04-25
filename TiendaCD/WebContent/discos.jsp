@@ -31,14 +31,6 @@
         	<%} %>
         </ul>
       </div>
-      <%if(request.getSession().getAttribute("usuario") != null){ 
-        	Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");%>  	
-        	<div align="right">
-        		<font color="gray"><br>
-        		Usuario: <%=usuario.getUsuario() %>
-        		</font>
-        	</div>
-        	<%} %>
     </div>
   </nav>
 
@@ -51,7 +43,7 @@
     </form>
   </div>
   
-  <br><br><br>
+  <br>
 
   <form role="form" class="form-inline" action="Discos" method="post" id="mostrarTodos" name="mostrarTodos">
   	<input class="btn" type="submit" value="Mostrar todos" id="mostrarTodos" name="mostrarTodos"/>
