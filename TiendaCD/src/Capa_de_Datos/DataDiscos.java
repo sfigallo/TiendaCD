@@ -8,7 +8,6 @@ import Capa_de_Entidades.Descuento;
 import Capa_de_Entidades.Disco;
 import Capa_de_Entidades.GeneroMusical;
 import Capa_de_Entidades.Usuario;
-import Capa_de_Entidades.Venta;
 
 public class DataDiscos {
 	
@@ -535,7 +534,8 @@ public class DataDiscos {
 
 	public static void valorarDisco(Usuario usuario, Disco disco, int valor) {
 		Connection con = FactoriaConexion.getInstancia().getConexion();
-		String sql = "call valorar (?, ?, ?);"; //disco usuario valoracion
+		String sql = "insert into valoracion(codDisco, usuario, "
+				+ "valoracion) values (?,?,?)";
 		try {
 			PreparedStatement comando = con.prepareStatement(sql);
 			comando.setInt(1, disco.getCodDisco());

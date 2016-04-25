@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import Capa_de_Control.Controlador;
 import Capa_de_Entidades.Disco;
 import Capa_de_Entidades.Usuario;
-import Capa_de_Entidades.Venta;
 
 /**
  * Servlet implementation class Discos
@@ -65,7 +64,7 @@ public class Discos extends HttpServlet {
 					discos = con.getDiscos();
 					disco = discos.get(n);
 				}
-				if(usuario.getDiscosAValorar().contains(disco)){
+				if(usuario.getDiscosAValorar().contains(disco.getCodDisco())){
 					int valor = Integer.parseInt(request.getParameter("valor"));
 					con.valorarDisco(usuario,disco,valor);
 				}

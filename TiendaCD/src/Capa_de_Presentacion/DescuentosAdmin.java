@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Capa_de_Control.Controlador;
-import Capa_de_Entidades.Autor;
 import Capa_de_Entidades.Descuento;
 
 /**

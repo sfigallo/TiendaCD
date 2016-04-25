@@ -3,9 +3,7 @@ package Capa_de_Datos;
 import java.sql.*;
 import java.util.ArrayList;
 
-import Capa_de_Entidades.Autor;
 import Capa_de_Entidades.Descuento;
-import Capa_de_Entidades.Disco;
 import Capa_de_Entidades.TipoUsuario;
 import Capa_de_Entidades.Usuario;
 import Capa_de_Entidades.Venta;
