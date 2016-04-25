@@ -94,6 +94,7 @@
   		%>
   		<h4>Descuento: <%=dto %>%</h4>
   		<%monto= (monto - monto*dto/100); %>
+  		<h3>Total: $<%=monto %></h3> 
    		</div>
    		<form role="form" action="Carrito" method="post" id="eliminar" name="eliminar">
    			<input type="hidden" name="monto" id="monto" value="<%=monto%>"/>
