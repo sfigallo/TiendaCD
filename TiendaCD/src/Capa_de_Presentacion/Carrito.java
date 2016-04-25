@@ -54,6 +54,7 @@ public class Carrito extends HttpServlet {
 			int descuento = Integer.parseInt(request.getParameter("descuento"));
 			Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
 			ArrayList<Disco> carrito = (ArrayList<Disco>) request.getSession().getAttribute("carrito");
+			con.nuevaVenta(monto, usuario, descuento, carrito);
 			for(Disco d : carrito){
 				d.setCantCopiasDisp(d.getCantCopiasDisp()-1);
 				con.modificarDisco(d);
