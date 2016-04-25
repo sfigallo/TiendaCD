@@ -89,7 +89,7 @@
          <tr>
            <td><%=desc.getCodDescuento()%></td>
            <td>$<%=desc.getMontoASuperar() %></td>
-           <% float porc = desc.getPorcentaje() * 100; %>
+           <% float porc = desc.getPorcentaje() / 100; %>
            <td><%=(int)porc%>%</td>
          </tr>
          <%} %>
