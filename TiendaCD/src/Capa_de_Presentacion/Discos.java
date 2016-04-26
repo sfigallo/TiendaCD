@@ -87,9 +87,12 @@ public class Discos extends HttpServlet {
 				}
 				if((request.getSession().getAttribute("carrito"))!=null)
 					carrito = (ArrayList<Disco>) request.getSession().getAttribute("carrito");
-
-				//Comprobar que los discos en el carrito no superen el stock
-				carrito.add(disco);
+				int cont = 0;
+				for (Disco discoi : carrito) {
+							if (discoi.equals(disco)) cont++;
+					}
+				if (disco.getCantCopiasDisp()>cont)
+					carrito.add(disco);
 				request.getSession().setAttribute("carrito", carrito);
 				request.getRequestDispatcher("discos.jsp").forward(request, response);
 			}
