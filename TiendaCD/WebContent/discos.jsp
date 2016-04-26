@@ -89,6 +89,7 @@
          		<%
          		Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
          		usuario = controlador.buscarUsuario(usuario.getUsuario());
+         		request.getSession().setAttribute("usuario", usuario);
          		if(usuario!=null){
          		 if(usuario.getDiscosAValorar().contains(disco.getCodDisco())){
          		%>

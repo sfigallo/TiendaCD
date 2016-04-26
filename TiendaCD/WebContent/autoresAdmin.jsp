@@ -85,10 +85,13 @@
          </tr> 
        </thead>
        <tbody>
-			<%
-           ArrayList<Autor> autores = controlador.getAutores();
-           for(int i=0; i<autores.size(); i++){
-           Autor autor = autores.get(i);						%>
+			<%		
+            ArrayList<Autor> autores = new ArrayList<Autor>();
+       	   	if(request.getAttribute("autores")==null)
+           		autores = controlador.getAutores();
+       	   	else
+       	   		autores = (ArrayList<Autor>) request.getAttribute("autores");
+           		for(Autor autor : autores){  %>
          <tr>
            <td><%=autor.getCodAutor()%></td>
            <td><%=autor.getNombreAutor()%></td>

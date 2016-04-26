@@ -86,9 +86,12 @@
        </thead>
        <tbody>
        	<%
-       		ArrayList<GeneroMusical> generos = controlador.getGeneros();
-           for(int i=0; i<generos.size(); i++){
-           GeneroMusical genero = generos.get(i);						%>
+       		ArrayList<GeneroMusical> generos = new ArrayList<GeneroMusical>();
+   	   		if(request.getAttribute("generos")==null)
+       		generos = controlador.getGeneros();
+   	   		else
+   	   		generos = (ArrayList<GeneroMusical>) request.getAttribute("generos");
+       		for(GeneroMusical genero : generos){  %>
          <tr>
            <td><%=genero.getCodGenero()%></td>
            <td><%=genero.getDescGenero()%></td>
