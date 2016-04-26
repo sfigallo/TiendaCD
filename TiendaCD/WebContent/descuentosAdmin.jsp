@@ -41,7 +41,7 @@
 			<td><b>Código:</b></td>
 			<td> 
 				 <div class = "form-inline">
-					<input type="text" class="form-control" id="codigoDto" name="codigoDto" value="<%if(request.getAttribute("codigoDto")!=null){%><%=request.getAttribute("codigoDto") %><% }%>" placeholder="Dejar campo vacío para agregar nuevo autor" size="43">
+					<input type="text" class="form-control" id="codigoDto" name="codigoDto" value="<%if(request.getAttribute("codigoDto")!=null){%><%=request.getAttribute("codigoDto") %><% }%>" placeholder="Dejar campo vacío para agregar descuento" size="43">
 					<input class="btn btn-primary" type="submit" value="Buscar" id="buscarDescuento" name="buscarDescuento"/>
 				 </div>
 			</td>
@@ -51,15 +51,16 @@
 			<td><input type="text" class="form-control" id="monto" name="monto" value="<%if(request.getAttribute("monto")!=null){%><%=request.getAttribute("monto") %><% }%>"></td>
 		</tr>
 		<tr>
-			<td><b>Porcentaje:</b></td>
-			<td><input type="text" class="form-control" id="porcentaje" name="porcentaje" value="<%if(request.getAttribute("porcentaje")!=null){%><%=request.getAttribute("porcentaje") %><% }%>"></td>
+			<td><b>Porcentaje (%):</b></td>
+			<td>
+				<input type="text" class="form-control" id="porcentaje" name="porcentaje" value="<%if(request.getAttribute("porcentaje")!=null){ float por=(Float)request.getAttribute("porcentaje")*100;%><%=(int)por%><% }%>">
+			</td>
 		</tr>
 	</table>
 	<br>
 	<div align="center">
 	<input class="btn btn-success" type="submit" value="Agregar Nuevo" id="nuevoDescuento" name="nuevoDescuento"/>
   	<input class="btn btn-primary" type="submit" value="Modificar" id="modificarDescuento" name="modificarDescuento"/>
-  	<input class="btn btn-danger" type="submit" value="Dar de baja" id="eliminarDescuento" name="eliminarDescuento"/>
     </div>
     </form>
 	<br>

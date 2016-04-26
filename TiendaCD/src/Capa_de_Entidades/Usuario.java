@@ -10,11 +10,11 @@ public class Usuario {
 	private String apellido;
 	private int dni;
 	private TipoUsuario tipo;
-	private ArrayList<Disco> discosAValorar;
+	private ArrayList<Integer> discosAValorar;
 	
 	public Usuario(){
 		tipo = new TipoUsuario();
-		setDiscosAValorar(new ArrayList<Disco>());
+		setDiscosAValorar(new ArrayList<Integer>());
 	}
 	
 	public String getUsuario() {
@@ -54,11 +54,11 @@ public class Usuario {
 		this.tipo = tipo;
 	}
 
-	public ArrayList<Disco> getDiscosAValorar() {
+	public ArrayList<Integer> getDiscosAValorar() {
 		return discosAValorar;
 	}
 
-	public void setDiscosAValorar(ArrayList<Disco> discosAValorar) {
+	public void setDiscosAValorar(ArrayList<Integer> discosAValorar) {
 		this.discosAValorar = discosAValorar;
 	}
 	
