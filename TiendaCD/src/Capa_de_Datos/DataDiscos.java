@@ -12,6 +12,7 @@ import Capa_de_Entidades.Usuario;
 public class DataDiscos {
 	
 	public static ArrayList<Disco> getDiscosxAutor(String autor){ 
+		autor = "%"+autor+"%";
 		ArrayList<Disco> discos = new ArrayList<Disco>();;
 		String sql = "call getDiscosxNombreAutor(?);";
 		Connection con = FactoriaConexion.getInstancia().getConexion();
@@ -44,6 +45,7 @@ public class DataDiscos {
 	}
 	
 	public static ArrayList<Disco> getDiscosxGenero(String genero){
+		genero = "%"+genero+"%";
 		ArrayList<Disco> discos = new ArrayList<Disco>();
 		String sql = "call getDiscosxDescGenero(?);";
 		Connection con = FactoriaConexion.getInstancia().getConexion();
@@ -76,6 +78,7 @@ public class DataDiscos {
 	}
 
 	public static ArrayList<Disco> getDiscosxTitulo(String cadena) {
+		cadena = "%"+cadena+"%";
 		ArrayList<Disco> discos = new ArrayList<Disco>();
 		String sql = "call getDiscosxTitulo(?);";
 		Connection con = FactoriaConexion.getInstancia().getConexion();
@@ -238,6 +241,7 @@ public class DataDiscos {
 	}
  	
  	public static ArrayList<Autor> getAutoresxNombre (String nombre){
+ 		nombre = "%"+nombre+"%";
  		ArrayList<Autor> autores = new ArrayList<Autor>();
  		String sql = "call getAutoresxNombreAutor(?);";
  		Connection con = FactoriaConexion.getInstancia().getConexion();
@@ -424,6 +428,7 @@ public class DataDiscos {
 	}
 
 	public static ArrayList<GeneroMusical> getGenerosxDescripcion(String cadena) {
+		cadena = "%"+cadena+"%";
 		ArrayList<GeneroMusical> generos = new ArrayList<GeneroMusical>();
 		Connection con = FactoriaConexion.getInstancia().getConexion();
 		String sql = "call getGenerosxDescripcion(?);";

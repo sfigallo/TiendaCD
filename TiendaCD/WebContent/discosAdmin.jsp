@@ -138,11 +138,13 @@
            <th>Stock</th>
          </tr> 
        </thead>
-       <tbody> <%  
-       	   	if(request.getAttribute("discos")==null){
-           		ArrayList<Disco> discos = controlador.getDiscos();
-           		for(int i=0; i<discos.size(); i++){
-           		Disco disco = discos.get(i);										%>
+       <tbody> <% 
+       		ArrayList<Disco> discos = new ArrayList<Disco>();
+       	   	if(request.getAttribute("discos")==null)
+           		discos = controlador.getDiscos();
+       	   	else
+       	   		discos = (ArrayList<Disco>) request.getAttribute("discos");
+           		for(Disco disco : discos){  %>
          <tr>
            <td><%= disco.getTitulo() %></td>
            <td><%= disco.getCodDisco() %></td>
@@ -152,21 +154,7 @@
            <td>$<%= disco.getPrecio() %></td>
            <td><%= disco.getCantCopiasDisp() %></td>
          </tr>
-         <% 	} 
-           	}else {
-        		ArrayList<Disco> discos = (ArrayList<Disco>)request.getAttribute("discos");
-        		for(Disco disco : discos){%>
-        <tr>
-           <td><%= disco.getTitulo() %></td>
-           <td><%= disco.getCodDisco() %></td>
-           <td><%= disco.getAutor().getNombreAutor() %></td> 
-           <td><%= disco.getAñoLanzamiento() %></td>
-           <td><%= disco.getGenero().getDescGenero() %></td>
-           <td>$<%= disco.getPrecio() %></td>
-           <td><%= disco.getCantCopiasDisp() %></td>
-         </tr>
-        		<%}
-         	}%>
+         <% 	} %>
        </tbody>
      </table>
   </div>
