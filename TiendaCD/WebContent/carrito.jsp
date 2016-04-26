@@ -92,7 +92,7 @@
   			}
   			dto = dto*100;
   		%>
-  		<h4>Descuento: <%=dto %>%</h4>
+  		<h4>Descuento: <%=(int)dto %>%</h4>
   		<%monto= (monto - monto*dto/100); %>
   		<h3>Total: $<%=monto %></h3> 
    		</div>
@@ -101,9 +101,9 @@
    			<input type="hidden" name="descuento" id="descuento" value="<%=codDto%>"/>
    			<input class="btn btn-success" type="submit" value="Confirmar Compra" id="confirmarCompra" name="confirmarCompra" />  		
 		</form>
-		<br><br>
+		<br>
 	</div>
-  	<br>	
+  	<br><br>	
 </div>
 </body>
 </html>

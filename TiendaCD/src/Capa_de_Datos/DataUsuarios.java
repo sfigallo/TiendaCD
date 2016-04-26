@@ -4,7 +4,6 @@ import java.sql.*;
 import java.util.ArrayList;
 
 import Capa_de_Entidades.Descuento;
-import Capa_de_Entidades.Disco;
 import Capa_de_Entidades.TipoUsuario;
 import Capa_de_Entidades.Usuario;
 import Capa_de_Entidades.Venta;
@@ -125,8 +124,8 @@ public class DataUsuarios {
 		FactoriaConexion.getInstancia().releaseConexion();
 		return tu;
 	}
-	private static ArrayList<Disco> getDiscosAValorar(String usuario){
-		ArrayList<Disco> discos = new ArrayList<Disco>();
+	private static ArrayList<Integer> getDiscosAValorar(String usuario){
+		ArrayList<Integer> codDiscos = new ArrayList<Integer>();
 		String sql = "call getDiscosAValorar(?)";
 		Connection con = FactoriaConexion.getInstancia().getConexion();
 		try {
@@ -134,19 +133,15 @@ public class DataUsuarios {
 			comando.setString(1, usuario);
 			ResultSet rs = comando.executeQuery();
 			while(rs.next()){
-				Disco d = new Disco();
-				d.setCodDisco(rs.getInt("codDisco"));
-				discos.add(d);
-			}
-			for (Disco disco : discos) {
-				disco = DataDiscos.getDisco(disco.getCodDisco());
+				int codigo = rs.getInt("codDisco");
+				codDiscos.add(codigo);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		FactoriaConexion.getInstancia().releaseConexion();
-		return discos;
+		return codDiscos;
 	}
 	public static ArrayList<Venta> getVentas (Usuario usuario){
 		ArrayList<Venta> ventas = new ArrayList<Venta>();

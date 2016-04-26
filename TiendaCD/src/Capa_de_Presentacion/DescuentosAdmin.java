@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Capa_de_Control.Controlador;
-import Capa_de_Entidades.Autor;
 import Capa_de_Entidades.Descuento;
 
 /**
@@ -54,7 +53,8 @@ public class DescuentosAdmin extends HttpServlet {
 		if(request.getParameter("nuevoDescuento")!=null){
 			Descuento descuento = new Descuento();
 			descuento.setMontoASuperar(Float.valueOf(request.getParameter("monto")));
-			descuento.setPorcentaje(Float.valueOf(request.getParameter("porcentaje")));
+			float porc = Float.valueOf(request.getParameter("porcentaje")) / 100;
+			descuento.setPorcentaje(porc);
 			con.nuevoDescuento(descuento);
 			request.getRequestDispatcher("descuentosAdmin.jsp").forward(request, response);
 		}
@@ -68,15 +68,6 @@ public class DescuentosAdmin extends HttpServlet {
 				descuento.setPorcentaje(Float.valueOf(request.getParameter("porcentaje")));
 				con.modificarDescuento(descuento);
 			}
-			request.getRequestDispatcher("descuentosAdmin.jsp").forward(request, response);
-		}
-		
-		if(request.getParameter("eliminarDescuento")!=null){
-			Descuento descuento = new Descuento();
-			int codigo = Integer.parseInt(request.getParameter("codigoDto"));
-			descuento = con.getDescuento(codigo);
-			if(descuento != null)
-				con.borrarDescuento(descuento);
 			request.getRequestDispatcher("descuentosAdmin.jsp").forward(request, response);
 		}
 	}

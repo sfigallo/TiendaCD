@@ -8,7 +8,6 @@ import Capa_de_Entidades.Descuento;
 import Capa_de_Entidades.Disco;
 import Capa_de_Entidades.GeneroMusical;
 import Capa_de_Entidades.Usuario;
-import Capa_de_Entidades.Venta;
 
 public class DataDiscos {
 	
@@ -535,7 +534,8 @@ public class DataDiscos {
 
 	public static void valorarDisco(Usuario usuario, Disco disco, int valor) {
 		Connection con = FactoriaConexion.getInstancia().getConexion();
-		String sql = "call valorar (?, ?, ?);"; //disco usuario valoracion
+		String sql = "insert into valoracion(codDisco, usuario, "
+				+ "valoracion) values (?,?,?)";
 		try {
 			PreparedStatement comando = con.prepareStatement(sql);
 			comando.setInt(1, disco.getCodDisco());
@@ -652,23 +652,58 @@ public class DataDiscos {
 	}
 
 	public static Descuento getDescuento(int codigo) {
-		// TODO Auto-generated method stub
-		return null;
+		Descuento desc = null;
+		String sql = "call getDescuento(?);";
+		Connection con = FactoriaConexion.getInstancia().getConexion();
+			PreparedStatement comando;
+			try {
+				comando = con.prepareStatement(sql);
+				comando.setInt(1, codigo);
+				ResultSet rs = comando.executeQuery();
+				if (rs.next()) {
+					desc = new Descuento();
+					desc.setCodDescuento(codigo);;
+					desc.setMontoASuperar(rs.getFloat("montoASuperar"));
+					desc.setPorcentaje(rs.getFloat("porcentaje"));
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			FactoriaConexion.getInstancia().releaseConexion();
+			return desc;
 	}
 
 	public static void addDescuento(Descuento descuento) {
-		// TODO Auto-generated method stub
-		
+		Connection con = FactoriaConexion.getInstancia().getConexion();
+		String sql = "insert into tiendacd.descuento (montoASuperar, porcentaje) values (?, ?);";
+		try {
+			PreparedStatement comando = con.prepareStatement(sql);							
+			comando.setFloat(1, descuento.getMontoASuperar());
+			comando.setFloat(2, descuento.getPorcentaje());
+			comando.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		FactoriaConexion.getInstancia().releaseConexion();
 	}
 
 	public static void updateDescuento(Descuento descuento) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public static void removeDescuento(Descuento descuento) {
-		// TODO Auto-generated method stub
-		
+		Connection con = FactoriaConexion.getInstancia().getConexion();
+		String sql = "UPDATE `tiendacd`.`descuento` SET `montoASuperar`='?', `porcentaje`='?'"
+				+ "WHERE `codDescuento`='?';";
+		try {
+			PreparedStatement comando = con.prepareStatement(sql);
+			comando.setFloat(1, descuento.getMontoASuperar());;
+			comando.setFloat(2, descuento.getPorcentaje());
+			comando.setInt(3, descuento.getCodDescuento());
+			comando.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		FactoriaConexion.getInstancia().releaseConexion();
 	}
 	
 }

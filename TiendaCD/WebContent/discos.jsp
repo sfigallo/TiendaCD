@@ -43,8 +43,13 @@
     </form>
   </div>
   
-  <br><br><br>
+  <br>
 
+  <form role="form" class="form-inline" action="Discos" method="post" id="mostrarTodos" name="mostrarTodos">
+  	<input class="btn" type="submit" value="Mostrar todos" id="mostrarTodos" name="mostrarTodos"/>
+  </form>
+
+  <br>
   <div class="col-sm-11.5 col-sm-offset-0.5" style="background-color:#ccc">
  	<div class="container">
   	<h3>Discos</h3>
@@ -53,7 +58,6 @@
 
   <div class="col-sm-11.5 col-sm-offset-0.5">
      <table class="table table-hover" style="background-color:#ffffff">
-       
        <thead>
        	<tr>
        		<th>Datos del disco</th>
@@ -84,8 +88,9 @@
          		<br>
          		<%
          		Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
+         		usuario = controlador.buscarUsuario(usuario.getUsuario());
          		if(usuario!=null){
-         		 if(usuario.getDiscosAValorar().contains(disco)){
+         		 if(usuario.getDiscosAValorar().contains(disco.getCodDisco())){
          		%>
          		<form role="form" class="form-inline" action="Discos" method="post" id="valorarDisco" name="valorarDisco">
 					<select name="valor">

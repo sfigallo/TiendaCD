@@ -26,7 +26,7 @@ CREATE TABLE `autor` (
   `codAutor` int(11) NOT NULL AUTO_INCREMENT,
   `nombreAutor` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`codAutor`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -35,7 +35,7 @@ CREATE TABLE `autor` (
 
 LOCK TABLES `autor` WRITE;
 /*!40000 ALTER TABLE `autor` DISABLE KEYS */;
-INSERT INTO `autor` VALUES (1,'Gustavo Cerati'),(2,'Ricardo Arjona'),(3,'Airbag');
+INSERT INTO `autor` VALUES (1,'Gustavo Cerati'),(2,'Ricardo Arjona'),(3,'Airbag'),(4,'Soda Stereo');
 /*!40000 ALTER TABLE `autor` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -47,11 +47,11 @@ DROP TABLE IF EXISTS `descuento`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `descuento` (
-  `codDescuento` int(11) NOT NULL,
+  `codDescuento` int(11) NOT NULL AUTO_INCREMENT,
   `montoASuperar` float DEFAULT NULL,
   `porcentaje` float DEFAULT NULL,
   PRIMARY KEY (`codDescuento`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -60,7 +60,7 @@ CREATE TABLE `descuento` (
 
 LOCK TABLES `descuento` WRITE;
 /*!40000 ALTER TABLE `descuento` DISABLE KEYS */;
-INSERT INTO `descuento` VALUES (0,0,0),(1,100,0.5),(2,175,0.1),(3,250,0.2);
+INSERT INTO `descuento` VALUES (1,300,0.1),(2,400,0.15),(3,500,0.25),(4,600,0.25);
 /*!40000 ALTER TABLE `descuento` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -85,7 +85,7 @@ CREATE TABLE `disco` (
   KEY `fk_disco_autor1_idx` (`codAutor`),
   CONSTRAINT `fk_disco_autor1` FOREIGN KEY (`codAutor`) REFERENCES `autor` (`codAutor`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_disco_genero_musical` FOREIGN KEY (`codGenero`) REFERENCES `genero_musical` (`codGenero`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -94,7 +94,7 @@ CREATE TABLE `disco` (
 
 LOCK TABLES `disco` WRITE;
 /*!40000 ALTER TABLE `disco` DISABLE KEYS */;
-INSERT INTO `disco` VALUES (1,'Amor Amarillo',2000,10,150,5,1,1),(2,'Viaje',2014,15,151,9,2,1),(3,'Fuerza Natural',2010,20,200,5,1,1),(4,'Voragine',2011,10,175,5,3,1);
+INSERT INTO `disco` VALUES (1,'Amor Amarillo',2000,7,150,5,1,1),(2,'Viaje',2014,14,151,9,2,1),(3,'Fuerza Natural',2010,20,200,5,1,1),(4,'Voragine',2011,9,175,5,3,1),(5,'Ahí Vamos',2005,22,150,5,1,1),(7,'Dynamo',1990,11,120,5,4,1);
 /*!40000 ALTER TABLE `disco` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -122,7 +122,7 @@ CREATE TABLE `discos_por_venta` (
 
 LOCK TABLES `discos_por_venta` WRITE;
 /*!40000 ALTER TABLE `discos_por_venta` DISABLE KEYS */;
-INSERT INTO `discos_por_venta` VALUES (1,1),(4,1),(2,8),(4,8);
+INSERT INTO `discos_por_venta` VALUES (1,18),(2,19),(5,19),(1,20),(4,20);
 /*!40000 ALTER TABLE `discos_por_venta` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -137,7 +137,7 @@ CREATE TABLE `genero_musical` (
   `codGenero` int(11) NOT NULL AUTO_INCREMENT,
   `descGenero` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`codGenero`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -146,7 +146,7 @@ CREATE TABLE `genero_musical` (
 
 LOCK TABLES `genero_musical` WRITE;
 /*!40000 ALTER TABLE `genero_musical` DISABLE KEYS */;
-INSERT INTO `genero_musical` VALUES (5,'Rock'),(6,'Pop'),(7,'Cumbia'),(8,'Clásica'),(9,'Balada');
+INSERT INTO `genero_musical` VALUES (5,'Rock'),(6,'Pop'),(7,'Cumbia'),(8,'Clásica'),(9,'Balada'),(10,'House');
 /*!40000 ALTER TABLE `genero_musical` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -231,6 +231,7 @@ CREATE TABLE `valoracion` (
 
 LOCK TABLES `valoracion` WRITE;
 /*!40000 ALTER TABLE `valoracion` DISABLE KEYS */;
+INSERT INTO `valoracion` VALUES (1,'sfigallo',5),(2,'sfigallo',4),(4,'rjimenez',5),(4,'sfigallo',1);
 /*!40000 ALTER TABLE `valoracion` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -250,9 +251,8 @@ CREATE TABLE `venta` (
   UNIQUE KEY `nroVenta_UNIQUE` (`nroVenta`),
   KEY `fk_venta_usuario1_idx` (`usuario`),
   KEY `fk_venta_descuento1_idx` (`codDescuento`),
-  CONSTRAINT `fk_venta_descuento1` FOREIGN KEY (`codDescuento`) REFERENCES `descuento` (`codDescuento`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_venta_usuario1` FOREIGN KEY (`usuario`) REFERENCES `usuario` (`usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -261,7 +261,7 @@ CREATE TABLE `venta` (
 
 LOCK TABLES `venta` WRITE;
 /*!40000 ALTER TABLE `venta` DISABLE KEYS */;
-INSERT INTO `venta` VALUES (1,260,'sfigallo',3),(2,75.5,'sfigallo',1),(3,157.5,'rjimenez',2),(8,260.8,'rjimenez',3);
+INSERT INTO `venta` VALUES (18,150,'sfigallo',0),(19,301,'sfigallo',0),(20,292.5,'sfigallo',1);
 /*!40000 ALTER TABLE `venta` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -346,6 +346,25 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `getDescuento` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getDescuento`(cod int)
+BEGIN
+select * from descuento where codDescuento = cod;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `getDescuentos` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -418,7 +437,7 @@ BEGIN
 	select disco.* from disco
     inner join discos_por_venta on disco.codDisco = discos_por_venta.codDisco
     inner join venta on discos_por_venta.nroVenta = venta.nroVenta
-    right join valoracion on ((valoracion.codDisco = disco.codDisco) and
+    left join valoracion on ((valoracion.codDisco = disco.codDisco) and
 							  (valoracion.usuario = venta.usuario))
     where (venta.usuario = usu) and (valoracion.valoracion is null);
 END ;;
@@ -753,4 +772,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-04-23 19:49:58
+-- Dump completed on 2016-04-25 17:50:35

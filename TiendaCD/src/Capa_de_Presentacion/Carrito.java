@@ -55,11 +55,11 @@ public class Carrito extends HttpServlet {
 			Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
 			ArrayList<Disco> carrito = (ArrayList<Disco>) request.getSession().getAttribute("carrito");
 			con.nuevaVenta(monto, usuario, descuento, carrito);
-			carrito = new ArrayList<Disco>();
 			for(Disco d : carrito){
 				d.setCantCopiasDisp(d.getCantCopiasDisp()-1);
 				con.modificarDisco(d);
 			}
+			carrito = new ArrayList<Disco>();
 			request.getSession().setAttribute("carrito", carrito);
 			request.getRequestDispatcher("NoContemplado.html").forward(request, response);
 		}
