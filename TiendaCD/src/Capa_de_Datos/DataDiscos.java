@@ -691,8 +691,8 @@ public class DataDiscos {
 
 	public static void updateDescuento(Descuento descuento) {
 		Connection con = FactoriaConexion.getInstancia().getConexion();
-		String sql = "UPDATE `tiendacd`.`descuento` SET `montoASuperar`='?', `porcentaje`='?'"
-				+ "WHERE `codDescuento`='?';";
+		String sql = "UPDATE `tiendacd`.`descuento` SET `montoASuperar`=?, `porcentaje`=?"
+				+ "WHERE `codDescuento`=?;";
 		try {
 			PreparedStatement comando = con.prepareStatement(sql);
 			comando.setFloat(1, descuento.getMontoASuperar());;
