@@ -89,7 +89,7 @@ public class Discos extends HttpServlet {
 					carrito = (ArrayList<Disco>) request.getSession().getAttribute("carrito");
 				int cont = 0;
 				for (Disco discoi : carrito) {
-							if (discoi.equals(disco)) cont++;
+							if (discoi.getCodDisco()==disco.getCodDisco()) cont++;
 					}
 				if (disco.getCantCopiasDisp()>cont)
 					carrito.add(disco);
