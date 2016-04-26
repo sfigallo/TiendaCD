@@ -68,8 +68,12 @@
        <tbody>
        <%
        ArrayList<Disco> discos = new ArrayList<Disco>();
-       if( (request.getSession().getAttribute("buscados")) == null)
-    	   discos = controlador.getDiscos();
+       if( (request.getSession().getAttribute("buscados")) == null){
+    	   ArrayList<Disco> discos2 = controlador.getDiscos();
+    	   for(Disco d : discos2)
+    		   if(d.getCantCopiasDisp()>0)
+    			   discos.add(d);
+       }
        else
     	   discos = (ArrayList<Disco>) request.getSession().getAttribute("buscados");
      		
