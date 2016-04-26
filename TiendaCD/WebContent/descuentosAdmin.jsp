@@ -53,7 +53,7 @@
 		<tr>
 			<td><b>Porcentaje (%):</b></td>
 			<td>
-				<input type="text" class="form-control" id="porcentaje" name="porcentaje" value="<%if(request.getAttribute("porcentaje")!=null){ float por=(Float)request.getAttribute("porcentaje")*100;%><%=(int)por%><% }%>">
+				<input type="text" class="form-control" id="porcentaje" name="porcentaje" value="<%if(request.getAttribute("porcentaje")!=null){%><%=request.getAttribute("porcentaje")%><% }%>">
 			</td>
 		</tr>
 	</table>
@@ -91,8 +91,7 @@
          <tr>
            <td><%=desc.getCodDescuento()%></td>
            <td>$<%=desc.getMontoASuperar() %></td>
-           <% float porc = desc.getPorcentaje() * 100; %>
-           <td><%=(int)porc%>%</td>
+           <td><%=(int)desc.getPorcentaje()%>%</td>
          </tr>
          <%} %>
        </tbody>
