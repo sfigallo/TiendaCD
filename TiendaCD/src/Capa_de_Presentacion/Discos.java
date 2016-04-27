@@ -46,7 +46,11 @@ public class Discos extends HttpServlet {
 		if(request.getParameter("eventoBuscar")!=null){
 			String cadena = request.getParameter("buscar");
 			if (!cadena.isEmpty()) {
-				discos = con.buscarDiscos(cadena);
+				ArrayList<Disco> discos1 = con.buscarDiscos(cadena);
+				for(Disco d : discos1){
+					if(d.getCantCopiasDisp()>0)
+						discos.add(d);
+				}
 				request.getSession().setAttribute("buscados", discos);
 			}
 			request.getRequestDispatcher("discos.jsp").forward(request, response);

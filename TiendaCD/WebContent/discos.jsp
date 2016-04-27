@@ -91,10 +91,11 @@
          		<b>Promedio:</b> <%=disco.getValoracion() %>
          		<br>
          		<%
+         		if(request.getSession().getAttribute("usuario")!=null){
          		Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
          		usuario = controlador.buscarUsuario(usuario.getUsuario());
          		request.getSession().setAttribute("usuario", usuario);
-         		if(usuario!=null){
+         		
          		 if(usuario.getDiscosAValorar().contains(disco.getCodDisco())){
          		%>
          		<form role="form" class="form-inline" action="Discos" method="post" id="valorarDisco" name="valorarDisco">
